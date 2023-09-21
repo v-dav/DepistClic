@@ -47,6 +47,13 @@ class Patient:
     dry_skin = False  # dry skin symptoms
     metformin = False
     sport_45 = False  # reprise de l'activité physique soutenue après 45 ans
+    bmi = None
+    hemo_risk = None
+    cv_risk = None
+    coro_risk = None
+    fib4 = None
+    irc = None
+    
 
     """Scores calculations"""
     def bmi(self, weight, height):
@@ -63,10 +70,6 @@ class Patient:
 
     def coronary_risk(self):
         """Calculation of coronary risk"""
-        pass
-
-    def tca_screening(self):
-        """Alimentory desorder screening"""
         pass
 
     def fib4_score(self):
