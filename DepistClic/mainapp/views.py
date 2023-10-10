@@ -13,3 +13,7 @@ def questions(request):
         'first_question': first_question
     }
     return render(request, 'mainapp/questions.html', context)
+
+
+def synthese(request):
+    return render(request, 'mainapp/synthese.html')
