@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Question
 
 
 # Create your views here.
@@ -7,4 +8,8 @@ def home(request):
 
 
 def questions(request):
-    return render(request, 'mainapp/questions.html')
+    first_question = Question.objects.get(pk=2)
+    context = {
+        'first_question': first_question
+    }
+    return render(request, 'mainapp/questions.html', context)
