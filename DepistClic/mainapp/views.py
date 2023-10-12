@@ -9,24 +9,20 @@ def home(request):
 
 
 def questions(request):
-    first_question = Question.objects.get(pk=2)
+    first_question = Question.objects.first()
     context = {
-        'first_question': first_question
+        'question': first_question
+    }
+    return render(request, 'mainapp/questions.html', context)
+
+
+def get_question(request, question_id):
+    question = Question.objects.get(pk=question_id)
+    context = {
+        'question': question
     }
     return render(request, 'mainapp/questions.html', context)
 
 
 def synthese(request):
     return render(request, 'mainapp/synthese.html')
-
-
-def get_question(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-        data = {
-            'title': question.title,
-            'response_type': question.response_type,
-        }
-        return JsonResponse(data)
-    except Question.DoesNotExist:
-        return JsonResponse({'error': "La question n'existe pas"}, status=404)
