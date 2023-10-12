@@ -1,7 +1,16 @@
 $(() => {
-	let nextQuestionId = parseInt($("#pass-btn").data('question-id')) + 1
+	let currentQuestionId = parseInt($("#pass-btn").data('question-id'));
+
 	$("#pass-btn").click(() => {
-		window.location.href = '/questions/' + nextQuestionId;
-		nextQuestionId += 1;
-	})
+		let nextQuestionId = currentQuestionId + 1;
+		let url = '/questions/' + nextQuestionId;
+		window.location.href = url;
+	});
+
+	$("#back-btn").click(() => {
+		let prevQuestionId = currentQuestionId - 1;
+		let url = '/questions/' + prevQuestionId;
+		window.location.href = url;
+	});
+
 });
