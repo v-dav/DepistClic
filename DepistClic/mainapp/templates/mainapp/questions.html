@@ -1,16 +1,22 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<h1>{{ first_question.title }}</h1>
-	<input type="text">
-	<button>Valider</button>
-	<button id="pass-btn">Passer</button>
-	<a href="/">
-		<button>Home</button>
-	</a>
-	<h1>Mon Patient</h1>
-	<p>......</p>
-	<a href="/synthese/">
-		<button>Synthèse</button>
-	</a>
+    <h1 id="question_title">{{ question.title }}</h1>
+    <form id="question-form">
+		{% csrf_token %}
+        <input type="text" id="user-answer" name="user-answer">
+        <button type="submit">Valider</button>
+    </form>
+    <button id="back-btn">Back</button>
+    <button id="pass-btn" data-question-id="{{ question.id }}">Passer</button>
+    <a href="/">
+        <button>Home</button>
+    </a>
+    <h1>Mon Patient</h1>
+    {%for answer in answer_list%}
+	<p>{{answer.answer_text}}</p>
+	{%endfor%}
+    <a href="/synthese/">
+        <button>Synthèse</button>
+    </a>
 {% endblock content %}
