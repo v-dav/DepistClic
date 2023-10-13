@@ -13,7 +13,9 @@
         <button>Home</button>
     </a>
     <h1>Mon Patient</h1>
-    <p>......</p>
+    {%for answer in answer_list%}
+	<p>{{answer.answer_text}}</p>
+	{%endfor%}
     <a href="/synthese/">
         <button>Synthèse</button>
     </a>
