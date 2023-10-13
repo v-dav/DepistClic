@@ -25,13 +25,13 @@ def store_value(request):
         return JsonResponse({'success': False, 'error': 'Methode de requete non valide'})
 
 
-def get_question(request, question_id=None):
+def get_question(request, question_order=None):
     query_set = Answer.objects.all()
 
-    if question_id is None:
+    if question_order is None:
         question = Question.objects.first()
     else:
-        question = Question.objects.get(pk=question_id)
+        question = Question.objects.get(order=question_order)
     context = {
         'question': question,
         'answer_list': query_set
