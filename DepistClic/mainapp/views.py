@@ -12,9 +12,10 @@ def store_value(request):
     if request.method == 'POST':
         # Get the user answer from the POST request
         user_answer = request.POST.get('user_answer')
+        question_order = request.POST.get('question_order')
 
         # Get the current question
-        current_question = Question.objects.first()
+        current_question = Question.objects.get(order=question_order)
 
         # Create a new Answer instance and save it to the database
         answer = Answer(answer_text=user_answer, question=current_question)
