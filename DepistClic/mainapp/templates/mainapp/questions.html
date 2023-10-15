@@ -2,10 +2,10 @@
 
 {% block content %}
     <h1 id="question_title">{{ question.title }}</h1>
-    <form id="question-form">
-		{% csrf_token %}
-        <input type="text" id="user-answer" name="user-answer">
-        <button type="submit">Valider</button>
+    <form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input id="validate-btn" type="submit" value="Valider">
     </form>
     <button id="back-btn">Back</button>
     <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
