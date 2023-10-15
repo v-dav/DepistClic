@@ -33,7 +33,7 @@ $(() => {
 			$.ajax({
 				url: '/store_value/', // URL de la vue Django pour enregistrer la valeur
 				type: 'POST', // Méthode POST pour envoyer des données au serveur
-				data: { user_answer: userAnswer }, // Données à envoyer au serveur
+				data: { user_answer: userAnswer, question_order: currentQuestionOrder }, // Données à envoyer au serveur
 				headers: {
 					'X-CSRFToken': csrfToken // Utilise le jeton CSRF récupéré pour authentifier la requête
 				},
