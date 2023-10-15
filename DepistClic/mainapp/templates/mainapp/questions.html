@@ -3,9 +3,13 @@
 {% block content %}
     <h1 id="question_title">{{ question.title }}</h1>
     <form id="question-form">
-		{% csrf_token %}
-        <input type="text" id="user-answer" name="user-answer">
-        <button type="submit">Valider</button>
+	{% csrf_token %}
+        <input type="text" id="user-answer" name="user-answer" placeholder="Répondez ici">
+        <input type="submit" value="Valider"/>
+    </form>
+    <form action="http://www.google.com/search" method="GET">
+	<input type="text" name="q" placeholder="Cherchez sur Google">
+	<input type="submit" value="Chercher"/>
     </form>
     <button id="back-btn">Back</button>
     <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
