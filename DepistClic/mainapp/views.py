@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Question
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -42,3 +43,8 @@ def get_question(request, question_order=None):
 
 def synthese(request):
     return render(request, 'mainapp/synthese.html')
+
+
+def clear_session(request):
+    request.session.flush()
+    return JsonResponse({'message': 'Session cleared successfully'})
