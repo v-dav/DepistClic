@@ -17,9 +17,11 @@
         <button>Home</button>
     </a>
     <h1>Mon Patient</h1>
-    {%for answer in answer_list%}
-	<p>{{answer.answer_text}}</p>
-	{%endfor%}
+    	{% if previous_answers %}
+		{%for answer in previous_answers%}
+			<p>{{answer}}</p>
+		{%endfor%}
+	{% endif %}
     <a href="/synthese/">
         <button>Synthèse</button>
     </a>
