@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import Question
 
 
 # Create your views here.
 def home(request):
+    request.session.clear()
     return render(request, 'mainapp/home.html')
 
 
@@ -37,8 +39,25 @@ def get_question(request, question_order=None):
             'question': question,
             'previous_answers': previous_answers,
         }
+    
+    if is_last_question(question_order, total_questions=10):
+        return HttpResponseRedirect('/synthese/')
+    
     return render(request, 'mainapp/questions.html', context)
 
+def is_last_question(question_order, total_questions=10):
+    return question_order == total_questions
 
 def synthese(request):
-    return render(request, 'mainapp/synthese.html')
+    previous_answers = []
+    for i in range(1, 11):
+        answer_key = f'q{i}'
+        previous_answer = request.session.get(answer_key)
+        if previous_answer:
+            previous_answers.append(previous_answer)
+    
+    context = {
+        'previous_answers': previous_answers,
+    }
+    
+    return render(request, 'mainapp/synthese.html', context)

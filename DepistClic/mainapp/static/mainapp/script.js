@@ -16,6 +16,13 @@ $(() => {
 
 	});
 
+	$("#home-btn").click(() => {
+		const confirmation = window.confirm("Voulez-vous vraiment revenir, vous allez perdre les données en cours")
+		if (confirmation) {
+			window.location.href = "/";
+		}
+	});
+
 	// Form handling
 	$("#question-form").submit((event) => {
 		event.preventDefault(); // Empêche l'envoi par défaut du formulaire
