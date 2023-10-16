@@ -31,7 +31,7 @@ $(() => {
 
 			// Envoie la valeur au serveur via une requête AJAX
 			$.ajax({
-				url: '/store_value/', // URL de la vue Django pour enregistrer la valeur
+				url: `/questions/${currentQuestionOrder}/`, // URL de la vue Django pour enregistrer la valeur
 				type: 'POST', // Méthode POST pour envoyer des données au serveur
 				data: { user_answer: userAnswer, question_order: currentQuestionOrder }, // Données à envoyer au serveur
 				headers: {
