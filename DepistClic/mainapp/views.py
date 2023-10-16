@@ -19,7 +19,7 @@ def get_question(request, question_order=None):
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
 
-        # Redirect to the next question
+        # Redirect to the next question 
         return redirect('depistclic-get_question', question_order=next_question_order)
 
     # Get the question for the GET request

@@ -13,7 +13,6 @@ $(() => {
 			let url = '/questions/' + prevQuestionOrder;
 			window.location.href = url;
 		}
-
 	});
 
 	$("#home-btn").click(() => {
