@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'DepistClic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DB_NAME'),
-        'USER': os.environ.get('MYSQL_DB_USER'),
-        'PASSWORD': os.environ.get('MYSQL_DB_PASSWORD'),
-        'HOST': os.environ.get('MYSQL_DB_HOST'),
-        'PORT': os.environ.get('MYSQL_DB_PORT'),
+        'NAME': 'mydb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
