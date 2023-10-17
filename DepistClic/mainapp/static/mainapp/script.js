@@ -1,47 +1,54 @@
 $(() => {
-    let currentQuestionId = parseInt($("#pass-btn").data('question-id'));
+	let currentQuestionOrder = parseInt($("#pass-btn").data('question-order'));
 
-    $("#pass-btn").click(() => {
-        let nextQuestionId = currentQuestionId + 1;
-        let url = '/questions/' + nextQuestionId;
-        window.location.href = url;
-    });
+	$("#pass-btn").click(() => {
+		let nextQuestionOrder = currentQuestionOrder + 1;
+		let url = '/questions/' + nextQuestionOrder;
+		window.location.href = url;
+	});
 
-    $("#back-btn").click(() => {
-        let prevQuestionId = currentQuestionId - 1;
-		if (prevQuestionId >= 1) {
-			let url = '/questions/' + prevQuestionId;
-        	window.location.href = url;
+	$("#back-btn").click(() => {
+		let prevQuestionOrder = currentQuestionOrder - 1;
+		if (prevQuestionOrder >= 1) {
+			let url = '/questions/' + prevQuestionOrder;
+			window.location.href = url;
 		}
-    });
+	});
 
-    // Form handling
-    $("#question-form").submit((event) => {
+	$("#home-btn").click(() => {
+		const confirmation = window.confirm("Voulez-vous vraiment revenir, vous allez perdre les données en cours")
+		if (confirmation) {
+			window.location.href = "/";
+		}
+	});
+
+	// Form handling
+	$("#question-form").submit((event) => {
 		event.preventDefault(); // Empêche l'envoi par défaut du formulaire
-	
+
 		// Récupère la valeur de l'utilisateur depuis le champ de texte et supprime les espaces inutiles
 		let userAnswer = $("#user-answer").val().trim();
-	
+
 		// Vérifie si l'utilisateur a saisi une valeur
 		if (userAnswer !== '') {
 
 			// Récupère le jeton CSRF depuis le formulaire
 			let csrfToken = $('[name=csrfmiddlewaretoken]').val();
-	
+
 			// Envoie la valeur au serveur via une requête AJAX
 			$.ajax({
-				url: '/store_value/', // URL de la vue Django pour enregistrer la valeur
+				url: `/questions/${currentQuestionOrder}/`, // URL de la vue Django pour enregistrer la valeur
 				type: 'POST', // Méthode POST pour envoyer des données au serveur
-				data: { user_answer: userAnswer }, // Données à envoyer au serveur
+				data: { user_answer: userAnswer, question_order: currentQuestionOrder }, // Données à envoyer au serveur
 				headers: {
 					'X-CSRFToken': csrfToken // Utilise le jeton CSRF récupéré pour authentifier la requête
 				},
-				success: function(response) {
-					let nextQuestionId = currentQuestionId + 1;
-					let url = '/questions/' + nextQuestionId;
+				success: function (response) {
+					let nextQuestionOrder = currentQuestionOrder + 1;
+					let url = '/questions/' + nextQuestionOrder;
 					window.location.href = url; // Redirige l'utilisateur vers la prochaine question
 				},
-				error: function(error) {
+				error: function (error) {
 					// Gère les erreurs en cas d'échec de la requête
 					console.log(error);
 				}
@@ -51,5 +58,5 @@ $(() => {
 			alert("Entrez une valeur valide");
 		}
 	});
-	
+
 });
