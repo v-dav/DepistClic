@@ -1,43 +1,63 @@
-from django.shortcuts import render
-from .models import Question, Answer
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, JsonResponse
+from .models import Question
 
 
 # Create your views here.
 def home(request):
+    request.session.clear()
     return render(request, 'mainapp/home.html')
 
 
-def store_value(request):
+def get_question(request, question_order=None):
     if request.method == 'POST':
-        # Get the user answer from the POST request
+        # Get the user answer and question order from the POST request
         user_answer = request.POST.get('user_answer')
+        q_order = request.POST.get('question_order')
+        next_question_order = int(q_order) + 1
 
-        # Get the current question
-        current_question = Question.objects.first()
+        # Store the answer in the session
+        request.session[f'q{q_order}'] = user_answer
 
-        # Create a new Answer instance and save it to the database
-        answer = Answer(answer_text=user_answer, question=current_question)
-        answer.save()
+        # Redirect to the next question 
+        return redirect('depistclic-get_question', question_order=next_question_order)
 
-        return JsonResponse({'success': True})
-    else:
-        return JsonResponse({'success': False, 'error': 'Methode de requete non valide'})
-
-
-def get_question(request, question_id=None):
-    query_set = Answer.objects.all()
-
-    if question_id is None:
+    # Get the question for the GET request
+    if question_order is None:
         question = Question.objects.first()
+        context = {
+            'question': question
+            }
     else:
-        question = Question.objects.get(pk=question_id)
-    context = {
-        'question': question,
-        'answer_list': query_set
-    }
+        question = Question.objects.get(order=question_order)
+        previous_answers = []
+        for i in range(1, question_order):
+            answer_key = f'q{i}'
+            previous_answer = request.session.get(answer_key)
+            previous_answers.append(previous_answer)
+        context = {
+            'question': question,
+            'previous_answers': previous_answers,
+        }
+    
+    if is_last_question(question_order, total_questions=10):
+        return HttpResponseRedirect('/synthese/')
+    
     return render(request, 'mainapp/questions.html', context)
 
+def is_last_question(question_order, total_questions=10):
+    return question_order == total_questions
 
 def synthese(request):
-    return render(request, 'mainapp/synthese.html')
+    previous_answers = []
+    for i in range(1, 11):
+        answer_key = f'q{i}'
+        previous_answer = request.session.get(answer_key)
+        if previous_answer:
+            previous_answers.append(previous_answer)
+    
+    context = {
+        'previous_answers': previous_answers,
+    }
+    
+    return render(request, 'mainapp/synthese.html', context)
