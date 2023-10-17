@@ -53,11 +53,12 @@ def get_question(request, question_order=None):
 
 # The synthesis page view
 def synthese(request):
+    # A list for the displaying previous answers
     previous_answers = []
-    for i in range(1, 11):
+    for i in range(1, Question.objects.count()):
         answer_key = f'q{i}'
         previous_answer = request.session.get(answer_key)
-        if previous_answer:
+        if previous_answer is not None:
             previous_answers.append(previous_answer)
 
     context = {
