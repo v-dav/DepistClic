@@ -26,3 +26,18 @@ class AnswerInteger(forms.Form):
             message='La valeur doit être supérieure à zéro')]
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
+
+
+class AnswerSex(forms.Form):
+    RESPONSE_CHOICES = [
+        ('Femme', 'Femme'),  # Oui est associé à Femme
+        ('Homme', 'Homme'),  # Non est associé à Homme
+    ]
+
+    response = forms.ChoiceField(
+        choices=RESPONSE_CHOICES,
+        widget=forms.RadioSelect,
+        label=''
+    )
+
+    question_order = forms.IntegerField(widget=forms.HiddenInput())
