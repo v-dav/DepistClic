@@ -25,4 +25,9 @@ $(() => {
 			window.location.href = "/";
 		}
 	});
+
+	// Submit the form when one input is chosen
+	$('input[type="radio"]').on('change', function() {
+		$(this).closest('form').submit();
+	});
 });
