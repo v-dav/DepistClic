@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import MinValueValidator
 
 
 class AnswerBinary(forms.Form):
@@ -17,5 +18,11 @@ class AnswerBinary(forms.Form):
 
 
 class AnswerInteger(forms.Form):
-    response = forms.IntegerField(required=True, label='')
+    response = forms.IntegerField(
+        required=True,
+        label='',
+        validators=[MinValueValidator(
+            1,
+            message='La valeur doit être supérieure à zéro')]
+    )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
