@@ -22,7 +22,7 @@ class AnswerInteger(forms.Form):
         required=True,
         label='',
         validators=[MinValueValidator(
-            0,
-            message='La valeur doit être supérieure ou égale à zéro')]
+            1,
+            message='La valeur doit être supérieure à zéro')]
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
