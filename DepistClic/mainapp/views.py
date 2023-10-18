@@ -62,14 +62,20 @@ def get_question(request, question_order=None):
         }
 
     if question.order > 1:
+        suffix = ['q2', 'q3', 'q4', 'q5', 'q6']
         # A list for the displaying previous answers
         previous_answers = []
         for i in range(1, question_order + 1):
+            previous_question = Question.objects.get(order=i)
             answer_key = f'q{i}'
             previous_answer = request.session.get(answer_key)
+            # If not none and not false
             if previous_answer:
-                previous_answers.append(previous_answer)
-        print(previous_answers)
+                if answer_key in suffix:
+                    previous_answer_fulltext = f'{previous_answer} {previous_question.display_text}'
+                else:
+                    previous_answer_fulltext = previous_question.display_text
+                previous_answers.append(previous_answer_fulltext)
 
         context['previous_answers'] = previous_answers
 
