@@ -2,16 +2,19 @@
 
 {% block content %}
     <h1 id="question_title">{{ question.title }}</h1>
-    <form id="question-form">
-        {% csrf_token %}
-        {% if question.response_type == "boolean" %}
-            <button type="submit" name="user-answer" value="true">Oui</button>
-            <button type="submit" name="user-answer" value="false">Non</button>
-        {% else %}
-            <input type="text" id="user-answer" name="user-answer" placeholder="Répondez ici">
-	    <input type="submit" value="Valider"/>
-        {% endif %}
-    </form>
+    {% if question.response_type == 'boolean' %}
+	<form method="POST">
+		{% csrf_token %}
+		{{ form_bool.as_p }}
+		<input type="submit" value="Valider">
+	</form>
+	{% else %}
+	<form method="POST">
+		{% csrf_token %}
+		{{ form_int.as_p }}
+		<input type="submit" value="Valider">
+	</form>
+    {% endif %}
     <button id="back-btn">Back</button>
     <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
         <button id="home-btn">Home</button>

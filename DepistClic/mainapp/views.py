@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Question
+from .forms import AnswerBinary, AnswerInteger
 
 
 # Homepage view
@@ -10,43 +11,67 @@ def home(request):
 
 # The view that stores the answer in a session and gets a question
 def get_question(request, question_order=None):
-    if request.method == 'POST':
-        user_answer = request.POST.get('user_answer')
-        q_order = request.POST.get('question_order')
-        next_question_order = int(q_order) + 1
-
-        # Store the answer in the session
-        request.session[f'q{q_order}'] = user_answer
-
-        # Redirect to the next question
-        return redirect('depistclic-get_question',
-                        question_order=next_question_order)
-
-    # Get the question for the GET request
+    # Get the first question
     if question_order is None:
         question = Question.objects.first()
-        context = {
-            'question': question
-            }
     else:
         # Redirects to synthesis view after last question
         if question_order > Question.objects.count():
             return redirect('depistclic-synthese')
 
+        # Get the question if not the first question
         question = Question.objects.get(order=question_order)
 
+    # Create a bool form
+    form_bool = AnswerBinary(request.POST or None,
+                             initial={'question_order': question.order})
+    if form_bool.is_valid():
+        user_answer = form_bool.cleaned_data['response']
+
+        # Convert the bool answer
+        if user_answer == 'True':
+            user_answer = True
+        else:
+            user_answer = False
+
+        q_order = form_bool.cleaned_data['question_order']
+        # Store the answer in the session
+        request.session[f'q{q_order}'] = user_answer
+        next_question_order = q_order + 1
+        # Redirect to the next question
+        return redirect('depistclic-get_question',
+                        question_order=next_question_order)
+
+    # Create int form
+    form_int = AnswerInteger(request.POST or None,
+                             initial={'question_order': question.order})
+    if form_int.is_valid():
+        user_answer = int(form_int.cleaned_data['response'])
+        q_order = form_int.cleaned_data['question_order']
+        # Store the answer in the session
+        request.session[f'q{q_order}'] = user_answer
+        next_question_order = q_order + 1
+        # Redirect to the next question
+        return redirect('depistclic-get_question',
+                        question_order=next_question_order)
+
+    context = {
+            'question': question,
+            'form_bool': form_bool,
+            'form_int': form_int
+        }
+
+    if question.order > 1:
         # A list for the displaying previous answers
         previous_answers = []
-        for i in range(1, question_order):
+        for i in range(1, question_order + 1):
             answer_key = f'q{i}'
             previous_answer = request.session.get(answer_key)
-            if previous_answer is not None:
+            if previous_answer:
                 previous_answers.append(previous_answer)
+        print(previous_answers)
 
-        context = {
-            'question': question,
-            'previous_answers': previous_answers,
-        }
+        context['previous_answers'] = previous_answers
 
     return render(request, 'mainapp/questions.html', context)
 
@@ -55,10 +80,10 @@ def get_question(request, question_order=None):
 def synthese(request):
     # A list for the displaying previous answers
     previous_answers = []
-    for i in range(1, Question.objects.count()):
+    for i in range(1, Question.objects.count() + 1):
         answer_key = f'q{i}'
         previous_answer = request.session.get(answer_key)
-        if previous_answer is not None:
+        if previous_answer:
             previous_answers.append(previous_answer)
 
     context = {
