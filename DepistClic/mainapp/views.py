@@ -27,6 +27,13 @@ def get_question(request, question_order=None):
                              initial={'question_order': question.order})
     if form_bool.is_valid():
         user_answer = form_bool.cleaned_data['response']
+
+        # Convert the bool answer
+        if user_answer == 'True':
+            user_answer = True
+        else:
+            user_answer = False
+
         q_order = form_bool.cleaned_data['question_order']
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
@@ -39,7 +46,7 @@ def get_question(request, question_order=None):
     form_int = AnswerInteger(request.POST or None,
                              initial={'question_order': question.order})
     if form_int.is_valid():
-        user_answer = form_int.cleaned_data['response']
+        user_answer = int(form_int.cleaned_data['response'])
         q_order = form_int.cleaned_data['question_order']
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
@@ -57,11 +64,12 @@ def get_question(request, question_order=None):
     if question.order > 1:
         # A list for the displaying previous answers
         previous_answers = []
-        for i in range(1, question_order):
+        for i in range(1, question_order + 1):
             answer_key = f'q{i}'
             previous_answer = request.session.get(answer_key)
-            if previous_answer is not None:
+            if previous_answer:
                 previous_answers.append(previous_answer)
+        print(previous_answers)
 
         context['previous_answers'] = previous_answers
 
@@ -72,10 +80,10 @@ def get_question(request, question_order=None):
 def synthese(request):
     # A list for the displaying previous answers
     previous_answers = []
-    for i in range(1, Question.objects.count()):
+    for i in range(1, Question.objects.count() + 1):
         answer_key = f'q{i}'
         previous_answer = request.session.get(answer_key)
-        if previous_answer is not None:
+        if previous_answer:
             previous_answers.append(previous_answer)
 
     context = {
