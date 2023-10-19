@@ -1,5 +1,6 @@
 from django import forms
 from django.core.validators import MinValueValidator
+from .models import Comment
 
 
 class AnswerBinary(forms.Form):
@@ -41,3 +42,18 @@ class AnswerSex(forms.Form):
     )
 
     question_order = forms.IntegerField(widget=forms.HiddenInput())
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment_area']
+        widgets = {
+            'comment_area': forms.Textarea(
+                attrs={'rows': 6, 'cols': 50, 'placeholder': 'Votre commentaire ici'}
+                ),  
+        }
+        labels = {
+            'comment_area': '',
+        }
+

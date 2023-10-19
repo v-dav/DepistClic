@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Question
-from .forms import AnswerBinary, AnswerInteger, AnswerSex
+from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 
 
 # Homepage view
@@ -113,3 +114,15 @@ def synthese(request):
         'previous_answers': previous_answers,
     }
     return render(request, 'mainapp/synthese.html', context)
+
+
+def comment_page(request):
+    form_comment = CommentForm(request.POST or None)
+    if form_comment.is_valid():
+        form_comment.save()
+        form_comment = CommentForm()
+    
+    context = {
+        'form_comment': form_comment,
+    }
+    return render(request, 'mainapp/comment.html', context)
