@@ -1,0 +1,13 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <a href="/">
+        <button>Home</button>
+    </a>
+    <h1>Aidez-nous à améliorer notre application avec un commentaire</h1>
+    <form id="comment-form" method="post">
+        {% csrf_token %}
+        {{ form_comment.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+{% endblock content %}
