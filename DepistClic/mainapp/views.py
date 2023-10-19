@@ -7,7 +7,19 @@ from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 def get_bmi(weight, height):
     height_meters = height / 100
     bmi = round(weight / (height_meters ** 2), 1)
-    bmi_string = f'IMC {bmi}'
+    if bmi < 18.5:
+        suffix = ": Maigreur"
+    elif bmi >= 18.5 and bmi < 25:
+        suffix = ": Corpulence normale"
+    elif bmi >= 25 and bmi < 30:
+        suffix = ": Surpoids"
+    elif bmi >= 30 and bmi < 35:
+        suffix = ": Obésité modérée"
+    elif bmi >= 35 and bmi < 40:
+        suffix = ": Obésité sévère"
+    elif bmi >= 40:
+        suffix = ": Obésité morbide"
+    bmi_string = f'IMC {bmi}{suffix}'
     return bmi_string
 
 
@@ -136,7 +148,20 @@ def get_question(request, question_order=None):
 
 # The synthesis page view
 def synthese(request):
+    # Questions where responses come with suffix after numeric value
     suffix = ['q2', 'q3', 'q4', 'q5', 'q6']
+
+    # Get the values and calculate BMI if possible
+    height = request.session.get('q3')
+    weight = request.session.get('q4')
+    if weight and height:
+        bmi_string = get_bmi(weight, height)
+
+    # Get the value and calculate renal desease stage if possible
+    dfg = request.session.get('q6')
+    if dfg:
+        dfg_string = irc_grade(dfg)
+
     # A list for the displaying previous answers
     previous_answers = []
     for i in range(1, Question.objects.count() + 1):
@@ -151,6 +176,10 @@ def synthese(request):
             else:
                 previous_answer_fulltext = previous_question.display_text
             previous_answers.append(previous_answer_fulltext)
+            if i == 4 and bmi_string:
+                previous_answers.append(bmi_string)
+            if i == 6 and dfg_string:
+                previous_answers.append(dfg_string)
 
     context = {
         'previous_answers': previous_answers,
