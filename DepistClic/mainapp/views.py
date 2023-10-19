@@ -113,3 +113,6 @@ def synthese(request):
         'previous_answers': previous_answers,
     }
     return render(request, 'mainapp/synthese.html', context)
+
+def contact(request):
+    return render(request, 'mainapp/contact.html')
