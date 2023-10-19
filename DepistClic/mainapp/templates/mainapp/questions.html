@@ -1,36 +1,39 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
+    <article>
+        <h1 id="question_title">{{ question.title }}</h1>
+        
+        {% if question.response_type == 'boolean' %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form_bool.as_p }}
+            </form>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form_int.as_p }}
+                <input type="submit" value="Valider">
+            </form>
+        {% endif %}
 
-    <h1 id="question_title">{{ question.title }}</h1>
+        <button id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
 
-    {% if question.response_type == 'boolean' %}
-	<form method="POST">
-		{% csrf_token %}
-		{{ form_bool.as_p }}
-	</form>
-	{% else %}
-	<form method="POST">
-		{% csrf_token %}
-		{{ form_int.as_p }}
-		<input type="submit" value="Valider">
-	</form>
-    {% endif %}
+        <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
 
-	<button id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
+		<button id="home-btn">Home</button>
 
-    <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
+        <a href="/synthese/">
+            <button>Synthèse</button>
+        </a>
+    </article>
 
-    <button id="home-btn">Home</button>
-
-    <h2>Mon Patient</h2>
-		{% if previous_answers %}
-			{%for answer in previous_answers%}
-				<p>{{answer}}</p>
-			{%endfor%}
-		{% endif %}
-
-    <a href="/synthese/">
-        <button>Synthèse</button>
-    </a>
+    <aside>
+        <h2>Mon Patient</h2>
+        {% if previous_answers %}
+            {% for answer in previous_answers %}
+                <p>{{ answer }}</p>
+            {% endfor %}
+        {% endif %}
+    </aside>
 {% endblock content %}
