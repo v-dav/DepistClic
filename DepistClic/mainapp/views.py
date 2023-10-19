@@ -1,6 +1,30 @@
 from django.shortcuts import render, redirect
 from .models import Question
-from .forms import AnswerBinary, AnswerInteger, AnswerSex
+from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
+
+
+# Calculates the BMI of the patient
+def get_bmi(weight, height):
+    height_meters = height / 100
+    bmi = round(weight / (height_meters ** 2), 1)
+    bmi_string = f'IMC {bmi}'
+    return bmi_string
+
+
+# Calulates the renal desease stage
+def irc_grade(dfg):
+    if dfg >= 90:
+        return "Stade I: pas d'atteinte de l'épuration rénale"
+    elif dfg >= 60 and dfg < 90:
+        return "Stade II: insuffisance rénale légère"
+    elif dfg >= 45 and dfg < 60:
+        return "Stade IIIA: insuffisance rénale modérée"
+    elif dfg >= 30 and dfg < 45:
+        return "Stade IIIB: insuffisance rénale modérée"
+    elif dfg >= 15 and dfg < 30:
+        return "Stade IV: insuffisance rénale sévère"
+    elif dfg < 15:
+        return "Stade V: insuffisance rénale terminale"
 
 
 # Homepage view
@@ -68,14 +92,29 @@ def get_question(request, question_order=None):
             'form_int': form_int
         }
 
+    # Start displaying "My Patient" values after second question
     if question.order > 1:
+        # Questions where responses come with suffix after numeric value
         suffix = ['q2', 'q3', 'q4', 'q5', 'q6']
-        # A list for the displaying previous answers
+
+        # Get the values and calculate BMI if possible
+        height = request.session.get('q3')
+        weight = request.session.get('q4')
+        if weight and height:
+            bmi_string = get_bmi(weight, height)
+
+        # Get the value and calculate renal desease stage if possible
+        dfg = request.session.get('q6')
+        if dfg:
+            dfg_string = irc_grade(dfg)
+
+        # A list for the displaying previous answers and score
         previous_answers = []
         for i in range(1, question_order + 1):
             previous_question = Question.objects.get(order=i)
             answer_key = f'q{i}'
             previous_answer = request.session.get(answer_key)
+
             # If not none and not false
             if previous_answer:
                 if answer_key in suffix:
@@ -85,6 +124,10 @@ def get_question(request, question_order=None):
                 else:
                     previous_answer_fulltext = previous_question.display_text
                 previous_answers.append(previous_answer_fulltext)
+                if i == 4 and bmi_string:
+                    previous_answers.append(bmi_string)
+                if i == 6 and dfg_string:
+                    previous_answers.append(dfg_string)
 
         context['previous_answers'] = previous_answers
 
@@ -113,3 +156,15 @@ def synthese(request):
         'previous_answers': previous_answers,
     }
     return render(request, 'mainapp/synthese.html', context)
+
+
+def comment_page(request):
+    form_comment = CommentForm(request.POST or None)
+    if form_comment.is_valid():
+        form_comment.save()
+        form_comment = CommentForm()
+
+    context = {
+        'form_comment': form_comment,
+    }
+    return render(request, 'mainapp/comment.html', context)
