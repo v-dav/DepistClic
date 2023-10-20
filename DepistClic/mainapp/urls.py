@@ -7,5 +7,6 @@ urlpatterns = [
     path('questions/<int:question_order>/', views.get_question,
          name='depistclic-get_question'),
     path('synthese/', views.synthese, name="depistclic-synthese"),
+    path('contact/', views.contact, name="depistclic-contact"),
     path('comment/', views.comment_page, name="depistclic-comment")
 ]

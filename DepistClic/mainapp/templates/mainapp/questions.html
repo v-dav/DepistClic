@@ -1,36 +1,53 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
+<nav>
+	<ul>
+		<li><a href="/">Accueil</a></li>
+		<li><a href="/questions/">Questions</a></li>
+		<li><a href="/synthese">Synthèse</a></li>
+		<li><a href="/contact/">Contact</a></li>
+	</ul>
+</nav>
 
-    <h1 id="question_title">{{ question.title }}</h1>
+<!-- mettre la navbar en burger toggle avec du JS-->
 
-    {% if question.response_type == 'boolean' %}
-	<form method="POST">
-		{% csrf_token %}
-		{{ form_bool.as_p }}
-	</form>
-	{% else %}
-	<form method="POST">
-		{% csrf_token %}
-		{{ form_int.as_p }}
-		<input type="submit" value="Valider">
-	</form>
-    {% endif %}
 
-	<button id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
+<main>
+    <article>
+        <h1 id="question_title">{{ question.title }}</h1>
+        
+        {% if question.response_type == 'boolean' %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form_bool.as_p }}
+            </form>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form_int.as_p }}
+                <input type="submit" value="Valider">
+            </form>
+        {% endif %}
 
-    <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
+        <button id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
 
-    <button id="home-btn">Home</button>
+        <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
 
-    <h2>Mon Patient</h2>
-		{% if previous_answers %}
-			{%for answer in previous_answers%}
-				<p>{{answer}}</p>
-			{%endfor%}
-		{% endif %}
+		<button id="home-btn">Home</button>
 
-    <a href="/synthese/">
-        <button>Synthèse</button>
-    </a>
+        <a href="/synthese/">
+            <button>Synthèse</button>
+        </a>
+    </article>
+
+    <aside>
+        <h2>Mon Patient</h2>
+        {% if previous_answers %}
+            {% for answer in previous_answers %}
+                <p>{{ answer }}</p>
+            {% endfor %}
+        {% endif %}
+    </aside>
+</main>
 {% endblock content %}

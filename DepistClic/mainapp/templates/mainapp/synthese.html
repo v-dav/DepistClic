@@ -2,20 +2,27 @@
 
 {% block content %}
 	<button id="home-btn">Home</button>
+	<article>
+		<h1>Mon Patient</h1>
+			{% if previous_answers %}
+				{% for answer in previous_answers %}
+					<p>{{ answer }}</p>
+				{% endfor %}
+			{% endif %}
+	</article>
 
-	<h1>Mon Patient</h1>
-		{% if previous_answers %}
-			{% for answer in previous_answers %}
-				<p>{{ answer }}</p>
-			{% endfor %}
-		{% endif %}
-
-	<h1>Examens Annuels</h1>
-	<p>......</p>
-	<h1>Examens Timestriels</h1>
-	<p>......</p>
-	<h1>Autres Examens</h1>
-	<p>......</p>
+	<aside>
+		<h1>Examens Annuels</h1>
+		<p>......</p>
+	</aside>
+	<aside>
+		<h1>Examens Timestriels</h1>
+		<p>......</p>
+	</aside>
+	<aside>
+		<h1>Autres Examens</h1>
+		<p>......</p>
+	</aside>
 	<button>Export PDF</button>
 	<button>Send by Email</button>
 	
