@@ -10,6 +10,7 @@ class Question(models.Model):
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
     comment_area = models.TextField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
