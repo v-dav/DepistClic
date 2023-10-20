@@ -17,3 +17,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_area
+
+
+class ScreeningTest(models.Model):
+    title = models.TextField(max_length=200)
+    frequency = models.CharField(max_length=50)
+    source_text = models.CharField(max_length=50)
+    source_link = models.TextField()
+    info = models.TextField()
