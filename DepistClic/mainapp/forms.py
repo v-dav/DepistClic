@@ -24,7 +24,8 @@ class AnswerInteger(forms.Form):
         label='',
         validators=[MinValueValidator(
             1,
-            message='La valeur doit être supérieure à zéro')]
+            message='La valeur doit être supérieure à zéro')],
+        widget=forms.NumberInput(attrs={'autofocus': True})
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
 
@@ -50,7 +51,7 @@ class CommentForm(forms.ModelForm):
         fields = ['comment_area']
         widgets = {
             'comment_area': forms.Textarea(
-                attrs={'rows': 6, 'cols': 50, 'placeholder': 'Votre commentaire ici'}
+                attrs={'rows': 6, 'cols': 50, 'placeholder': 'Votre commentaire ici', 'autofocus': True}
                 ),  
         }
         labels = {
