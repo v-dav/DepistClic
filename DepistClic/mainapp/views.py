@@ -190,6 +190,7 @@ def synthese(request):
 def contact(request):
     return render(request, 'mainapp/contact.html')
 
+
 def comment_page(request):
     form_comment = CommentForm(request.POST or None)
     if form_comment.is_valid():
@@ -200,3 +201,11 @@ def comment_page(request):
         'form_comment': form_comment,
     }
     return render(request, 'mainapp/comment.html', context)
+
+
+def team(request):
+    return render(request, 'mainapp/team.html')
+
+
+def mission(request):
+    return render(request, 'mainapp/mission.html')
