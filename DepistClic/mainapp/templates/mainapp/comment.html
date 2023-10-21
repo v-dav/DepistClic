@@ -4,7 +4,8 @@
     <a href="/">
         <button>Home</button>
     </a>
-    <h1>Aidez-nous à améliorer notre application avec un commentaire</h1>
+    <h1>Aidez-nous à améliorer notre application</h1> 
+    <p>N'hésitez pas à laisser un commentaire, une remarque ou une suggestion ou dire ce que vous appréciez.</p>
     <form id="comment-form" method="post">
         {% csrf_token %}
         {{ form_comment.as_p }}
