@@ -6,7 +6,7 @@
 	<br>
 	<br>
 	<section class="card-container" >
-		<article class="card">
+		<article class="card patient">
 			<h1>Mon Patient</h1>
 				{% if previous_answers %}
 					{% for answer in previous_answers %}
@@ -14,7 +14,7 @@
 					{% endfor %}
 				{% endif %}
 		</article>
-		<article class="card">
+		<article class="card annual">
 			<h1>Examens Annuels</h1>
 			{% for screening_test in systematic_annual_tests %}
 				<p>
@@ -32,11 +32,11 @@
 				<hr>
 			{% endfor %}
 		</article>
-		<article class="card">
+		<article class="card specialist">
 			<h1>A la discrétion du spécialiste</h1>
 			<p>......</p>
 		</article>
-		<article class="card">
+		<article class="card important">
 			<h1>Rappels Importants</h1>
 			{% for screening_test in systematic_reminder %}
 				<p>
@@ -45,8 +45,8 @@
 						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
 					{% endif %}
 				</p>
-				<hr>
 				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+				<hr>
 			{% endfor %}
 		</article>
 	</section>
