@@ -30,4 +30,11 @@ $(() => {
 	$('input[type="radio"]').on('change', function() {
 		$(this).closest('form').submit();
 	});
+
+	// 
+	$('.info-icon').click(function () {
+		let testId = $(this).data('test-id');
+		var infoElement = $('.test-info[data-test-id="' + testId + '"]');
+		infoElement.toggleClass("hide");
+	});
 });
