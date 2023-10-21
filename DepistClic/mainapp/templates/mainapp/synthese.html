@@ -32,7 +32,16 @@
 		</article>
 		<article class="card">
 			<h1>Rappels Importants</h1>
-			<p>......</p>
+			{% for screening_test in systematic_reminder %}
+				<p>
+					{{ screening_test.title }}
+					{% if screening_test.info %}
+						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+					{% endif %}
+				</p>
+				<hr>
+				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+			{% endfor %}
 		</article>
 	</section>
 	<br>

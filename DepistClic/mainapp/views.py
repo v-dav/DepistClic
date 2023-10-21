@@ -189,10 +189,11 @@ def synthese(request):
     systematic_reminder = ScreeningTest.objects.filter(
         frequency='Rappels importants',
         type='Systématique')
-    print(systematic_reminder)
+
     context = {
         'previous_answers': previous_answers,
-        'systematic_annual_tests': systematic_annual_tests
+        'systematic_annual_tests': systematic_annual_tests,
+        'systematic_reminder': systematic_reminder
     }
     return render(request, 'mainapp/synthese.html', context)
 
