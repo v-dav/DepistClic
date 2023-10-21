@@ -20,8 +20,25 @@ class Comment(models.Model):
 
 
 class ScreeningTest(models.Model):
+    SYSTÉMATIQUE = 'Systématique'
+    CONDITIONNEL = 'Conditionnel'
+
+    TYPE_CHOICES = [
+        (SYSTÉMATIQUE, 'Systématique'),
+        (CONDITIONNEL, 'Conditionnel'),
+    ]
+
     title = models.TextField(max_length=200)
     frequency = models.CharField(max_length=50)
-    source_text = models.CharField(max_length=50)
-    source_link = models.TextField()
-    info = models.TextField()
+    source_text = models.TextField(max_length=200, blank=True)
+    source_link = models.TextField(blank=True)
+    info = models.TextField(blank=True)
+
+    type = models.CharField(
+        max_length=15,
+        choices=TYPE_CHOICES,
+        default=SYSTÉMATIQUE,  # Choix par défaut
+    )
+
+    def __str__(self):
+        return self.title
