@@ -2,6 +2,8 @@
 
 {% block content %}
 	<button id="home-btn">Home</button>
+	<br>
+	<br>
 	<section class="card-container" >
 		<article class="card">
 			<h1>Mon Patient</h1>
@@ -13,7 +15,16 @@
 		</article>
 		<article class="card">
 			<h1>Examens Annuels</h1>
-			<p>......</p>
+			{% for screening_test in systematic_annual_tests %}
+				<p>
+					{{ screening_test.title }}
+					{% if screening_test.info %}
+						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+					{% endif %}
+				</p>
+				<hr>
+				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+			{% endfor %}
 		</article>
 		<article class="card">
 			<h1>A la discrétion du spécialiste</h1>
@@ -24,6 +35,8 @@
 			<p>......</p>
 		</article>
 	</section>
+	<br>
+	<br>
 	<button>Export PDF</button>
 	<button>Send by Email</button>
 	<a href="/comment/">
