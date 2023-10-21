@@ -27,6 +27,7 @@
 				</p>
 				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
 				{% if screening_test.sources %}
+					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
 					{% for source_link in screening_test.sources %}
 						<p><a class="test-info hide" data-test-id="{{ screening_test.id }}" href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></p>
 					{% endfor %}
