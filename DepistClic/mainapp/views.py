@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Question
+from .models import Question, ScreeningTest
 from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 
 
@@ -181,8 +181,18 @@ def synthese(request):
             if i == 6 and dfg_string:
                 previous_answers.append(dfg_string)
 
+    # Get systematic annual screening tests from the database
+    systematic_annual_tests = ScreeningTest.objects.filter(frequency='Annuel',
+                                                           type='Systématique')
+
+    # Get systematic important reminder from the database
+    systematic_reminder = ScreeningTest.objects.filter(
+        frequency='Rappels importants',
+        type='Systématique')
+    print(systematic_reminder)
     context = {
         'previous_answers': previous_answers,
+        'systematic_annual_tests': systematic_annual_tests
     }
     return render(request, 'mainapp/synthese.html', context)
 
