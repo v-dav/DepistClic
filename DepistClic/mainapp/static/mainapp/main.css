@@ -1,0 +1,23 @@
+body {
+	background-color: antiquewhite;
+}
+
+.card {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	flex: 1;
+	/* Pour que chaque carte ait la même largeur */
+	margin: 0 10px;
+	/* Espacement entre les cartes */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+.card h1 {
+	font-size: 1.5rem;
+}
+
+.card p {
+	font-size: 1rem;
+}
