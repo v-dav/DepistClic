@@ -2,28 +2,28 @@
 
 {% block content %}
 	<button id="home-btn">Home</button>
-	<div class="card-container" >
-		<aside class="card">
+	<section class="card-container" >
+		<article class="card">
 			<h1>Mon Patient</h1>
 				{% if previous_answers %}
 					{% for answer in previous_answers %}
 						<p>{{ answer }}</p>
 					{% endfor %}
 				{% endif %}
-		</aside>
-		<div class="card">
+		</article>
+		<article class="card">
 			<h1>Examens Annuels</h1>
 			<p>......</p>
-		</div>
-		<div class="card">
+		</article>
+		<article class="card">
 			<h1>A la discrétion du spécialiste</h1>
 			<p>......</p>
-		</div>
-		<div class="card">
+		</article>
+		<article class="card">
 			<h1>Rappels Importants</h1>
 			<p>......</p>
-		</div>
-	</div>
+		</article>
+	</section>
 	<button>Export PDF</button>
 	<button>Send by Email</button>
 	<a href="/comment/">
