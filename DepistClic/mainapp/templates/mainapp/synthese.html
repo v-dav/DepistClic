@@ -22,8 +22,13 @@
 						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
 					{% endif %}
 				</p>
-				<hr>
 				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+				{% if screening_test.sources %}
+					{% for source_link in screening_test.sources %}
+						<p><a class="test-info hide" data-test-id="{{ screening_test.id }}" href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></p>
+					{% endfor %}
+				{% endif %}
+				<hr>
 			{% endfor %}
 		</article>
 		<article class="card">
