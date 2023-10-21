@@ -22,6 +22,7 @@ body {
 
 .card h1 {
 	font-size: 1.5rem;
+	text-align: center;
 }
 
 .card p {
@@ -54,6 +55,7 @@ article p {
 
 article p :hover {
 	color: red;
+	cursor: pointer;
 }
 
 .test-info {
