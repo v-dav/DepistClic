@@ -30,8 +30,7 @@ class ScreeningTest(models.Model):
 
     title = models.TextField(max_length=200)
     frequency = models.CharField(max_length=50)
-    source_text = models.TextField(max_length=200, blank=True)
-    source_link = models.TextField(blank=True)
+    sources = models.JSONField(blank=True, null=True, default=list)
     info = models.TextField(blank=True)
 
     type = models.CharField(
