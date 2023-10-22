@@ -183,12 +183,12 @@ def synthese(request):
 
     # Get systematic annual screening tests from the database
     systematic_annual_tests = ScreeningTest.objects.filter(frequency='Annuel',
-                                                           type='Systématique')
+                                                           type='Systématique').order_by('title')
 
     # Get systematic important reminder from the database
     systematic_reminder = ScreeningTest.objects.filter(
         frequency='Rappels importants',
-        type='Systématique')
+        type='Systématique').order_by('title')
 
     context = {
         'previous_answers': previous_answers,
