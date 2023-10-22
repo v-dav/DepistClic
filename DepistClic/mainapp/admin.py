@@ -1,23 +1,20 @@
 from django.contrib import admin
 from .models import Question, Comment, ScreeningTest
-from django.forms import Textarea
-from django.db import models
-
 
 
 # Register your models here.
-admin.site.register(Question)
-admin.site.register(ScreeningTest)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('order', 'response_type', 'title')
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment_area', 'date')
 
 
-# class ScreeningTestAdmin(admin.ModelAdmin):
-#     formfield_overrides = {
-#         models.JSONField: {'widget': Textarea(attrs={'rows': 8, 'cols': 40})},
-#     }
+class ScreeningTestAdmin(admin.ModelAdmin):
+    list_display = ('title', 'frequency', 'type')
 
 
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(ScreeningTest, ScreeningTestAdmin)
 admin.site.register(Comment, CommentAdmin)
