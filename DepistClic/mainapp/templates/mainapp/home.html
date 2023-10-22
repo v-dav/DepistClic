@@ -2,22 +2,26 @@
 
 {% block content %}
 <header>
-	<nav>
-		<ul>
-			<li><a href="/">Accueil</a></li>
-			<li><a href="/questions/">Questions</a></li>
-			<li><a href="/contact/">Contact</a></li>
-			<li><a href="/apropos/">À propos</a></li>
-			<li><a href="">L'équipe</a></li>
-		</ul>
-	</nav>
-	<h1>DepistClic</h1>
+    <nav class="flex justify-end w-screen">
+        <ul class="font-medium bg-blue-600 flex flex-col p-4 md:p-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
+            <li><a href="/" class="block py-2 pl-3 pr-4 text-white bg-green-500 rounded md:bg-transparent md:text-red-700 md:p-0 dark:text-white md:dark:text-yellow-300 text-xl">Accueil</a></li>
+            <li><a href="/questions/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-yellow-300 dark:hover:bg-green-500 dark:hover:text-white md:dark:hover:bg-transparent text-xl">Questions</a></li>
+            <li><a href="/contact/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-yellow-300 dark:hover:bg-green-500 dark:hover:text-white md:dark:hover:bg-transparent text-xl">Contact</a></li>
+            <li><a href="/apropos/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-yellow-300 dark:hover:bg-green-500 dark:hover:text-white md:dark:hover:bg-transparent text-xl">À propos</a></li>
+            <li><a href="" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-yellow-300 dark:hover:bg-green-500 dark:hover:text-white md:dark:hover:bg-transparent text-xl">L'équipe</a></li>
+        </ul>
+    </nav>
 
-	<h3>Aide au dépistage des complications du diabète de type 2 destinée au professionels de santé</h3>
-	<a href="/questions/">
-		<button>Démarrer</button>
-	</a>
-	<br>
+    <h1 class="absolute xl:leading-38 text-5xl xl:text-7xl top-0 left-0.5">DepistClic</h1>
+
+	<div class="relative flex flex-col justify-center items-center h-screen">
+		<h1 class="xl:leading-38 text-5xl xl:text-7xl top-0 text-blue-700 font-bold">Depist<span class="bg-yellow-500 text-white rounded-full px-5 cursor-pointer">Clic</span></h1>
+		<h3 class="text-4xl m-4">Aide au dépistage des complications du diabète de type 2 destinée aux professionnels de santé</h3>
+		<a href="/questions/">
+			<button class="bg-blue-300 text-5xl rounded-full px-5 py-2 cursor-pointer">Démarrer</button>
+		</a>
+
+		<br>
 	<br>
 	<a href="/comment/">
         <button>Donnez-nous votre avis</button>
@@ -31,4 +35,6 @@
 
 	<h3>Politique de confidentialité</h3>
 	<p>...</p>
+	</div>
+	
 {% endblock content %}
