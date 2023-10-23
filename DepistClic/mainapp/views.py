@@ -67,7 +67,6 @@ def get_question(request, question_order=None):
                                  initial={'question_order': question.order})
     if form_bool.is_valid():
         user_answer = form_bool.cleaned_data['response']
-        print(user_answer)
 
         # Convert the bool answer
         if not isinstance(form_bool, AnswerSex):
@@ -79,7 +78,6 @@ def get_question(request, question_order=None):
         q_order = form_bool.cleaned_data['question_order']
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
-        print(request.session[f'q{q_order}'])
         next_question_order = q_order + 1
         # Redirect to the next question
         return redirect('depistclic-get_question',
