@@ -1,28 +1,71 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
+	<h1>Synthèse</h1>
 	<button id="home-btn">Home</button>
-	<article>
-		<h1>Mon Patient</h1>
-			{% if previous_answers %}
-				{% for answer in previous_answers %}
-					<p>{{ answer }}</p>
-				{% endfor %}
-			{% endif %}
-	</article>
-
-	<aside>
-		<h1>Examens Annuels</h1>
-		<p>......</p>
-	</aside>
-	<aside>
-		<h1>Examens Timestriels</h1>
-		<p>......</p>
-	</aside>
-	<aside>
-		<h1>Autres Examens</h1>
-		<p>......</p>
-	</aside>
+	<br>
+	<br>
+	<section class="card-container" >
+		<article class="card patient">
+			<h1>Mon patient</h1>
+			<h1>......</h1>
+				{% if previous_answers %}
+					{% for answer in previous_answers %}
+						<p>{{ answer }}</p>
+					{% endfor %}
+				{% endif %}
+		</article>
+		<article class="card annual">
+			<h1>Examens annuels</h1>
+			<h1>......</h1>
+			{% for screening_test in systematic_annual_tests %}
+				<p>
+					{{ screening_test.title }}
+					{% if screening_test.info %}
+						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+					{% endif %}
+				</p>
+				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+				{% if screening_test.sources %}
+					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
+					<ul>
+						{% for source_link in screening_test.sources %}
+						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<hr>
+			{% endfor %}
+		</article>
+		<article class="card specialist">
+			<h1>A la discrétion du spécialiste</h1>
+			<h1>......</h1>
+		</article>
+		<article class="card important">
+			<h1>Rappels importants</h1>
+			<h1>......</h1>
+			{% for screening_test in systematic_reminder %}
+				<p>
+					{{ screening_test.title }}
+					{% if screening_test.info %}
+						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+					{% endif %}
+				</p>
+				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+				{% if screening_test.sources %}
+					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
+					<ul>
+						{% for source_link in screening_test.sources %}
+						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<hr>
+			{% endfor %}
+		</article>
+	</section>
+	<br>
+	<br>
 	<button>Export PDF</button>
 	<button>Send by Email</button>
 	<a href="/comment/">

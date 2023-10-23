@@ -17,3 +17,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_area
+
+
+class ScreeningTest(models.Model):
+    SYSTÉMATIQUE = 'Systématique'
+    CONDITIONNEL = 'Conditionnel'
+
+    TYPE_CHOICES = [
+        (SYSTÉMATIQUE, 'Systématique'),
+        (CONDITIONNEL, 'Conditionnel'),
+    ]
+
+    title = models.TextField(max_length=200)
+    frequency = models.CharField(max_length=50)
+    sources = models.JSONField(blank=True, null=True, default=list)
+    info = models.TextField(blank=True)
+
+    type = models.CharField(
+        max_length=15,
+        choices=TYPE_CHOICES,
+        default=SYSTÉMATIQUE,  # Choix par défaut
+    )
+
+    def __str__(self):
+        return self.title
