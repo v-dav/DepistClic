@@ -193,6 +193,16 @@ def synthese(request):
         'systematic_annual_tests': systematic_annual_tests,
         'systematic_reminder': systematic_reminder
     }
+
+    # Get and add conditional screening tests to the context
+    conditional_annual_tests = []
+    conditional_reminder_tests = []
+    conditional_specialist_tests = []
+
+    if request.session.get('q11'):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AOMI'))
+        context['conditional_specialist_tests'] = conditional_specialist_tests
+
     return render(request, 'mainapp/synthese.html', context)
 
 
