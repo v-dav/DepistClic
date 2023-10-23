@@ -40,6 +40,26 @@
 		<article class="card specialist">
 			<h1>A la discrétion du spécialiste</h1>
 			<h1>......</h1>
+			{% if conditional_specialist_tests %}
+				{% for screening_test in conditional_specialist_tests %}
+				<p>
+					{{ screening_test.title }}
+					{% if screening_test.info %}
+						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+					{% endif %}
+				</p>
+				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+				{% if screening_test.sources %}
+					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
+					<ul>
+						{% for source_link in screening_test.sources %}
+						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<hr>
+				{% endfor %}
+			{% endif %}
 		</article>
 		<article class="card important">
 			<h1>Rappels importants</h1>
