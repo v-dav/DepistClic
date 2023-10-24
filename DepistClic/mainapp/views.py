@@ -223,6 +223,10 @@ def synthese(request):
     if request.session.get('q1') == 'Homme':
         context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='érectile')
 
+    # B12 testing
+    if request.session.get('q12'):
+        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='B12')
+
     return render(request, 'mainapp/synthese.html', context)
 
 
