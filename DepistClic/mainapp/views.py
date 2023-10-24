@@ -217,7 +217,11 @@ def synthese(request):
             (request.session.get('q10')) or \
             (request.session.get('q29')) or \
             (dfg and dfg < 90):
-        context['annual_tests'] = systematic_annual_tests | ScreeningTest.objects.filter(title__icontains='NT-proBNP')
+        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='NT-proBNP')
+
+    # Erectile dysfonction
+    if request.session.get('q1') == 'Homme':
+        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='érectile')
 
     return render(request, 'mainapp/synthese.html', context)
 
