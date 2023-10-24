@@ -128,7 +128,8 @@ def get_question(request, question_order=None):
             # If not none and not false
             if previous_answer:
                 if answer_key in suffix:
-                    previous_answer_fulltext = f'{previous_answer} {previous_question.display_text}'
+                    previous_answer_fulltext = \
+                        f'{previous_answer} {previous_question.display_text}'
                 elif answer_key == 'q1':
                     previous_answer_fulltext = previous_answer
                 else:
@@ -171,7 +172,8 @@ def synthese(request):
         previous_answer = request.session.get(answer_key)
         if previous_answer:
             if answer_key in suffix:
-                previous_answer_fulltext = f'{previous_answer} {previous_question.display_text}'
+                previous_answer_fulltext = \
+                    f'{previous_answer} {previous_question.display_text}'
             elif answer_key == 'q1':
                 previous_answer_fulltext = previous_answer
             else:
@@ -183,8 +185,9 @@ def synthese(request):
                 previous_answers.append(dfg_string)
 
     # Get systematic annual screening tests from the database
-    systematic_annual_tests = ScreeningTest.objects.filter(frequency='Annuel',
-                                                           type='Systématique').order_by('title')
+    systematic_annual_tests = \
+        ScreeningTest.objects.filter(frequency='Annuel',
+                                     type='Systématique').order_by('title')
     annual_tests = systematic_annual_tests
 
     # Get systematic important reminder from the database
@@ -211,21 +214,25 @@ def synthese(request):
             (request.session.get('q10')) or \
             (request.session.get('q29')) or \
             (dfg and dfg < 90):
-        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='NT-proBNP')
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='NT-proBNP')
 
     # Erectile dysfonction
     if request.session.get('q1') == 'Homme':
-        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='érectile')
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='érectile')
 
     # B12 testing
     if request.session.get('q12'):
-        context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='B12')
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='B12')
 
     conditional_specialist_tests = []
 
     # AOMI
     if request.session.get('q11'):  # ATCD AOMI
-        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AOMI'))
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+            title__icontains='AOMI'))
 
     # AAA screening
     age = request.session.get('q2')
@@ -234,7 +241,8 @@ def synthese(request):
             request.session.get('q13')) or \
             (age and age >= 50 and age <= 75 and
                 request.session.get('q28')):
-        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AAA'))
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+            title__icontains='AAA'))
 
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
