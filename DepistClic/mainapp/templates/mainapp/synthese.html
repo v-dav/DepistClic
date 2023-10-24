@@ -18,7 +18,7 @@
 		<article class="card annual">
 			<h1>Examens annuels</h1>
 			<h1>......</h1>
-			{% for screening_test in systematic_annual_tests %}
+			{% for screening_test in annual_tests %}
 				<p>
 					{{ screening_test.title }}
 					{% if screening_test.info %}
@@ -64,7 +64,7 @@
 		<article class="card important">
 			<h1>Rappels importants</h1>
 			<h1>......</h1>
-			{% for screening_test in systematic_reminder %}
+			{% for screening_test in reminders %}
 				<p>
 					{{ screening_test.title }}
 					{% if screening_test.info %}
