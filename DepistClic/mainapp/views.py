@@ -4,7 +4,7 @@ from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 
 
 # Calculates the BMI of the patient
-def get_bmi(weight, height):
+def get_bmi_string(weight, height):
     height_meters = height / 100
     bmi = round(weight / (height_meters ** 2), 1)
     if bmi < 18.5:
@@ -111,7 +111,7 @@ def get_question(request, question_order=None):
         height = request.session.get('q3')
         weight = request.session.get('q4')
         if weight and height:
-            bmi_string = get_bmi(weight, height)
+            bmi_string = get_bmi_string(weight, height)
 
         # Get the value and calculate renal desease stage if possible
         dfg = request.session.get('q6')
@@ -152,8 +152,11 @@ def synthese(request):
     # Get the values and calculate BMI if possible
     height = request.session.get('q3')
     weight = request.session.get('q4')
+    bmi = None
     if weight and height:
-        bmi_string = get_bmi(weight, height)
+        bmi_string = get_bmi_string(weight, height)
+        height_meters = height / 100
+        bmi = round(weight / (height_meters ** 2), 1)
 
     # Get the value and calculate renal desease stage if possible
     dfg = request.session.get('q6')
@@ -182,26 +185,39 @@ def synthese(request):
     # Get systematic annual screening tests from the database
     systematic_annual_tests = ScreeningTest.objects.filter(frequency='Annuel',
                                                            type='Systématique').order_by('title')
+    annual_tests = systematic_annual_tests
 
     # Get systematic important reminder from the database
-    systematic_reminder = ScreeningTest.objects.filter(
+    systematic_reminders = ScreeningTest.objects.filter(
         frequency='Rappels importants',
         type='Systématique').order_by('title')
 
+    reminders = systematic_reminders
+
     context = {
         'previous_answers': previous_answers,
-        'systematic_annual_tests': systematic_annual_tests,
-        'systematic_reminder': systematic_reminder
+        'annual_tests': annual_tests,
+        'reminders': reminders
     }
 
     # Get and add conditional screening tests to the context
-    conditional_annual_tests = []
-    conditional_reminder_tests = []
     conditional_specialist_tests = []
 
-    if request.session.get('q11'):
+    # AOMI
+    if request.session.get('q11'):  # ATCD AOMI
         conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AOMI'))
         context['conditional_specialist_tests'] = conditional_specialist_tests
+
+    # NT-proBNP
+    if (bmi and bmi >= 30) or \
+            (request.session.get('q1') == 'Femme') or \
+            (request.session.get('q7')) or \
+            (request.session.get('q8')) or \
+            (request.session.get('q9')) or \
+            (request.session.get('q10')) or \
+            (request.session.get('q29')) or \
+            (dfg and dfg < 90):
+        context['annual_tests'] = systematic_annual_tests | ScreeningTest.objects.filter(title__icontains='NT-proBNP')
 
     return render(request, 'mainapp/synthese.html', context)
 
