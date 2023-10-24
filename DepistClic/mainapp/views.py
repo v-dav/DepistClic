@@ -191,9 +191,9 @@ def synthese(request):
     systematic_reminders = ScreeningTest.objects.filter(
         frequency='Rappels importants',
         type='Systématique').order_by('title')
-
     reminders = systematic_reminders
 
+    # Create initial context
     context = {
         'previous_answers': previous_answers,
         'annual_tests': annual_tests,
@@ -201,12 +201,6 @@ def synthese(request):
     }
 
     # Get and add conditional screening tests to the context
-    conditional_specialist_tests = []
-
-    # AOMI
-    if request.session.get('q11'):  # ATCD AOMI
-        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AOMI'))
-        context['conditional_specialist_tests'] = conditional_specialist_tests
 
     # NT-proBNP
     if (bmi and bmi >= 30) or \
@@ -226,6 +220,24 @@ def synthese(request):
     # B12 testing
     if request.session.get('q12'):
         context['annual_tests'] = context['annual_tests'] | ScreeningTest.objects.filter(title__icontains='B12')
+
+    conditional_specialist_tests = []
+
+    # AOMI
+    if request.session.get('q11'):  # ATCD AOMI
+        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AOMI'))
+
+    # AAA screening
+    age = request.session.get('q2')
+    if (request.session.get('q1') == 'Homme' and
+            age and age >= 65 and age <= 75 and
+            request.session.get('q13')) or \
+            (age and age >= 50 and age <= 75 and
+                request.session.get('q28')):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(title__icontains='AAA'))
+
+    if conditional_specialist_tests:
+        context['conditional_specialist_tests'] = conditional_specialist_tests
 
     return render(request, 'mainapp/synthese.html', context)
 
