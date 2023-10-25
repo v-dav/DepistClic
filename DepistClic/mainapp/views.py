@@ -263,6 +263,18 @@ def synthese(request):
         conditional_specialist_tests.append(ScreeningTest.objects.get(
                          title__icontains='TDM-TAP'))
 
+    # Bariatric surgery
+    age = request.session.get('q2')
+    saos = request.session.get('q24')
+    nash = request.session.get('q25')
+    hta = request.session.get('q8')
+
+    if (age and age < 60) and bmi and \
+        ((bmi >= 40) or (bmi >= 35 and hta) or (bmi >= 35 and saos) or
+         (bmi >= 35 and nash)):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='bariatrique'))
+
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
 
