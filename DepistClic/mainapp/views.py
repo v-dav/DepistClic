@@ -292,6 +292,11 @@ def synthese(request):
         context['reminders'] = context['reminders'] | \
             ScreeningTest.objects.filter(title__icontains='anti-hépatite B')
 
+    # Zona
+    if age and age > 65 and age < 74:
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='zona')
+
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
 
