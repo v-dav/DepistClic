@@ -280,6 +280,11 @@ def synthese(request):
         conditional_specialist_tests.append(ScreeningTest.objects.get(
                          title__icontains='stéatopathie'))
 
+    # Cushing syndrome
+    if bmi and bmi >= 25 and hta and dylipidemy and difficult_diabetes:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='Cushing'))
+
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
 
