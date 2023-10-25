@@ -285,6 +285,13 @@ def synthese(request):
         conditional_specialist_tests.append(ScreeningTest.objects.get(
                          title__icontains='Cushing'))
 
+    # Vein preservation and hepatitis B
+    if dfg and dfg < 45:
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='veineux')
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='anti-hépatite B')
+
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
 
