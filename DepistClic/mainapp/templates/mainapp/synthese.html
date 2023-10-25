@@ -1,15 +1,17 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<div class="">
-		<h1 class="text-6xl font-bold mb-8 py-20 text-white">
+	<section class="flex justify-between items-center pt-20 mx-2">
+		<h1 class="text-6xl font-bold text-white">
 			Synthèse
 		</h1>
-		<button id="home-btn" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+		<button id="home-btn" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
 			Home
 		</button>
-	</div>
-    <section class="flex flex-wrap mt-8">
+	</section>
+	<!-- cards section --->
+    <section class="flex flex-wrap mt-4">
+		<!--- card one -->
         <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
             <h1 class="text-xl font-semibold mb-4">Mon patient</h1>
             {% if previous_answers %}
@@ -18,7 +20,7 @@
                 {% endfor %}
             {% endif %}
         </article>
-
+		<!--- card two -->
         <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
             <h1 class="text-xl font-semibold mb-4">Examens annuels</h1>
             {% for screening_test in systematic_annual_tests %}
@@ -38,12 +40,12 @@
                 <hr class="my-2">
             {% endfor %}
         </article>
-
+		<!--- card three -->
         <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
             <h1 class="text-xl font-semibold mb-4">A la discrétion du spécialiste</h1>
             <h1>......</h1>
         </article>
-
+		<!--- card four -->
         <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
             <h1 class="text-xl font-semibold mb-4">Rappels importants</h1>
             {% for screening_test in systematic_reminder %}
@@ -65,11 +67,17 @@
         </article>
     </section>
 
-    <div class="flex mt-8">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Export PDF</button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Send by Email</button>
+    <div class="flex justify-end my-6 mx-2">
+        <button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+			Export PDF
+		</button>
+        <button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+			Send by Email
+		</button>
         <a href="/comment/">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Donnez-nous votre avis</button>
+            <button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
+				Donnez-nous votre avis
+			</button>
         </a>
     </div>
 
