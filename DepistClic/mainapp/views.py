@@ -110,6 +110,7 @@ def get_question(request, question_order=None):
         # Get the values and calculate BMI if possible
         height = request.session.get('q3')
         weight = request.session.get('q4')
+        bmi_string = None
         if weight and height:
             bmi_string = get_bmi_string(weight, height)
 
@@ -223,26 +224,44 @@ def synthese(request):
             ScreeningTest.objects.filter(title__icontains='érectile')
 
     # B12 testing
-    if request.session.get('q12'):
+    metformin = request.session.get('q12')
+    if metformin:
         context['annual_tests'] = context['annual_tests'] | \
             ScreeningTest.objects.filter(title__icontains='B12')
 
     conditional_specialist_tests = []
 
     # AOMI
-    if request.session.get('q11'):  # ATCD AOMI
+    aomi = request.session.get('q11')
+    if aomi:
         conditional_specialist_tests.append(ScreeningTest.objects.get(
             title__icontains='AOMI'))
 
     # AAA screening
+    sex = request.session.get('q1')
     age = request.session.get('q2')
-    if (request.session.get('q1') == 'Homme' and
-            age and age >= 65 and age <= 75 and
-            request.session.get('q13')) or \
-            (age and age >= 50 and age <= 75 and
-                request.session.get('q28')):
+    tobacco = request.session.get('q13')
+    atcd_aaa = request.session.get('q28')
+
+    if (sex == 'Homme' and age and age >= 65 and age <= 75 and tobacco) or \
+            (age and age >= 50 and age <= 75 and atcd_aaa):
         conditional_specialist_tests.append(ScreeningTest.objects.get(
             title__icontains='AAA'))
+
+    # Pancreas cancer
+    diabetes_duration = request.session.get('q5')
+    chronic_pancreatitis = request.session.get('q26')
+    difficult_diabetes = request.session.get('q9')
+    weight_loss = request.session.get('q27')
+
+    if (chronic_pancreatitis and diabetes_duration
+        and diabetes_duration < 2) or \
+            (chronic_pancreatitis and difficult_diabetes) or \
+            (diabetes_duration and diabetes_duration < 2 and age and age >= 50
+             and bmi and bmi >= 18.5 and bmi <= 25) or \
+            (diabetes_duration and diabetes_duration < 2 and weight_loss):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='TDM-TAP'))
 
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
