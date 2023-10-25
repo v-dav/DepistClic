@@ -284,6 +284,26 @@ def synthese(request):
     if bmi and bmi >= 25 and hta and dylipidemy and difficult_diabetes:
         conditional_specialist_tests.append(ScreeningTest.objects.get(
                          title__icontains='Cushing'))
+    
+    # Exercice effort test
+    if request.session.get('q23') or \
+            aomi or \
+            hta or \
+            request.session.get('q18') or \
+            request.session.get('q17') or \
+            request.session.get('q16') or \
+            (dfg and dfg < 90) or \
+            request.session.get('q20') or \
+            request.session.get('q10') or \
+            request.session.get('q22') or \
+            request.session.get('q21') or \
+            (diabetes_duration and diabetes_duration > 10) or \
+            request.session.get('q19') or \
+            request.session.get('q15') or \
+            request.session.get('q14') or \
+            tobacco or dylipidemy:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                        title__icontains='effort'))
 
     # Vein preservation and hepatitis B
     if dfg and dfg < 45:
