@@ -1,75 +1,76 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<h1>Synthèse</h1>
-	<button id="home-btn">Home</button>
-	<br>
-	<br>
-	<section class="card-container" >
-		<article class="card patient">
-			<h1>Mon patient</h1>
-			<h1>......</h1>
-				{% if previous_answers %}
-					{% for answer in previous_answers %}
-						<p>{{ answer }}</p>
-					{% endfor %}
-				{% endif %}
-		</article>
-		<article class="card annual">
-			<h1>Examens annuels</h1>
-			<h1>......</h1>
-			{% for screening_test in systematic_annual_tests %}
-				<p>
-					{{ screening_test.title }}
-					{% if screening_test.info %}
-						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
-					{% endif %}
-				</p>
-				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-				{% if screening_test.sources %}
-					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-					<ul>
-						{% for source_link in screening_test.sources %}
-						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				<hr>
-			{% endfor %}
-		</article>
-		<article class="card specialist">
-			<h1>A la discrétion du spécialiste</h1>
-			<h1>......</h1>
-		</article>
-		<article class="card important">
-			<h1>Rappels importants</h1>
-			<h1>......</h1>
-			{% for screening_test in systematic_reminder %}
-				<p>
-					{{ screening_test.title }}
-					{% if screening_test.info %}
-						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
-					{% endif %}
-				</p>
-				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-				{% if screening_test.sources %}
-					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-					<ul>
-						{% for source_link in screening_test.sources %}
-						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				<hr>
-			{% endfor %}
-		</article>
-	</section>
-	<br>
-	<br>
-	<button>Export PDF</button>
-	<button>Send by Email</button>
-	<a href="/comment/">
-        <button>Donnez-nous votre avis</button>
-	</a>
-	
+	<div class="">
+		<h1 class="text-6xl font-bold mb-8 py-20 text-white">
+			Synthèse
+		</h1>
+		<button id="home-btn" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+			Home
+		</button>
+	</div>
+    <section class="flex flex-wrap mt-8">
+        <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+            <h1 class="text-xl font-semibold mb-4">Mon patient</h1>
+            {% if previous_answers %}
+                {% for answer in previous_answers %}
+                    <p>{{ answer }}</p>
+                {% endfor %}
+            {% endif %}
+        </article>
+
+        <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+            <h1 class="text-xl font-semibold mb-4">Examens annuels</h1>
+            {% for screening_test in systematic_annual_tests %}
+                <p class="mb-2">{{ screening_test.title }}</p>
+                {% if screening_test.info %}
+                    <span class="info-icon cursor-pointer" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+                    <p class="test-info hidden mb-2" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+                {% endif %}
+                {% if screening_test.sources %}
+                    <h4 class="text-sm font-semibold mb-2">Sources</h4>
+                    <ul>
+                        {% for source_link in screening_test.sources %}
+                            <li><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <hr class="my-2">
+            {% endfor %}
+        </article>
+
+        <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+            <h1 class="text-xl font-semibold mb-4">A la discrétion du spécialiste</h1>
+            <h1>......</h1>
+        </article>
+
+        <article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+            <h1 class="text-xl font-semibold mb-4">Rappels importants</h1>
+            {% for screening_test in systematic_reminder %}
+                <p class="mb-2">{{ screening_test.title }}</p>
+                {% if screening_test.info %}
+                    <span class="info-icon cursor-pointer" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+                    <p class="test-info hidden mb-2" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+                {% endif %}
+                {% if screening_test.sources %}
+                    <h4 class="text-sm font-semibold mb-2">Sources</h4>
+                    <ul>
+                        {% for source_link in screening_test.sources %}
+                            <li><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <hr class="my-2">
+            {% endfor %}
+        </article>
+    </section>
+
+    <div class="flex mt-8">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Export PDF</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Send by Email</button>
+        <a href="/comment/">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Donnez-nous votre avis</button>
+        </a>
+    </div>
+
 {% endblock content %}
