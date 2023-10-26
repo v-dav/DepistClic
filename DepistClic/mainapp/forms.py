@@ -1,5 +1,5 @@
 from django import forms
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from .models import Comment
 
 
@@ -24,7 +24,10 @@ class AnswerInteger(forms.Form):
         label='',
         validators=[MinValueValidator(
             1,
-            message='La valeur doit être supérieure à zéro')],
+            message='La valeur doit être supérieure à zéro'),
+                    MaxValueValidator(
+            200,
+            message="Saisissez une valeur correcte")],
         widget=forms.NumberInput(attrs={'autofocus': True})
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
