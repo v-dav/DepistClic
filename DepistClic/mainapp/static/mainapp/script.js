@@ -32,13 +32,29 @@ $(() => {
 	});
 
 	// 
-	$('.info-icon').click(function () {
-		let testId = $(this).data('test-id');
-		var infoElement = $('.test-info[data-test-id="' + testId + '"]');
-		infoElement.toggleClass("hide");
+	// $('.info-icon').click(function () {
+	// 	let testId = $(this).data('test-id');
+	// 	var infoElement = $('.test-info[data-test-id="' + testId + '"]');
+	// 	infoElement.toggleClass("hide");
+	// });
+
+	// Toggle the visibility of the info card
+	$(document).on('click', '.info-icon', function(event) {
+		event.stopPropagation();
+		var testId = $(this).data('test-id');
+		var infoCard = $('.info-card[data-test-id="' + testId + '"]');
+		infoCard.toggleClass('hidden');
+	});
+	
+	// Hide the visibility of the info card
+	$(document).click(function(event) {
+		// If the click event occurred outside any info card
+		if (!$(event.target).closest('.info-card').length && !$(event.target).is('.info-icon')) {
+			$('.info-card').addClass('hidden');
+		}
 	});
 
-	// Add shadow when scroll
+	// Add shadow when scrollPosition > 0
 	$(window).scroll(function() {
 		var scrollPosition = $(this).scrollTop();
 

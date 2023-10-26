@@ -1,95 +1,146 @@
-{% extends 'mainapp/base.html' %}
+	{% extends 'mainapp/base.html' %}
 
-{% block content %}
-	<h1>Synthèse</h1>
-	<button id="home-btn">Home</button>
-	<br>
-	<br>
-	<section class="card-container" >
-		<article class="card patient">
-			<h1>Mon patient</h1>
-			<h1>......</h1>
+	{% block content %}
+		<section class="flex justify-between items-center pt-20 mx-2">
+			<h1 class="text-6xl font-bold text-white">
+				Synthèse
+			</h1>
+			<button id="home-btn" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
+				Home
+			</button>
+		</section>
+
+		<!-- cards section -->
+		<section class="flex flex-wrap mt-4">
+			<!-- card one -->
+			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+				
+				<h1 class="text-2xl font-bold">
+					Mon patient
+				</h1>
+				<!-- Red line -->
+				<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-3/4"></div>
 				{% if previous_answers %}
 					{% for answer in previous_answers %}
 						<p>{{ answer }}</p>
 					{% endfor %}
 				{% endif %}
-		</article>
-		<article class="card annual">
-			<h1>Examens annuels</h1>
-			<h1>......</h1>
-			{% for screening_test in annual_tests %}
-				<p>
-					{{ screening_test.title }}
-					{% if screening_test.info %}
-						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
-					{% endif %}
-				</p>
-				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-				{% if screening_test.sources %}
-					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-					<ul>
-						{% for source_link in screening_test.sources %}
-						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				<hr>
-			{% endfor %}
-		</article>
-		<article class="card specialist">
-			<h1>Bilan orienté</h1>
-			<h1>......</h1>
-			{% if conditional_specialist_tests %}
-				{% for screening_test in conditional_specialist_tests %}
-				<p>
-					{{ screening_test.title }}
-					{% if screening_test.info %}
-						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
-					{% endif %}
-				</p>
-				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-				{% if screening_test.sources %}
-					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-					<ul>
-						{% for source_link in screening_test.sources %}
-						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-						{% endfor %}
-					</ul>
-				{% endif %}
-				<hr>
+			</article>
+
+			<!-- card annual -->
+			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+				<h1 class="text-2xl font-bold">
+					Examens annuels
+				</h1>
+				<!-- Red line -->
+				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+
+				<!-- screening tests -->
+				{% for screening_test in annual_tests %}
+					<p class=" font-semibold py-2">
+						{{ screening_test.title }}
+						<!-- icon info i -->
+						{% if screening_test.info %}
+							<span class="info-icon cursor-pointer" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+								&#9432;
+							</span>
+						{% endif %}
+					</p>
+					<hr>
+					<!-- card information -->
+					<div class="flex items-center">
+						<div class="hidden max-w-xs bg-white p-4 rounded shadow info-card" data-test-id="{{ screening_test.id }}">
+							<!-- Texte source -->
+							<p class="font-normal">
+								{{ screening_test.info }}
+							</p>
+							{% if screening_test.sources %}
+								<!-- Sources -->
+								<h4 class="font-bold pt-2">
+									Sources
+								</h4>
+								<!-- Red line -->
+								<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+								<!-- Liste Sources -->
+								<ul>
+									{% for source_link in screening_test.sources %}
+									<li class="font-light"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+						</div>
+					</div>
 				{% endfor %}
-			{% endif %}
-		</article>
-		<article class="card important">
-			<h1>Rappels importants</h1>
-			<h1>......</h1>
-			{% for screening_test in reminders %}
-				<p>
-					{{ screening_test.title }}
-					{% if screening_test.info %}
-						<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+			</article>
+
+			<!-- card three -->
+			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+				<h1 class="text-2xl font-bold">
+					Bilan orienté
+				</h1>
+				<!-- Red line -->
+				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+				{% if conditional_specialist_tests %}
+					{% for screening_test in conditional_specialist_tests %}
+					<p>
+						{{ screening_test.title }}
+						{% if screening_test.info %}
+							<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+						{% endif %}
+					</p>
+					<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+					{% if screening_test.sources %}
+						<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
+						<ul>
+							{% for source_link in screening_test.sources %}
+							<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+							{% endfor %}
+						</ul>
 					{% endif %}
-				</p>
-				<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-				{% if screening_test.sources %}
-					<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-					<ul>
-						{% for source_link in screening_test.sources %}
-						<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-						{% endfor %}
-					</ul>
+					<hr>
+					{% endfor %}
 				{% endif %}
-				<hr>
-			{% endfor %}
-		</article>
-	</section>
-	<br>
-	<br>
-	<button>Export PDF</button>
-	<button>Send by Email</button>
-	<a href="/comment/">
-        <button>Donnez-nous votre avis</button>
-	</a>
-	
-{% endblock content %}
+			</article>
+			
+			<!-- card four -->
+			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
+				<h1 class="text-2xl font-bold">
+					Rappels importants
+				</h1>
+				<!-- Red line -->
+				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+				{% for screening_test in reminders %}
+					<p>
+						{{ screening_test.title }}
+						{% if screening_test.info %}
+							<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+						{% endif %}
+					</p>
+					<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
+					{% if screening_test.sources %}
+						<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
+						<ul>
+							{% for source_link in screening_test.sources %}
+							<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					<hr>
+				{% endfor %}
+			</article>
+		</section>
+
+		<!-- Button Section -->
+		<div class="flex justify-end my-6 mx-2">
+			<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+				Export PDF
+			</button>
+			<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+				Send by Email
+			</button>
+			<a href="/comment/">
+				<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
+					Donnez-nous votre avis
+				</button>
+		
+	{% endblock content %}
