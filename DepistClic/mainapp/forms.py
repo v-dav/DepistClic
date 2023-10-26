@@ -24,10 +24,7 @@ class AnswerInteger(forms.Form):
         label='',
         validators=[MinValueValidator(
             1,
-            message='La valeur doit être supérieure à zéro'),
-                    MaxValueValidator(
-            200,
-            message="Saisissez une valeur correcte")],
+            message='La valeur doit être supérieure à zéro')],
         widget=forms.NumberInput(attrs={'autofocus': True})
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
