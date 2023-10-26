@@ -4,7 +4,7 @@ from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 
 
 # Calculates the BMI of the patient
-def get_bmi(weight, height):
+def get_bmi_string(weight, height):
     height_meters = height / 100
     bmi = round(weight / (height_meters ** 2), 1)
     if bmi < 18.5:
@@ -67,7 +67,6 @@ def get_question(request, question_order=None):
                                  initial={'question_order': question.order})
     if form_bool.is_valid():
         user_answer = form_bool.cleaned_data['response']
-        print(user_answer)
 
         # Convert the bool answer
         if not isinstance(form_bool, AnswerSex):
@@ -79,7 +78,6 @@ def get_question(request, question_order=None):
         q_order = form_bool.cleaned_data['question_order']
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
-        print(request.session[f'q{q_order}'])
         next_question_order = q_order + 1
         # Redirect to the next question
         return redirect('depistclic-get_question',
@@ -112,8 +110,9 @@ def get_question(request, question_order=None):
         # Get the values and calculate BMI if possible
         height = request.session.get('q3')
         weight = request.session.get('q4')
+        bmi_string = None
         if weight and height:
-            bmi_string = get_bmi(weight, height)
+            bmi_string = get_bmi_string(weight, height)
 
         # Get the value and calculate renal desease stage if possible
         dfg = request.session.get('q6')
@@ -130,7 +129,8 @@ def get_question(request, question_order=None):
             # If not none and not false
             if previous_answer:
                 if answer_key in suffix:
-                    previous_answer_fulltext = f'{previous_answer} {previous_question.display_text}'
+                    previous_answer_fulltext = \
+                        f'{previous_answer} {previous_question.display_text}'
                 elif answer_key == 'q1':
                     previous_answer_fulltext = previous_answer
                 else:
@@ -154,8 +154,11 @@ def synthese(request):
     # Get the values and calculate BMI if possible
     height = request.session.get('q3')
     weight = request.session.get('q4')
+    bmi = None
     if weight and height:
-        bmi_string = get_bmi(weight, height)
+        bmi_string = get_bmi_string(weight, height)
+        height_meters = height / 100
+        bmi = round(weight / (height_meters ** 2), 1)
 
     # Get the value and calculate renal desease stage if possible
     dfg = request.session.get('q6')
@@ -170,7 +173,8 @@ def synthese(request):
         previous_answer = request.session.get(answer_key)
         if previous_answer:
             if answer_key in suffix:
-                previous_answer_fulltext = f'{previous_answer} {previous_question.display_text}'
+                previous_answer_fulltext = \
+                    f'{previous_answer} {previous_question.display_text}'
             elif answer_key == 'q1':
                 previous_answer_fulltext = previous_answer
             else:
@@ -182,19 +186,140 @@ def synthese(request):
                 previous_answers.append(dfg_string)
 
     # Get systematic annual screening tests from the database
-    systematic_annual_tests = ScreeningTest.objects.filter(frequency='Annuel',
-                                                           type='Systématique').order_by('title')
+    systematic_annual_tests = \
+        ScreeningTest.objects.filter(frequency='Annuel',
+                                     type='Systématique').order_by('title')
+    annual_tests = systematic_annual_tests
 
     # Get systematic important reminder from the database
-    systematic_reminder = ScreeningTest.objects.filter(
+    systematic_reminders = ScreeningTest.objects.filter(
         frequency='Rappels importants',
         type='Systématique').order_by('title')
+    reminders = systematic_reminders
 
+    # Create initial context
     context = {
         'previous_answers': previous_answers,
-        'systematic_annual_tests': systematic_annual_tests,
-        'systematic_reminder': systematic_reminder
+        'annual_tests': annual_tests,
+        'reminders': reminders
     }
+
+    # Get and add conditional screening tests to the context
+
+    # NT-proBNP
+    if (bmi and bmi >= 30) or \
+            (request.session.get('q1') == 'Femme') or \
+            (request.session.get('q7')) or \
+            (request.session.get('q8')) or \
+            (request.session.get('q9')) or \
+            (request.session.get('q10')) or \
+            (request.session.get('q29')) or \
+            (dfg and dfg < 90):
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='NT-proBNP')
+
+    # Erectile dysfonction
+    if request.session.get('q1') == 'Homme':
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='érectile')
+
+    # B12 testing
+    metformin = request.session.get('q12')
+    if metformin:
+        context['annual_tests'] = context['annual_tests'] | \
+            ScreeningTest.objects.filter(title__icontains='B12')
+
+    conditional_specialist_tests = []
+
+    # AOMI
+    aomi = request.session.get('q11')
+    if aomi:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+            title__icontains='AOMI'))
+
+    # AAA screening
+    sex = request.session.get('q1')
+    age = request.session.get('q2')
+    tobacco = request.session.get('q13')
+    atcd_aaa = request.session.get('q28')
+
+    if (sex == 'Homme' and age and age >= 65 and age <= 75 and tobacco) or \
+            (age and age >= 50 and age <= 75 and atcd_aaa):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+            title__icontains='AAA'))
+
+    # Pancreas cancer
+    diabetes_duration = request.session.get('q5')
+    chronic_pancreatitis = request.session.get('q26')
+    difficult_diabetes = request.session.get('q9')
+    weight_loss = request.session.get('q27')
+
+    if (chronic_pancreatitis and diabetes_duration
+        and diabetes_duration < 2) or \
+            (chronic_pancreatitis and difficult_diabetes) or \
+            (diabetes_duration and diabetes_duration < 2 and age and age >= 50
+             and bmi and bmi >= 18.5 and bmi <= 25) or \
+            (diabetes_duration and diabetes_duration < 2 and weight_loss):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='TDM-TAP'))
+
+    # Bariatric surgery
+    saos = request.session.get('q24')
+    nash = request.session.get('q25')
+    hta = request.session.get('q8')
+
+    if (age and age < 60) and bmi and \
+        ((bmi >= 40) or (bmi >= 35 and hta) or (bmi >= 35 and saos) or
+         (bmi >= 35 and nash)):
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='bariatrique'))
+
+    # Liver desease
+    dylipidemy = request.session.get('q7')
+    if bmi and bmi >= 25 and hta and dylipidemy:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='stéatopathie'))
+
+    # Cushing syndrome
+    if bmi and bmi >= 25 and hta and dylipidemy and difficult_diabetes:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                         title__icontains='Cushing'))
+    
+    # Exercice effort test
+    if request.session.get('q23') or \
+            aomi or \
+            hta or \
+            request.session.get('q18') or \
+            request.session.get('q17') or \
+            request.session.get('q16') or \
+            (dfg and dfg < 90) or \
+            request.session.get('q20') or \
+            request.session.get('q10') or \
+            request.session.get('q22') or \
+            request.session.get('q21') or \
+            (diabetes_duration and diabetes_duration > 10) or \
+            request.session.get('q19') or \
+            request.session.get('q15') or \
+            request.session.get('q14') or \
+            tobacco or dylipidemy:
+        conditional_specialist_tests.append(ScreeningTest.objects.get(
+                        title__icontains='effort'))
+
+    # Vein preservation and hepatitis B
+    if dfg and dfg < 45:
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='veineux')
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='anti-hépatite B')
+
+    # Zona
+    if age and age > 65 and age < 74:
+        context['reminders'] = context['reminders'] | \
+            ScreeningTest.objects.filter(title__icontains='zona')
+
+    if conditional_specialist_tests:
+        context['conditional_specialist_tests'] = conditional_specialist_tests
+
     return render(request, 'mainapp/synthese.html', context)
 
 
