@@ -154,6 +154,7 @@ def synthese(request):
     # Get the values and calculate BMI if possible
     height = request.session.get('q3')
     weight = request.session.get('q4')
+    bmi_string = None
     bmi = None
     if weight and height:
         bmi_string = get_bmi_string(weight, height)
