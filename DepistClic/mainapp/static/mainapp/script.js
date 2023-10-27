@@ -31,13 +31,6 @@ $(() => {
 		$(this).closest('form').submit();
 	});
 
-	// 
-	// $('.info-icon').click(function () {
-	// 	let testId = $(this).data('test-id');
-	// 	var infoElement = $('.test-info[data-test-id="' + testId + '"]');
-	// 	infoElement.toggleClass("hide");
-	// });
-
 	// Toggle the visibility of the info card
 	$(document).on('click', '.info-icon', function(event) {
 		event.stopPropagation();
