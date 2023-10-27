@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Question, ScreeningTest
 from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Calculates the BMI of the patient
@@ -59,7 +60,7 @@ def get_question(request, question_order=None):
         question = Question.objects.get(order=question_order)
 
     # Create a bool form
-    if question.order == 1:
+    if question.order == 1:  # What is patient's sex ?
         form_bool = AnswerSex(request.POST or None,
                               initial={'question_order': question.order})
     else:
@@ -75,6 +76,7 @@ def get_question(request, question_order=None):
             else:
                 user_answer = False
 
+        # The suite of the logic with bool form
         q_order = form_bool.cleaned_data['question_order']
         # Store the answer in the session
         request.session[f'q{q_order}'] = user_answer
@@ -86,6 +88,39 @@ def get_question(request, question_order=None):
     # Create int form
     form_int = AnswerInteger(request.POST or None,
                              initial={'question_order': question.order})
+
+    # Customize validation of int form depending on the question
+    if question.order == 2:  # Age
+        form_int.fields['response'].validators = [MinValueValidator(
+            15,
+            message='Âge minimum: 15 ans')]
+        form_int.fields['response'].validators.append(MaxValueValidator(
+            105,
+            message='Âge maximum: 105 ans'))
+    elif question_order == 3:  # Height
+        form_int.fields['response'].validators = [MinValueValidator(
+            130,
+            message='Taille minimum: 130 cm')]
+        form_int.fields['response'].validators.append(MaxValueValidator(
+            220,
+            message='Taille maximum: 220 cm'))
+    elif question_order == 4:  # Weight
+        form_int.fields['response'].validators = [MinValueValidator(
+            30,
+            message='Poids minimum: 30 kg')]
+        form_int.fields['response'].validators.append(MaxValueValidator(
+            200,
+            message='Poids maximum: 200 kg'))
+    elif question_order == 5:  # Diabetes evolution
+        form_int.fields['response'].validators.append(MaxValueValidator(
+            70,
+            message='Valeur maximale autorisée: 70'))
+    elif question_order == 6:  # DFG Rate
+        form_int.fields['response'].validators.append(MaxValueValidator(
+            150,
+            message='Valeur maximale autorisée: 150'))
+
+    # The suite of the logic with int form
     if form_int.is_valid():
         user_answer = int(form_int.cleaned_data['response'])
         q_order = form_int.cleaned_data['question_order']
@@ -154,6 +189,7 @@ def synthese(request):
     # Get the values and calculate BMI if possible
     height = request.session.get('q3')
     weight = request.session.get('q4')
+    bmi_string = None
     bmi = None
     if weight and height:
         bmi_string = get_bmi_string(weight, height)
@@ -184,6 +220,12 @@ def synthese(request):
                 previous_answers.append(bmi_string)
             if i == 6 and dfg_string:
                 previous_answers.append(dfg_string)
+
+    if not previous_answers:
+        previous_answers.append(
+            """Vous n'avez répondu à aucune question du questionnaire.
+            La conduite à tenir affichée est proposée systématiquement
+            à tout patient porteur du diabète de type 2.""")
 
     # Get systematic annual screening tests from the database
     systematic_annual_tests = \

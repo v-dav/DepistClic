@@ -1,24 +1,23 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<nav>
-	<ul>
-		<li><a href="/">Accueil</a></li>
-		<li><a href="/questions/">Questions</a></li>
-		<li><a href="/synthese">Synthèse</a></li>
-		<li><a href="/contact/">Contact</a></li>
-	</ul>
-</nav>
+<div class="space-y-2 mt-20 flex justify-end cursor-pointer">
+    <div class="flex justify-end flex-col">
+        <div class="w-8 h-0.5 bg-gray-600"></div>
+        <div class="w-8 h-0.5 bg-gray-600 mt-1.5"></div>
+        <div class="w-8 h-0.5 bg-gray-600 mt-1.5"></div>
+    </div>
+</div>
 
 <!-- mettre la navbar en burger toggle avec du JS-->
 
 
-<main>
-    <article>
-        <h1 id="question_title">{{ question.title }}</h1>
+<main class="flex justify-between gap-4">
+    <article class="mt-12 bg-red-500 w-1/2 flex flex-col justify-center items-center mx-auto rounded">
+        <h1 class="font-bold text-center" id="question_title">{{ question.title }}</h1>
         
         {% if question.response_type == 'boolean' %}
-            <form method="POST">
+            <form class="font-bold mt-4" method="POST">
                 {% csrf_token %}
                 {{ form_bool.as_p }}
             </form>
@@ -26,28 +25,32 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form_int.as_p }}
-                <input type="submit" value="Valider">
+                <input class="cursor-pointer font-bold" type="submit" value="Valider">
             </form>
         {% endif %}
+        
+        <div class="flex gap-4">
+            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
 
-        <button id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
+            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
 
-        <button id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
+		    <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="home-btn">Home</button>
 
-		<button id="home-btn">Home</button>
-
-        <a href="/synthese/">
-            <button>Synthèse</button>
-        </a>
+            <a href="/synthese/">
+                <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1">Synthèse</button>
+            </a>
+        </div>
     </article>
 
-    <aside>
-        <h2>Mon Patient</h2>
-        {% if previous_answers %}
-            {% for answer in previous_answers %}
-                <p>{{ answer }}</p>
-            {% endfor %}
-        {% endif %}
+    <aside class="w-full">
+        <h2 class="text-center font-bold text-2xl">Mon Patient</h2>
+        <div class="card bg-white border border-gray-300 rounded p-4 flex-1 mt-4">
+            {% if previous_answers %}
+                {% for answer in previous_answers %}
+                    <p class="text-center">{{ answer }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
     </aside>
 </main>
 {% endblock content %}

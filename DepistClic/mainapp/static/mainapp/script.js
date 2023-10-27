@@ -64,4 +64,15 @@ $(() => {
 			$('header').removeClass('shadow-lg transition duration-300');
 		}
 	});
+
+	// Add shadow when scroll
+	$(window).scroll(function() {
+		var scrollPosition = $(this).scrollTop();
+
+		if (scrollPosition > 0) {
+			$('header').addClass('shadow-lg transition duration-300');
+		} else {
+			$('header').removeClass('shadow-lg transition duration-300');
+		}
+	});
 });
