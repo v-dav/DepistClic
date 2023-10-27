@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<div class="space-y-2 mt-20 flex justify-end">
+<div class="space-y-2 mt-20 flex justify-end cursor-pointer">
     <div class="flex justify-end flex-col">
         <div class="w-8 h-0.5 bg-gray-600"></div>
         <div class="w-8 h-0.5 bg-gray-600 mt-1.5"></div>
@@ -13,11 +13,11 @@
 
 
 <main class="flex justify-between gap-4">
-    <article class="mt-10 bg-red-500 w-1/2 flex flex-col justify-center items-center mx-auto rounded">
-        <h1 class="font-bold" id="question_title">{{ question.title }}</h1>
+    <article class="mt-12 bg-red-500 w-1/2 flex flex-col justify-center items-center mx-auto rounded">
+        <h1 class="font-bold text-center" id="question_title">{{ question.title }}</h1>
         
         {% if question.response_type == 'boolean' %}
-            <form class="font-bold" method="POST">
+            <form class="font-bold mt-4" method="POST">
                 {% csrf_token %}
                 {{ form_bool.as_p }}
             </form>
@@ -30,20 +30,20 @@
         {% endif %}
         
         <div class="flex gap-4">
-            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
+            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>Back</button>
 
-            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded" id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
+            <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="pass-btn" data-question-order="{{ question.order }}">Passer</button>
 
-		    <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded" id="home-btn">Home</button>
+		    <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1" id="home-btn">Home</button>
 
             <a href="/synthese/">
-                <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded">Synthèse</button>
+                <button class="font-bold bg-blue-500 hover:bg-blue-700 text-white px-2 rounded my-4 py-1">Synthèse</button>
             </a>
         </div>
     </article>
 
     <aside class="w-full">
-        <h2 class="text-center font-bold">Mon Patient</h2>
+        <h2 class="text-center font-bold text-2xl">Mon Patient</h2>
         <div class="card bg-white border border-gray-300 rounded p-4 flex-1 mt-4">
             {% if previous_answers %}
                 {% for answer in previous_answers %}
