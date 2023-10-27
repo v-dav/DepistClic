@@ -387,3 +387,4 @@ def team(request):
 
 def mission(request):
     return render(request, 'mainapp/mission.html')
+
