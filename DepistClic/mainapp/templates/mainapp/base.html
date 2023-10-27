@@ -1,4 +1,4 @@
-{% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +8,50 @@
 	<meta name="description"
 		content="Aide au dépistage des complications du diabète de type 2 destinée au professionnels de santé">
 	<title>DepistClic</title>
-	<link rel="stylesheet" href="{% static 'mainapp/main.css' %}">
+	{% comment %} <link rel="stylesheet" href="{% static 'mainapp/main.css' %}"> {% endcomment %}
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.7.1.js"
 		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="/static/mainapp/script.js"></script>
+	{% tailwind_css %}
 </head>
 
-<body>
-	{% block content %} {% endblock %}
+<body class="flex flex-col min-h-screen bg-blue-200">
+	<!-- header/navbar -->
+	<header class="bg-blue-200 fixed w-full z-50">
+		<nav class="container mx-auto px-6 py-3">
+			<div class="flex items-center justify-between">
+				<div class="text-3xl font-bold text-white">
+					<a href="/">
+						DepistClic
+					</a>
+				</div>
+				<ul class="flex items-center space-x-8 lg:block">
+					<li><a href="/" class="hover:text-blue-500">Accueil</a></li>
+					<li><a href="/questions/" class="hover:text-blue-500">Questions</a></li>
+					<li><a href="/contact/" class="hover:text-blue-500">Contact</a></li>
+					<li><a href="/mission/" class="hover:text-blue-500">Mission</a></li>
+					<li><a href="/team/" class="hover:text-blue-500">Équipe</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 
-	<footer>
-		<!-- Votre pied de page ici -->
-	</footer>
+	<!-- Block content -->
+	<main class="container mx-auto px-4">
+        {% block content %} {% endblock %}
+    </main>
+
+	<!-- Footer -->
+	<footer class="bg-white shadow-md py-2 mt-auto">
+        <nav class="container mx-auto px-6 py-0">
+			<div class="text-lg font-bold text-gray-800 text-center">
+					<a href="/">
+						footer
+					</a>
+				</div>
+		</nav>
+    </footer>
 </body>
 
 </html>

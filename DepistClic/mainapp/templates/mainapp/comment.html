@@ -1,14 +1,23 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-    <a href="/">
-        <button>Home</button>
-    </a>
-    <h1>Aidez-nous à améliorer notre application</h1> 
-    <p>N'hésitez pas à laisser un commentaire, une remarque ou une suggestion ou dire ce que vous appréciez.</p>
-    <form id="comment-form" method="post">
-        {% csrf_token %}
-        {{ form_comment.as_p }}
-        <input type="submit" value="Envoyer">
-    </form>
+<article class="max-h-screen container w-full px-6 py-40">
+	<div class="max-w-screen mx-auto text-center">
+		<h2 class="text-2xl font-semibold text-white">
+			Aidez-nous à améliorer notre application
+		</h2>
+		<h2 class="text-lg font-semibold m-2 text-white">
+			N'hésitez pas à laisser un commentaire, une remarque ou une suggestion ou dire ce que vous appréciez.
+		</h2>
+		<div class="flex items-center justify-center mt-12">
+			<form id="comment-form" method="post">
+                {% csrf_token %}
+                {{ form_comment.as_p }}
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 mt-6 rounded-full shadow-md">
+					Envoyer
+				</button>
+            </form>
+		</div>
+	</div>
+</article>
 {% endblock content %}
