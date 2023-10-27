@@ -14,7 +14,6 @@
 		<section class="flex flex-wrap mt-4">
 			<!-- card one -->
 			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
-				
 				<h1 class="text-2xl font-bold">
 					Mon patient
 				</h1>
@@ -32,7 +31,7 @@
 				<h1 class="text-2xl font-bold">
 					Examens annuels
 				</h1>
-				<!-- Red line -->
+				<!-- Blue line -->
 				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
 
 				<!-- screening tests -->
@@ -41,7 +40,7 @@
 						{{ screening_test.title }}
 						<!-- icon info i -->
 						{% if screening_test.info %}
-							<span class="info-icon cursor-pointer" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+							<span class="info-icon cursor-pointer text-red-500" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">
 								&#9432;
 							</span>
 						{% endif %}
@@ -64,7 +63,11 @@
 								<!-- Liste Sources -->
 								<ul>
 									{% for source_link in screening_test.sources %}
-									<li class="font-light"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
+									<li class="font-light">
+										<a href="{{ source_link.link }}" target="_blank">
+											{{ source_link.text }}
+										</a>
+									</li>
 									{% endfor %}
 								</ul>
 							{% endif %}
@@ -73,59 +76,105 @@
 				{% endfor %}
 			</article>
 
-			<!-- card three -->
+			<!-- card oriented -->
 			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
 				<h1 class="text-2xl font-bold">
 					Bilan orienté
 				</h1>
-				<!-- Red line -->
+				<!-- Blue line -->
 				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+
+				<!-- screening tests -->
 				{% if conditional_specialist_tests %}
 					{% for screening_test in conditional_specialist_tests %}
-					<p>
+					<p class=" font-semibold py-2">
 						{{ screening_test.title }}
+						<!-- icon info i -->
 						{% if screening_test.info %}
-							<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+							<span class="info-icon cursor-pointer text-red-500" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+								&#9432;
+							</span>
 						{% endif %}
 					</p>
-					<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-					{% if screening_test.sources %}
-						<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-						<ul>
-							{% for source_link in screening_test.sources %}
-							<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
 					<hr>
+					<!-- card information -->
+					<div class="flex items-center">
+						<div class="hidden max-w-xs bg-white p-4 rounded shadow info-card" data-test-id="{{ screening_test.id }}">
+							<!-- Texte source -->
+							<p class="font-normal">
+								{{ screening_test.info }}
+							</p>
+							{% if screening_test.sources %}
+								<!-- Sources -->
+								<h4 class="font-bold pt-2">
+									Sources
+								</h4>
+								<!-- Red line -->
+								<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+								<!-- Liste Sources -->
+								<ul>
+									{% for source_link in screening_test.sources %}
+									<li class="font-light">
+										<a href="{{ source_link.link }}" target="_blank">
+											{{ source_link.text }}
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+						</div>
+					</div>
 					{% endfor %}
 				{% endif %}
 			</article>
 			
-			<!-- card four -->
+			<!-- card important -->
 			<article class="card bg-white border border-gray-300 rounded p-4 flex-1 mx-2 mt-4">
 				<h1 class="text-2xl font-bold">
 					Rappels importants
 				</h1>
-				<!-- Red line -->
+				<!-- Bleu line -->
 				<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+
+				<!-- screening tests -->
 				{% for screening_test in reminders %}
-					<p>
+					<p class=" font-semibold py-2">
 						{{ screening_test.title }}
+						<!-- icon info i -->
 						{% if screening_test.info %}
-							<span class="info-icon" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">&#9432;</span>
+							<span class="info-icon cursor-pointer text-red-500" data-test-id="{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+								&#9432;
+							</span>
 						{% endif %}
 					</p>
-					<p class="test-info hide" data-test-id="{{ screening_test.id }}">{{ screening_test.info }}</p>
-					{% if screening_test.sources %}
-						<h4 class="test-info hide" data-test-id="{{ screening_test.id }}">Sources</h4>
-						<ul>
-							{% for source_link in screening_test.sources %}
-							<li class="test-info hide" data-test-id="{{ screening_test.id }}"><a href="{{ source_link.link }}" target="_blank">{{ source_link.text }}</a></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
 					<hr>
+					<!-- card information -->
+					<div class="flex items-center">
+						<div class="hidden max-w-xs bg-white p-4 rounded shadow info-card" data-test-id="{{ screening_test.id }}">
+							<!-- Texte source -->
+							<p class="font-normal">
+								{{ screening_test.info }}
+							</p>
+							{% if screening_test.sources %}
+								<!-- Sources -->
+								<h4 class="font-bold pt-2">
+									Sources
+								</h4>
+								<!-- Red line -->
+								<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+								<!-- Liste Sources -->
+								<ul>
+									{% for source_link in screening_test.sources %}
+									<li class="font-light">
+										<a href="{{ source_link.link }}" target="_blank">
+											{{ source_link.text }}
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+						</div>
+					</div>
 				{% endfor %}
 			</article>
 		</section>
@@ -142,5 +191,6 @@
 				<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
 					Donnez-nous votre avis
 				</button>
-		
+		</div>
+
 	{% endblock content %}
