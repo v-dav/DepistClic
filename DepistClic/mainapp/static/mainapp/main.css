@@ -1,3 +1,5 @@
+/*
+
 body {
 	background-color: rgb(239, 204, 246);
 }
@@ -14,9 +16,9 @@ body {
 	border-radius: 5px;
 	padding: 10px;
 	flex: 1;
-	/* Pour que chaque carte ait la même largeur */
+	/* Pour que chaque carte ait la même largeur
 	margin: 0 10px;
-	/* Espacement entre les cartes */
+	/* Espacement entre les cartes
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
 	background-color: white;
 }
@@ -48,3 +50,6 @@ article p :hover {
 	font-style: italic;
 	text-align: justify;
 }
+
+
+*/
