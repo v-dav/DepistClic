@@ -3,7 +3,7 @@ from .models import Question, ScreeningTest
 from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.template.loader import render_to_string
-from weasyprint import HTML
+from weasyprint import HTML, CSS
 from django.http import HttpResponse
 
 
@@ -394,8 +394,20 @@ def synthese(request):
 def get_pdf(request):
     context = request.session["synthese"]
     html_content = render_to_string('mainapp/synthese.html', context)
-    pdf = HTML(string=html_content).write_pdf()
-
+    css = CSS(string='''
+        h1 {
+            color: red;
+        }
+        body {
+            background-color: white;
+            font-size: 10px;
+        }
+        @page {
+            margin: 0.25in;
+            size: Letter;
+        }
+    }''')
+    pdf = HTML(string=html_content).write_pdf(stylesheets=[css])
     # Generate HTTP respons with the PDF
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="synthese.pdf"'
