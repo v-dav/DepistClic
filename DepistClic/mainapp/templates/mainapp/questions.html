@@ -1,18 +1,8 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<div class="space-y-2 mt-20 flex justify-end cursor-pointer">
-    <div class="flex justify-end flex-col">
-        <div class="w-8 h-0.5 bg-gray-600"></div>
-        <div class="w-8 h-0.5 bg-gray-600 mt-1.5"></div>
-        <div class="w-8 h-0.5 bg-gray-600 mt-1.5"></div>
-    </div>
-</div>
 
-<!-- mettre la navbar en burger toggle avec du JS-->
-
-
-<main class="flex justify-between gap-4">
+<main class="flex justify-between gap-4 mt-24">
     <article class="mt-12 bg-red-500 w-1/2 flex flex-col justify-center items-center mx-auto rounded">
         <h1 class="font-bold text-center" id="question_title">{{ question.title }}</h1>
         
