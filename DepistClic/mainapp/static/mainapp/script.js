@@ -31,20 +31,30 @@ $(() => {
 		$(this).closest('form').submit();
 	});
 
-	// Toggle the visibility of the info card
-	$(document).on('click', '.info-icon', function(event) {
-		event.stopPropagation();
-		var testId = $(this).data('test-id');
-		var infoCard = $('.info-card[data-test-id="' + testId + '"]');
-		infoCard.toggleClass('hidden');
-	});
-	
-	// Hide the visibility of the info card
-	$(document).click(function(event) {
-		// If the click event occurred outside any info card
-		if (!$(event.target).closest('.info-card').length && !$(event.target).is('.info-icon')) {
-			$('.info-card').addClass('hidden');
-		}
+	// Selects all elements with the info-icon class
+	$('.info-icon').click(function(){
+		// Get the ID of the modal to display
+		var modalId = $(this).data('modal-toggle');
+		// Selects modal by ID
+		var modal = $('#' + modalId);
+		// Display modal
+		modal.removeClass('hidden');
+		// Hide modal
+		modal.find('.modal-close').click(function(){
+			modal.addClass('hidden');
+			// Keep scroll
+			$('body').css('overflow', 'auto');
+		});
+
+		// Hide modal when the user click outside the content
+		modal.click(function(event) {
+			if (event.target === this) {
+				//Hide modal
+				modal.addClass('hidden');
+				// Keep scroll
+				$('body').css('overflow', 'auto');
+			}
+		});
 	});
 
 	// Add shadow when scrollPosition > 0
