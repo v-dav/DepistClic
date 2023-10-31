@@ -17,7 +17,7 @@ $(() => {
             window.location.href = url;
         }
     });
-    
+
     // Go home button with alert
     $("#home-btn").click(() => {
         const confirmation = window.confirm("Voulez-vous vraiment revenir, vous allez perdre les données en cours")
@@ -38,7 +38,7 @@ $(() => {
         var infoCard = $('.info-card[data-test-id="' + testId + '"]');
         infoCard.toggleClass('hidden');
     });
-    
+
     // Hide the visibility of the info card
     $(document).click(function(event) {
         // If the click event occurred outside any info card
@@ -53,15 +53,15 @@ $(() => {
     // Toggle the visibility of the menu on menu button click
     $("#menu-toggle").click(() => {
         if (isMenuOpen) {
-			$("#menu").addClass("hidden");
-		} else {
-			$("#menu").removeClass("hidden");
-		}
+            console.log('Menu is open, hiding it');
+        } else {
+            console.log('Menu is closed, showing it');
+        }
         isMenuOpen = !isMenuOpen;
     });
 
     // Handle clicks on menu items
-    $("#menu a").click(() => {
+    $("#menu").click(() => {
         // Close the menu when a menu item is clicked
         $("#menu").addClass("hidden");
         isMenuOpen = false;
@@ -77,4 +77,8 @@ $(() => {
             $('header').removeClass('shadow-lg transition duration-300');
         }
     });
+});
+
+$(() => {
+
 });
