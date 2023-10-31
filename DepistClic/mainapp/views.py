@@ -395,18 +395,28 @@ def get_pdf(request):
     context = request.session["synthese"]
     html_content = render_to_string('mainapp/synthese.html', context)
     css = CSS(string='''
-        h1 {
-            color: red;
-        }
-        body {
-            background-color: white;
-            font-size: 10px;
-        }
-        @page {
-            margin: 0.25in;
-            size: Letter;
-        }
-    }''')
+    @page {
+        margin: 0.25in;
+        size: Letter;
+    }
+    body {
+        font-size: 10px;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    button, footer {
+        display: none;
+    }
+    h1 {
+        color: red;
+    }
+    #synthese-title {
+        color: black;
+    }
+''')
+
     pdf = HTML(string=html_content).write_pdf(stylesheets=[css])
     # Generate HTTP respons with the PDF
     response = HttpResponse(pdf, content_type='application/pdf')
