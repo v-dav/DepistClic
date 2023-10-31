@@ -1,3 +1,12 @@
+@media print {
+	button, footer, nav {
+		display: none;
+	}
+	body {
+		font-size: 10px;
+	}
+}
+
 /*
 
 body {
