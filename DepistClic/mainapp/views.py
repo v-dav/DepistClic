@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Question, ScreeningTest
 from .forms import AnswerBinary, AnswerInteger, AnswerSex, CommentForm
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.template.loader import render_to_string
+from weasyprint import HTML, CSS
+from django.http import HttpResponse
 
 
 # Calculates the BMI of the patient
@@ -221,12 +224,6 @@ def synthese(request):
             if i == 6 and dfg_string:
                 previous_answers.append(dfg_string)
 
-    if not previous_answers:
-        previous_answers.append(
-            """Vous n'avez répondu à aucune question du questionnaire.
-            La conduite à tenir affichée est proposée systématiquement
-            à tout patient porteur du diabète de type 2.""")
-
     # Get systematic annual screening tests from the database
     systematic_annual_tests = \
         ScreeningTest.objects.filter(frequency='Annuel',
@@ -359,10 +356,67 @@ def synthese(request):
         context['reminders'] = context['reminders'] | \
             ScreeningTest.objects.filter(title__icontains='zona')
 
+    # A list for the session storage
+    conditional_specialist_tests_session = []
     if conditional_specialist_tests:
         context['conditional_specialist_tests'] = conditional_specialist_tests
+        # Converting objects into dict for the session storage
+        for test in conditional_specialist_tests:
+            test_dict = {
+                'id': test.id,
+                'title': test.title,
+                'frequency': test.frequency,
+                'sources': test.sources,
+                'info': test.info,
+                'type': test.type
+            }
+            conditional_specialist_tests_session.append(test_dict)
+
+    # Pass the context to the session for other views
+    session_context = {
+        'previous_answers': previous_answers,
+        'annual_tests': list(context['annual_tests'].values()),
+        'reminders': list(context['reminders'].values()),
+        'conditional_specialist_tests': conditional_specialist_tests_session
+    }
+    request.session["synthese"] = session_context
 
     return render(request, 'mainapp/synthese.html', context)
+
+
+# Generate pdf file with the synthesis page
+def get_pdf(request):
+    context = request.session["synthese"]
+    html_content = render_to_string('mainapp/synthese.html', context)
+    css = CSS(string='''
+    @page {
+        margin: 0.25in;
+        size: Letter;
+    }
+    body {
+        font-size: 10px;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    button, footer {
+        display: none;
+    }
+    h1 {
+        color: red;
+    }
+    #synthese-title {
+        color: black;
+    }
+''')
+
+    pdf = HTML(string=html_content).write_pdf(stylesheets=[css])
+    # Generate HTTP respons with the PDF
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="synthese.pdf"'
+
+    return response
 
 
 def contact(request):

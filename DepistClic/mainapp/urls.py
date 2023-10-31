@@ -11,4 +11,5 @@ urlpatterns = [
     path('comment/', views.comment_page, name="depistclic-comment"),
     path('team/', views.team, name="depistclic-team"),
     path('mission/', views.mission, name="depistclic-mission"),
+    path('pdf/', views.get_pdf, name='depistclic-pdf')
 ]
