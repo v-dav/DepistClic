@@ -1,17 +1,14 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<section class="flex justify-between items-center pt-20 mx-2">
-		<h1 id="synthese-title" class="text-6xl font-bold text-white">
-			Synthèse
-		</h1>
-		<button id="home-btn" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
-			Accueil
-		</button>
+	<section class="flex pt-20">
+			<h1 id="synthese-title" class="text-6xl font-bold text-white pl-2 pb-4">
+				Synthèse
+			</h1>
 	</section>
 
 	<!-- cards section -->
-	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center mt-4">
+	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
 		<!-- card patient -->
 		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-2 mt-4 h-auto">
 			<h1 class="text-2xl font-bold">
@@ -55,8 +52,8 @@
 				</p>
 				<hr>
 				<!-- Modal -->
-				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden">
-					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-2xl overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-2xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
 						<!-- card informations -->
 						<h2 class="text-xl font-semibold">
 							{{ screening_test.title }}
@@ -100,7 +97,7 @@
 	<!-- cards section 2 -->
 	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
 		<!-- card oriented -->
-		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4">
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
 			<h1 class="text-2xl font-bold">
 				Bilan orienté
 			</h1>
@@ -120,8 +117,8 @@
 				</p>
 				<hr>
 				<!-- Modal -->
-				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden">
-					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-3xl overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-3xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
 						<!-- Card informations -->
 						<h2 class="text-xl font-semibold">
 							{{ screening_test.title }}
@@ -161,14 +158,13 @@
 				{% endfor %}
 			{% else %}
 			<p class="text-black text-justify">
-				Vous n'avez répondu à aucune question du questionnaire.
-				Aucun bilan orienté ne peut être suggéré.
+				Au vue des informations fournies aucun bilan orienté ne peut être suggéré.
 			</p>
 			{% endif %}
 		</article>
 
 		<!-- card important -->
-		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4">
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
 			<h1 class="text-2xl font-bold">
 				Rappels importants
 			</h1>
@@ -187,8 +183,8 @@
 				</p>
 				<hr>
 				<!-- Modal -->
-				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden">
-					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-4xl overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 m-8 rounded-t rounded-r shadow-lg max-w-4xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
 						<!-- Card informations -->
 						<h2 class="text-xl font-semibold">
 							{{ screening_test.title }}
@@ -230,23 +226,28 @@
 	</section>
 
 	<!-- Button Section -->
-	<div class="flex justify-end my-6 mx-2">
+	<div class="flex flex-col lg:flex-row sm:justify-center justify-end my-4 mx-2">
+		<!-- Home Button -->
+		<button id="home-btn" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			Accueil
+		</button>
 		<!-- PDF Button -->
-		<a href="/pdf/">
-			<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			<a href="/pdf/">
 				Télécharger PDF
-			</button>
-		</a>
+			</a>
+		</button>
 		<!-- Print Button -->
-		<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
+		<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
 			Imprimer
 		</button>
 		<!-- Avis Button -->
-		<a href="/comment/">
-			<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
+			<a href="/comment/">
 				Donnez-nous votre avis
-			</button>
-		</a>
+			</a>
+		</button>
+
 	</div>
 
 {% endblock content %}
