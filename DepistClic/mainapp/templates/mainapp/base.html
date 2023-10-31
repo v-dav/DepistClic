@@ -3,65 +3,91 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description"
-		content="Aide au dépistage des complications du diabète de type 2 destinée au professionnels de santé">
-	<title>DepistClic</title>
-	{% comment %} <link rel="stylesheet" href="{% static 'mainapp/main.css' %}"> {% endcomment %}
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.7.1.js"
-		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-	<script src="/static/mainapp/script.js"></script>
-	{% tailwind_css %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Aide au dépistage des complications du diabète de type 2 destinée au professionnels de santé">
+    <title>DepistClic</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'mainapp/main.css' %}"> {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/static/mainapp/script.js"></script>
+    {% tailwind_css %}
 </head>
 
 <body class="flex flex-col min-h-screen bg-blue-200">
-	<!-- header/navbar -->
-	<header class="bg-blue-200 fixed w-full z-50">
-		<nav class="container-fluid mx-auto px-6 py-3">
-    <div class="flex items-center justify-between">
-        <div class="text-3xl font-bold text-white">
-            <a href="/">
-                DepistClic
-            </a>
-        </div>
-        <div id="menu-toggle" class="block lg:hidden absolute top-0 py-3 right-5">
-            <button class="flex flex-end px-3 py-2 border rounded text-black border-black hover:text-blue-500 hover:border-blue-500">
-                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <title>Menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                </svg>
-            </button>
-        </div>
-		<div class="absolute right-24">
-			<ul id="menu" class="hidden lg:flex items-center space-x-8">
-				<li><a href="/" class="hover:text-blue-500 text-lg font-bold">Accueil</a></li>
-				<li><a href="/questions/" class="hover:text-blue-500 text-lg font-bold">Questions</a></li>
-				<li><a href="/contact/" class="hover:text-blue-500 text-lg font-bold">Contact</a></li>
-				<li><a href="/mission/" class="hover:text-blue-500 text-lg font-bold">Mission</a></li>
-				<li><a href="/team/" class="hover:text-blue-500 text-lg font-bold">Équipe</a></li>
-			</ul>
-		</div>
-    </div>
-</nav>
-	</header>
 
-	<!-- Block content -->
-	<main class="container mx-auto px-4">
+    <!-- header --> 
+    <header class="bg-blue-200 fixed w-full z-50">
+
+    	<!-- navbar --> 
+        <nav class="container-fluid mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-3xl font-bold text-white">
+                    <a href="/">
+                        DepistClic
+                    </a>
+                </div>
+                <div id="menu-toggle" class="block absolute top-0 py-3 right-5">
+                    <button class="flex flex-end px-3 py-2 rounded text-black hover:text-white">
+                        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Menu</title>
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="absolute right-24 sm:top-0 2xl:top-4">
+                    <ul id="menu" class="hidden 2xl:flex items-center space-x-6 relative">
+                        <li class="ml-6"><a href="/" class="hover:text-blue-500 text-lg font-bold">Accueil</a></li>
+                        <li><a href="/questions/" class="hover:text-blue-500 text-lg font-bold">Questions</a></li>
+                        <li><a href="/contact/" class="hover:text-blue-500 text-lg font-bold">Contact</a></li>
+                        <li><a href="/team/" class="hover:text-blue-500 text-lg font-bold">Équipe</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Block content --> 
+    <main class="container mx-auto px-4">
         {% block content %} {% endblock %}
     </main>
 
-	<!-- Footer -->
-	<footer class="bg-white shadow-md py-2 mt-auto">
-        <nav class="container mx-auto px-6 py-0">
-			<div class="text-lg font-bold text-gray-800 text-center">
-				<a href="/">
-					footer
-				</a>
+    <!-- Footer --> 
+    <footer class="px-3 py-1 bg-gray-50 shadow-md mt-auto">
+        <div class="flex flex-row md:flex-row md:items-center justify-between">
+			<nav class="w-auto flex ml-6">
+				<ul class="mt-2">
+					<li class="mb-2">
+						<a href="/mentions/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline">Mentions légales</a>
+					</li>
+					<li class="mb-2">
+						<a href="/politique/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline">Politique de confidentialité</a>
+					</li>
+					<li class="mb-2">
+						<a href="cookies" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Politique de cookies</a>
+					</li>
+					<li class="mb-2">
+						<a href="equipe" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">L'équipe</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="h-full py-6 md:py-0 md:w-1/2 flex items-center mx-auto">
+				<p class="mx-auto text-base md:text-xl ">
+					Les informations issues de ce site internet ne se substituent pas à la responsabilité de décision et de prescription du médecin.
+				</p>
 			</div>
-		</nav>
+			<div class="flex items-center">
+				<ul>
+					<li>
+						<a href="outils" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Autres outils pratiques</a>
+					</li>
+				</ul>
+			</div>
+        </div>
     </footer>
+
 </body>
 
 </html>
