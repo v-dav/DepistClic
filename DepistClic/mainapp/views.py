@@ -45,6 +45,24 @@ def home(request):
     request.session.clear()
     return render(request, 'mainapp/home.html')
 
+# The view `mentions_legales` renders the `mentions_legales.html` template.
+def mentions_legales(request):
+    return render(request, 'mainapp/mentions_legales.html')
+
+# The view `politique_de_confidentialite` renders the `politique_de_confidentialite.html` template.
+def politique_de_confidentialite(request):
+    return render(request, 'mainapp/politique_de_confidentialite.html')
+
+# The view `politique_de_cookies` renders the `politique_de_cookies.html` template.
+def politique_de_cookies(request):
+    return render(request, 'mainapp/politique_de_cookies.html')
+
+# The view `equipe` renders the `equipe.html` template.
+def equipe(request):
+    return render(request, 'mainapp/equipe.html')
+
+def outils(request):
+    return render(request, 'mainapp/outils.html')
 
 # The view that stores the answer in a session and gets a question
 def get_question(request, question_order=None):
@@ -379,11 +397,3 @@ def comment_page(request):
         'form_comment': form_comment,
     }
     return render(request, 'mainapp/comment.html', context)
-
-
-def team(request):
-    return render(request, 'mainapp/team.html')
-
-
-def mission(request):
-    return render(request, 'mainapp/mission.html')
