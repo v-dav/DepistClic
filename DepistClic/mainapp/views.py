@@ -224,11 +224,11 @@ def synthese(request):
             if i == 6 and dfg_string:
                 previous_answers.append(dfg_string)
 
-    if not previous_answers:
-        previous_answers.append(
-            """Vous n'avez répondu à aucune question du questionnaire.
-            La conduite à tenir affichée est proposée systématiquement
-            à tout patient porteur du diabète de type 2.""")
+    # if not previous_answers:
+    #     previous_answers.append(
+    #         """Vous n'avez répondu à aucune question du questionnaire.
+    #         La conduite à tenir affichée est proposée systématiquement
+    #         à tout patient porteur du diabète de type 2.""")
 
     # Get systematic annual screening tests from the database
     systematic_annual_tests = \
