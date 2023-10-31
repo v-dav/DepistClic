@@ -32,6 +32,8 @@ class ScreeningTest(models.Model):
     frequency = models.CharField(max_length=50)
     sources = models.JSONField(blank=True, null=True, default=list)
     info = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/',
+                              blank=True, null=True)
 
     type = models.CharField(
         max_length=15,
