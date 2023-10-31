@@ -1,19 +1,18 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<section class="flex justify-between items-center pt-20 mx-2">
-		<h1 class="text-6xl font-bold text-white">
-			Synthèse
-		</h1>
-		<button id="home-btn" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
-			Home
-		</button>
+	<section class="flex justify-center pt-20">
+		<article class="bg-black border border-gray-300 shadow-md rounded p-2 w-full mx-2">
+			<h1 class="text-5xl font-bold text-white pl-2 pb-2">
+				Synthèse
+			</h1>
+		</article>
 	</section>
 
 	<!-- cards section -->
-	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center mt-4">
+	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
 		<!-- card patient -->
-		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-2 mt-4 h-auto">
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-2 h-auto">
 			<h1 class="text-2xl font-bold">
 				Mon patient
 			</h1>
@@ -92,7 +91,7 @@
 	<!-- cards section 2 -->
 	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
 		<!-- card oriented -->
-		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4">
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
 			<h1 class="text-2xl font-bold">
 				Bilan orienté
 			</h1>
@@ -152,7 +151,7 @@
 		</article>
 
 		<!-- card important -->
-		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4">
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
 			<h1 class="text-2xl font-bold">
 				Rappels importants
 			</h1>
@@ -211,21 +210,26 @@
 	</section>
 
 	<!-- Button Section -->
-	<div class="flex justify-end my-6 mx-2">
-		<!-- PDF Button -->
-		<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
-			Export PDF
+	<div class="flex flex-col lg:flex-row justify-center my-4 mx-2">
+		<!-- Home Button -->
+		<button id="home-btn" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 mr-4 transform transition-transform hover:-translate-y-1">
+			Accueil
 		</button>
-		<!-- Email Button -->
-		<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md mr-4">
-			Send by Email
+		<!-- PDF Button -->
+		<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 mr-4 transform transition-transform hover:-translate-y-1">
+			Télécharger PDF
+		</button>
+		<!-- Print Button -->
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 mr-4 transform transition-transform hover:-translate-y-1">
+			Imprimer
 		</button>
 		<!-- Avis Button -->
-		<a href="/comment/">
-			<button class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md">
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 mr-4 transform transition-transform hover:-translate-y-1">
+			<a href="/comment/">
 				Donnez-nous votre avis
-			</button>
-		</a>
+			</a>
+		</button>
+
 	</div>
 
 {% endblock content %}
