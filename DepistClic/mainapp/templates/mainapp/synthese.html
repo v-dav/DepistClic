@@ -27,6 +27,11 @@
 						</span>	
 					</li>
 				{% endfor %}
+			{% else %}
+				<p class="text-black text-justify">
+					Vous n'avez répondu à aucune question du questionnaire.
+					La conduite à tenir affichée est proposée systématiquement à tout patient porteur du diabète de type 2.
+				</p>
 			{% endif %}
 		</article>
 
@@ -148,6 +153,11 @@
 					</div>
 				</div>
 				{% endfor %}
+			{% else %}
+			<p class="text-black text-justify">
+				Vous n'avez répondu à aucune question du questionnaire.
+				Aucun bilan orienté ne peut être suggéré.
+			</p>
 			{% endif %}
 		</article>
 
