@@ -383,10 +383,6 @@ def synthese(request):
     return render(request, 'mainapp/synthese.html', context)
 
 
-def contact(request):
-    return render(request, 'mainapp/contact.html')
-
-
 def comment_page(request):
     form_comment = CommentForm(request.POST or None)
     if form_comment.is_valid():
