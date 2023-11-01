@@ -12,5 +12,5 @@ urlpatterns = [
     path('politique/', views.politique_de_confidentialite, name="depistclic-politique"),
     path('cookies/', views.politique_de_cookies, name="depistclic-cookies"),
     path('equipe/', views.equipe, name="depistclic-equipe"),
-    path('outils/', views.outils, name="depistclic-outils"),
+    path('pdf/', views.get_pdf, name='depistclic-pdf')
 ]
