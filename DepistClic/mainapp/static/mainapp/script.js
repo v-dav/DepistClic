@@ -53,9 +53,9 @@ $(() => {
     // Toggle the visibility of the menu on menu button click
     $("#menu-toggle").click(() => {
         if (isMenuOpen) {
-            console.log('Menu is open, hiding it');
+            $("#menu").addClass("hidden");
         } else {
-            console.log('Menu is closed, showing it');
+            $("#menu").removeClass("hidden");
         }
         isMenuOpen = !isMenuOpen;
     });
