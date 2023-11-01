@@ -7,9 +7,10 @@ urlpatterns = [
     path('questions/<int:question_order>/', views.get_question,
          name='depistclic-get_question'),
     path('synthese/', views.synthese, name="depistclic-synthese"),
-    path('contact/', views.contact, name="depistclic-contact"),
     path('comment/', views.comment_page, name="depistclic-comment"),
-    path('team/', views.team, name="depistclic-team"),
-    path('mission/', views.mission, name="depistclic-mission"),
+    path('mentions/', views.mentions_legales, name="depistclic-mentions"),
+    path('politique/', views.politique_de_confidentialite, name="depistclic-politique"),
+    path('cookies/', views.politique_de_cookies, name="depistclic-cookies"),
+    path('equipe/', views.equipe, name="depistclic-equipe"),
     path('pdf/', views.get_pdf, name='depistclic-pdf')
 ]
