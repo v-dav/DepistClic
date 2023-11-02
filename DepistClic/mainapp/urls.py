@@ -14,4 +14,5 @@ urlpatterns = [
     path('equipe/', views.equipe, name="depistclic-equipe"),
     path('pdf/', views.get_pdf, name='depistclic-pdf'),
     path('download_ordo/<int:screening_test_id>/', views.download_ordo, name='download_ordo'),
+    path('project/', views.project, name='depistclic-project')
 ]

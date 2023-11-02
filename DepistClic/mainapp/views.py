@@ -432,9 +432,9 @@ def get_pdf(request):
 
     return response
 
-# Contact page
-def contact(request):
-    return render(request, 'mainapp/contact.html')
+# Project description page
+def project(request):
+    return render(request, 'mainapp/project.html')
 
 
 # Comment page
