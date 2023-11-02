@@ -32,14 +32,19 @@ class ScreeningTest(models.Model):
     frequency = models.CharField(max_length=50)
     sources = models.JSONField(blank=True, null=True, default=list)
     info = models.TextField(blank=True)
-    image = models.ImageField(upload_to='images/',
-                              blank=True, null=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    ordo = models.FileField(upload_to='ordonnances/', blank=True, null=True)
 
     type = models.CharField(
         max_length=15,
         choices=TYPE_CHOICES,
         default=SYSTÉMATIQUE,  # Choix par défaut
     )
+    
+    def get_ordo_url(self):
+        if self.ordo:
+            return self.ordo.url
+        return None
 
     def __str__(self):
         return self.title
