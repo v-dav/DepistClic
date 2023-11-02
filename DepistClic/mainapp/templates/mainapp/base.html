@@ -16,9 +16,9 @@
 	{% tailwind_css %}
 </head>
 
-<body class="flex flex-col min-h-screen bg-blue-200">
+<body class="flex flex-col min-h-screen bg-light-blue">
     <!-- header --> 
-    <header class="bg-blue-200 fixed w-full z-50">
+    <header class="bg-dark-blue fixed w-full z-50">
     	<!-- navbar --> 
         <nav class="container-fluid mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
@@ -53,37 +53,23 @@
     </main>
 
     <!-- Footer --> 
-    <footer class="px-3 py-1 bg-gray-50 shadow-md mt-auto">
-        <div class="flex flex-row md:flex-row md:items-center justify-between">
-			<nav class="w-auto flex ml-6">
-				<ul class="mt-2">
-					<li class="mb-2">
-						<a href="/mentions/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline">Mentions légales</a>
-					</li>
-					<li class="mb-2">
-						<a href="/politique/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline">Politique de confidentialité</a>
-					</li>
-					<li class="mb-2">
-						<a href="/cookies/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Politique de cookies</a>
-					</li>
-					<li class="mb-2">
-						<a href="/equipe/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Qui sommes nous ?</a>
-					</li>
-					<li class="mb-2">
-						<a href="/comment/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Contact</a>
-					</li>
-					<li class="mb-2">
-						<a href="https://github.com/v-dav/DepistClic" target="_blank" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">GitHub</a>
-					</li>
-					<li class="mb-2">
-						<a href="https://www.holbertonschool.fr/" target="_blank" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Holberton School</a>
-					</li>
+    <footer class="bg-gray-50 shadow-md mt-auto py-6">
+		<div class="flex flex-col md:flex-row lg:flex-row items-center justify-evenly px-6">
+			<div class="w-1/4">
+				<ul class="flex flex-col md:flex-row md:items-left">
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/mentions/" class="hover:text-blue-400">Mentions légales</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/politique/" class="hover:text-blue-400">Politique de confidentialité</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/cookies/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Politique de cookies</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/equipe/" class="hover:text-blue-400">Qui sommes nous ?</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/comment/" class="hover:text-blue-400">Contact</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://github.com/v-dav/DepistClic" target="_blank" class="hover:text-blue-400">GitHub</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://www.holbertonschool.fr/" target="_blank" class="hover:text-blue-400">Holberton School</a></li>
 				</ul>
-			</nav>
-			<div class="h-full py-6 md:py-0 md:w-1/2 flex items-center mx-auto">
-				<div class="mx-auto text-base md:text-sm text-gray-500 text-justify">
+			</div>
+			<div class="text-center w-2/4">
+            	<div class="text-md text-gray-500 text-justify">
 					<p>
-						DepistClic est un outil indépendant d'aide à la décision destiné au professionels de santé.
+						<b>DepistClic</b> est un outil indépendant d'aide à la décision destiné au professionels de santé.
 						Il utilise les dernières recommandations des sociétés savantes pour proposer une conduite à tenir personnalisée de dépistage des complications chez les patients diabétiques de type 2.
 						Les informations issues de ce site ne se substituent pas à la responsabilité de décision et de prescription d'un médecin.
 						Cet outil n'a bénéficié d'aucune validation académique et sa présentation n'est pas adaptée au grand public.
@@ -91,15 +77,15 @@
 					</p>
 				</div>
 			</div>
-			<div class="w-auto flex ml-6">
-				<ul class="mt-2 text-right">
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://recomedicales.fr/recommandations/diabete-type-2/" class="hover:text-blue-400">RecoMedicales</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://diabetoclic.fr/suivi/le-bilan-des-complications-et-leur-surveillance/" class="hover:text-blue-400">American Diabetes Association</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.diabeclic.com/" class="hover:text-blue-400">Diabeclic</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.diabete.qc.ca/" class="hover:text-blue-400">International Diabetes Federation</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://diabetes.org/" class="hover:text-blue-400">Diabetoclic</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://idf.org/about-diabetes/type-2-diabetes/" class="hover:text-blue-400">Diabète Québec</a></li>
-					<li class="mb-2 mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.has-sante.fr/upload/docs/application/pdf/2015-02/7v_referentiel_2clics_diabete_060215.pdf" class="hover:text-blue-400">Recommandations HAS 2014</a></li>
+			<div class="w-1/4">
+            	<ul class="flex flex-col md:flex-row text-right">
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://recomedicales.fr/recommandations/diabete-type-2/" class="hover:text-blue-400">RecoMedicales</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://diabetoclic.fr/suivi/le-bilan-des-complications-et-leur-surveillance/" class="hover:text-blue-400">American Diabetes Association</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.diabeclic.com/" class="hover:text-blue-400">Diabeclic</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.diabete.qc.ca/" class="hover:text-blue-400">International Diabetes Federation</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://diabetes.org/" class="hover:text-blue-400">Diabetoclic</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://idf.org/about-diabetes/type-2-diabetes/" class="hover:text-blue-400">Diabète Québec</a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.has-sante.fr/upload/docs/application/pdf/2015-02/7v_referentiel_2clics_diabete_060215.pdf" class="hover:text-blue-400">Recommandations HAS 2014</a></li>
 				</ul>
 			</div>
         </div>
