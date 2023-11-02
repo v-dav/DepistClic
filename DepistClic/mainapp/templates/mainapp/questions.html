@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- cards section -->
-<section class="flex flex-col pt-20 lg:flex-row">
+<section class="flex flex-col pt-20 lg:flex-row mb-32">
     <!-- card Patient -->
     <article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-5 mt-4 sm:h-fit order-last lg:order-first">
         <!-- Patient title -->
@@ -38,9 +38,17 @@
             <div>
             {% if question.response_type == 'boolean' %}
                 <!-- Checkbox -->
-                <form class="font-bold text-2xl" method="POST">
+                <form class="font-bold text-2xl text-center mb-20" method="POST">
                     {% csrf_token %}
-                    {{ form_bool.as_p }}
+                    {% for choice in form_bool.response.field.choices %}
+                        <input type="radio" id="{{ choice.0 }}" name="response" value="{{ choice.0 }}" class="hidden">
+                        {% if choice.0 %}
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-red-500 hover:bg-red-600 text-white p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer">{{ choice.1 }}</label>
+                        {% else %}
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-green-500 hover:bg-green-600 text-white p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer">{{ choice.1 }}</label>
+                        {% endif %}
+                    {% endfor %}
+                    <input type="hidden" name="question_order" value="{{ form_bool.question_order.value }}">
                 </form>
             {% else %}
                 <!-- Text -->
@@ -62,6 +70,12 @@
                 <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}">
                     Précédent
                 </button>
+                <!-- Synthèse -->
+                <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-gray-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+                    <a href="/synthese/">
+                        Synthèse
+                    </a>
+                </button>
                 <!-- Suivant -->
                 <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="pass-btn" data-question-order="{{ question.order }}">
                     Suivant
@@ -69,13 +83,5 @@
             </div>
     </article>
 </section>
-
-<div class="flex justify-center">
-    <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
-        <a href="/synthese/">
-            Synthèse
-        </a>
-    </button>
-</div>
 
 {% endblock content %}
