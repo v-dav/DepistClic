@@ -13,6 +13,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js"
 		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="/static/mainapp/script.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	{% tailwind_css %}
 </head>
 
@@ -27,16 +28,18 @@
                         DepistClic
                     </a>
                 </div>
-                <div id="menu-toggle" class="block absolute top-0 py-3 right-5">
-                    <button class="flex flex-end px-3 py-2 rounded text-black hover:text-white">
+                <div id="menu-toggle" class="top-0 right-5">
+                    <button class="flex flex-end px-3 py-2 rounded text-white hover:text-blue-200">
                         <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <title>Menu</title>
+                            <title>
+								Menu
+							</title>
                             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                         </svg>
                     </button>
                 </div>
                 <div class="absolute right-24 sm:top-0 2xl:top-4">
-                    <ul id="menu" class="hidden 2xl:flex items-center space-x-6 relative">
+                    <ul id="menu" class="hidden lg:flex items-center space-x-6 relative">
                         <li class="ml-6"><a href="/" class="hover:text-blue-500 text-lg font-bold">Accueil</a></li>
                         <li><a href="" class="hover:text-blue-500 text-lg font-bold">Projet</a></li>
                         <li><a href="/equipe/" class="hover:text-blue-500 text-lg font-bold">Equipe</a></li>
@@ -53,21 +56,21 @@
     </main>
 
     <!-- Footer --> 
-    <footer class="bg-gray-50 shadow-md mt-auto py-6">
+	<footer class="bg-white shadow-md mt-auto py-6">
 		<div class="flex flex-col md:flex-row lg:flex-row items-center justify-evenly px-6">
-			<div class="w-1/4">
-				<ul class="flex flex-col md:flex-row md:items-left">
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/mentions/" class="hover:text-blue-400">Mentions légales</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/politique/" class="hover:text-blue-400">Politique de confidentialité</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/cookies/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Politique de cookies</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/equipe/" class="hover:text-blue-400">Qui sommes nous ?</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/comment/" class="hover:text-blue-400">Contact</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://github.com/v-dav/DepistClic" target="_blank" class="hover:text-blue-400">GitHub</a></li>
-					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://www.holbertonschool.fr/" target="_blank" class="hover:text-blue-400">Holberton School</a></li>
+			<div class="w-full lg:w-1/4">
+				<ul class="flex flex-col">
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/mentions/" class="hover:text-blue-400">Mentions légales <ion-icon name="document-text-outline"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/politique/" class="hover:text-blue-400">Politique de confidentialité <ion-icon name="shield-checkmark-outline"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/cookies/" class="mr-4 hover:underline md:mr-6 text-gray-500 hover:text-blue-500 text-sm">Politique de cookies <ion-icon name="fast-food-outline"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/equipe/" class="hover:text-blue-400">Qui sommes nous ? <ion-icon name="people-circle-outline"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="/comment/" class="hover:text-blue-400">Contact <ion-icon name="mail-outline"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://github.com/v-dav/DepistClic" target="_blank" class="hover:text-blue-400">GitHub <ion-icon name="logo-github"></ion-icon></a></li>
+					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a href="https://www.holbertonschool.fr/" target="_blank" class="hover:text-blue-400">Holberton School <ion-icon name="school-outline"></ion-icon></a></li>
 				</ul>
 			</div>
-			<div class="text-center w-2/4">
-            	<div class="text-md text-gray-500 text-justify">
+			<div class="text-center w-full lg:w-2/4">
+				<div class="text-gray-500 text-justify lg:mx-6">
 					<p>
 						<b>DepistClic</b> est un outil indépendant d'aide à la décision destiné au professionels de santé.
 						Il utilise les dernières recommandations des sociétés savantes pour proposer une conduite à tenir personnalisée de dépistage des complications chez les patients diabétiques de type 2.
@@ -77,8 +80,8 @@
 					</p>
 				</div>
 			</div>
-			<div class="w-1/4">
-            	<ul class="flex flex-col md:flex-row text-right">
+			<div class="w-full lg:w-1/4">
+				<ul class="flex flex-col md:flex-row text-right">
 					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://recomedicales.fr/recommandations/diabete-type-2/" class="hover:text-blue-400">RecoMedicales</a></li>
 					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://diabetoclic.fr/suivi/le-bilan-des-complications-et-leur-surveillance/" class="hover:text-blue-400">American Diabetes Association</a></li>
 					<li class="mb-2 hover:underline text-gray-500 hover:text-blue-500 text-sm no-underline"><a target="_blank" href="https://www.diabeclic.com/" class="hover:text-blue-400">Diabeclic</a></li>
