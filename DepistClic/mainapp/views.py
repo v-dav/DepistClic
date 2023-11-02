@@ -432,10 +432,12 @@ def get_pdf(request):
 
     return response
 
-
+# Contact page
 def contact(request):
     return render(request, 'mainapp/contact.html')
 
+
+# Comment page
 def comment_page(request):
     form_comment = CommentForm(request.POST or None)
     if form_comment.is_valid():
@@ -446,3 +448,12 @@ def comment_page(request):
         'form_comment': form_comment,
     }
     return render(request, 'mainapp/comment.html', context)
+
+
+# Download ordonnance
+def download_ordo(request, screening_test_id):
+    screening_test = ScreeningTest.objects.get(pk=screening_test_id)
+    ordo_url = screening_test.get_ordo_url()
+    
+    if ordo_url:
+        return redirect(ordo_url)
