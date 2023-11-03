@@ -3,31 +3,32 @@
 {% block content %}
 
 <!-- Landing Page -->
-<article class="h-screen container w-full px-6 py-40">
-	<div class="flex flex-col max-w-screen mx-auto items-center text-center">
-		<h1 class="text-6xl sm:text-8xl lg:text-9xl font-bold mb-8 text-white max-w-fit">DepistClic</h1>
-		<h2 class="text-2xl font-semibold text-white">
-			Aide au dépistage des complications du diabète de type 2 destinée aux professionnels de santé
-		</h2>
-		<h2 class="text-lg font-semibold m-2 text-white">
-			Complétez le questionnaire pour obtenir la stratégie de dépistage adaptée à votre patient
-		</h2>
-		<div class="flex items-center justify-center mt-12">
-			<a href="/questions/">
-				<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-7 rounded-full shadow-md transform transition-transform hover:-translate-y-1 animate-bounce">
-					Démarrer
-				</button>
-			</a>
-		</div>
-	</div>
+<article class="h-screen flex items-center justify-center">
+    <div class="text-center text-white">
+        <h1 class="text-6xl sm:text-8xl lg:text-9xl font-bold mb-10">DepistClic</h1>
+        <h2 class="text-2xl font-semibold mb-4">
+            Aide au dépistage des complications du diabète de type 2 destinée aux professionnels de santé
+        </h2>
+        <h2 class="text-lg font-semibold mb-8">
+            Complétez le questionnaire pour obtenir la stratégie de dépistage adaptée à votre patient
+        </h2>
+        <div class="mt-12">
+            <a href="/questions/">
+                <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-7 rounded-full shadow-md transform transition-transform hover:-translate-y-1 animate-bounce">
+                    Démarrer
+                </button>
+            </a>
+        </div>
+    </div>
 </article>
 
-<div class="flex justify-center">
+
+{% comment %} <div class="flex justify-center">
 	<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
 		<a href="/comment/">
 			Donnez-nous votre avis
 		</a>
 	</button>
-</div>
+</div> {% endcomment %}
 
 {% endblock content %}

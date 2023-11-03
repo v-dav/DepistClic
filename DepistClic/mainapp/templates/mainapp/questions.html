@@ -25,10 +25,10 @@
     </article>
 
     <!-- card Questions -->
-    <article class="flex flex-col justify-between bg-white border border-gray-300 rounded text-center shadow-md p-4 lg:w-3/4 mx-5 lg:mx-10 sm:mt-4 lg:mt-32 h-96">
-            <div>
+    <article class="flex flex-col justify-between bg-white border border-gray-300 rounded text-center shadow-md p-4 lg:w-3/4 mx-5 lg:mx-10 sm:mt-4 lg:mt-32 lg:h-96">
+            <div class="">
                 <!-- Question title -->
-                <h1 class="font-bold text-2xl sm:text-2xl lg:text-3xl pt-4 p-4" id="question_title">
+                <h1 class="font-bold text-3xl lg:text-3xl pt-4 p-4" id="question_title">
                     {{ question.title }}
                 </h1>
                 <!-- blue line -->
@@ -38,21 +38,21 @@
             <div>
             {% if question.response_type == 'boolean' %}
                 <!-- Checkbox -->
-                <form class="font-bold text-2xl text-center mb-20" method="POST">
+                <form class="font-bold text-2xl text-center mb-20 mt-16" method="POST">
                     {% csrf_token %}
                     {% for choice in form_bool.response.field.choices %}
                         <input type="radio" id="{{ choice.0 }}" name="response" value="{{ choice.0 }}" class="hidden">
                         {% if choice.0 %}
-                            <label for="{{ choice.0 }}" class="btn btn-primary bg-red-500 hover:bg-red-600 text-white p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer">{{ choice.1 }}</label>
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-red-500 text-white hover:text-black p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
                         {% else %}
-                            <label for="{{ choice.0 }}" class="btn btn-primary bg-green-500 hover:bg-green-600 text-white p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer">{{ choice.1 }}</label>
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-green-500 hover:text-black text-white p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
                         {% endif %}
                     {% endfor %}
                     <input type="hidden" name="question_order" value="{{ form_bool.question_order.value }}">
                 </form>
             {% else %}
                 <!-- Text -->
-                <form class="text-center" method="POST">
+                <form class="mx-auto max-w-md p-2" method="POST">
                     {% csrf_token %}
                     {{ form_int.as_p }}
                     <!-- Valider -->
@@ -63,11 +63,11 @@
                     </div>
                 </form>
             {% endif %}
-            <div>
+            </div>
             <!-- button section -->
-            <div class="flex justify-between mx-2">
+            <div class="flex flex-col lg:flex-row justify-between sm:mx-20 lg:mx-2">
                 <!-- Précédent -->
-                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}">
+                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
                     Précédent
                 </button>
                 <!-- Synthèse -->
