@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1dcc0adf6018418d109d7d34a2000adf68716acc50213f30cdb3eb5432bd4106"
+            "sha256": "34e2e14660507ef2529015b1b6b6024755b48a285371c17fca3374c557ee2f20"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -468,6 +468,24 @@
                 "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"
             ],
             "version": "==0.5.1"
+        },
+        "wheel": {
+            "hashes": [
+                "sha256:7a95f9a8dc0924ef318bd55b616112c70903192f524d120acc614f59547a9e1f",
+                "sha256:ea041edf63f4ccba53ad6e035427997b3bb10ee88a4cd014ae82aeb9eea77bb9"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==0.38.1"
+        },
+        "whitenoise": {
+            "hashes": [
+                "sha256:8998f7370973447fac1e8ef6e8ded2c5209a7b1f67c1012866dbcd09681c3251",
+                "sha256:b1f9db9bf67dc183484d760b99f4080185633136a273a03f6436034a41064146"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==6.6.0"
         },
         "zopfli": {
             "hashes": [
