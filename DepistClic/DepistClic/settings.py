@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get(
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -96,8 +96,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'vlad',
+        'PASSWORD': 'vlad',
         'HOST': 'localhost',
         'PORT': '3306',
     }
