@@ -1,23 +1,37 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<article class="max-h-screen container w-full px-6 py-40">
-	<div class="max-w-screen mx-auto text-center">
-		<h2 class="text-2xl font-semibold text-white">
-			Aidez-nous à améliorer notre application
-		</h2>
-		<h2 class="text-lg font-semibold m-2 text-white">
-			N'hésitez pas à laisser un commentaire, une remarque ou une suggestion ou dire ce que vous appréciez.
-		</h2>
-		<div class="flex items-center justify-center mt-12">
-			<form id="comment-form" method="post">
-                {% csrf_token %}
-                {{ form_comment.as_p }}
-                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-3 px-7 mt-6 rounded-full shadow-md">
-					Envoyer
-				</button>
-            </form>
+<article class="container w-full mx-auto px-6 pt-32 mb-14 text-center">
+    <h2 class="text-white  text-4xl lg:text-6xl font-bold mb-6">
+        Aidez-nous à améliorer notre application
+    </h2>
+    <h2 class="text-white  text-lg lg:text-xl font-semibold mb-8">
+        N'hésitez pas à laisser un commentaire, une remarque ou une suggestion ou dire ce que vous appréciez.
+    </h2>
+	<form id="comment-form" method="post" onsubmit="submitForm(event)" class="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
+		{% csrf_token %}
+		<div class="mb-6">
+			<label for="comment" class="block text-gray-700 text-lg font-semibold mb-3">Votre commentaire :</label>
+			<textarea id="id_comment_area" name="comment_area" class="w-full h-36 border border-gray-300 rounded focus:outline-none"></textarea>
 		</div>
+		<div class="text-center">
+			<button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md transform transition-transform hover:-translate-y-1">
+				Envoyer
+			</button>
+		</div>
+	</form>
+	
+	<div id="success-message" class="hidden max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
+		<p class="text-black text-lg font-bold mb-8">
+			Votre commentaire a été envoyé !
+		</p>
+		<!-- Home Button -->
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			<a href="/">
+				Accueil
+			</a>
+		</button>
 	</div>
+
 </article>
 {% endblock content %}

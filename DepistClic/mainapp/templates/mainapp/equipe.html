@@ -1,21 +1,37 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block content %}
-	<div class="text-justify">
-		<h1 class="mt-20 text-6xl font-bold text-white">Equipe DepistClic</h1>
-		<br>
-		<p>DepistClic a été conçu dans le cadre d'un projet de fin d'études par une équipe de 3 étudiants en développement web informatique:</p>
-		<br>
-		<ul class="list-disc list-inside">
-			<li><strong><a target="_blank" class="hover:text-white" href="https://www.linkedin.com/in/vladimir-davidov/">Vladimir Davidov</a></strong>, développeur full-stack, anesthésiste-réanimateur</li>
-			<li><strong><a target="_blank" class="hover:text-white" href="https://www.linkedin.com/in/hugo-cast%C3%A9ras-968a92271/">Hugo Castéras</a></strong>, développeur full-stack, orthoprothésiste</li>
-			<li><strong><a target="_blank" class="hover:text-white" href="https://www.linkedin.com/in/benjamin-alazet-830846285/">Benjamin Alazet</a></strong>, développeur full-stack, graphiste</li>
-		</ul>
-		<br>
-		<p>Nous remercions chaleureusement l'équipe de <strong><a target="_blank" class="hover:text-white" href="https://www.holbertonschool.fr/campus/toulouse">Holberton School Toulouse</a></strong> pour nous avoir encouragé et accompagné dans ce projet.</p>
-		<br>
-		<p>Un grand merci en particulier à <strong><a target="_blank" class="hover:text-white" href="https://www.linkedin.com/in/emmanuelle-couret/">Dr Emmanuelle Couret</a></strong>, médecin généraliste, pour l'idée originale, la relecture et la validation du contenu médical ainsi que pour les premiers tests d'utilisation et le premier feedback.</p>
-		<br>
-	</div>
-	<h1 class="mt-20 text-6xl font-bold text-white">>>>>>>>>>>>>>>>>PHOTO</h1>
+<!-- Card -->
+<section class="flex justify-center items-center">
+	<article class="bg-white border border-gray-300 rounded shadow-md py-10 px-24 mt-20 mb-5 w-5/6 h-auto">
+		<div class="text-justify">
+			<h1 class="text-6xl font-bold text-black mb-4 text-center">
+				Equipe DepistClic <ion-icon name="people-circle-outline">
+			</h1>
+			<!-- Red line -->
+        	<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/2"></div>
+			<br>
+			<p><b>DepistClic</b> a été conçu dans le cadre d'un projet de fin d'études par une équipe de 3 étudiants en développement web informatique:</p>
+			<br>
+			<ul class="list-disc list-inside">
+				<!-- Vladimir -->
+				<li class="text-red-500"><span class="text-black"><strong><a target="_blank" class="hover:text-blue-300" href="https://www.linkedin.com/in/vladimir-davidov/">Vladimir Davidov</a></strong>, développeur full-stack, anesthésiste-réanimateur</span></li>
+				<!-- Hugo -->
+				<li class="text-red-500"><span class="text-black"><strong><a target="_blank" class="hover:text-blue-300" href="https://www.linkedin.com/in/hugo-cast%C3%A9ras-968a92271/">Hugo Castéras</a></strong>, développeur full-stack, orthoprothésiste</span></li>
+				<!-- Benjamin -->
+				<li class="text-red-500"><span class="text-black"><strong><a target="_blank" class="hover:text-blue-300" href="https://www.linkedin.com/in/benjamin-alazet-830846285/">Benjamin Alazet</a></strong>, développeur full-stack, graphiste</span></li>
+			</ul>
+			<br>
+			<p>Nous remercions chaleureusement l'équipe de <strong><a target="_blank" class="hover:text-red-500" href="https://www.holbertonschool.fr/campus/toulouse">Holberton School Toulouse</a></strong> pour nous avoir encouragé et accompagné dans ce projet.</p>
+			<br>
+			<p>Un grand merci en particulier à <strong><a target="_blank" class="hover:text-blue-300" href="https://www.linkedin.com/in/emmanuelle-couret/">Dr Emmanuelle Couret</a></strong>, médecin généraliste, pour l'idée originale, la relecture et la validation du contenu médical ainsi que pour les premiers tests d'utilisation et le premier feedback.</p>
+			<br>
+		</div>
+	</article>
+</section>
+
+<!-- Depist Team Image -->
+<img src="{% static 'Images/DepistTeam.png' %}" alt="Depist Team Image" class="-mt-36 w-full h-auto">
+
 {% endblock content %}

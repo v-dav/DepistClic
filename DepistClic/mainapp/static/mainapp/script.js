@@ -87,4 +87,31 @@ $(() => {
 			$("#menu").addClass("hidden");
 			isMenuOpen = false;
 	});
+
+	// Hide form when submit
+    $('#comment-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        // Get comment
+        const commentArea = $('#id_comment_area').val();
+
+        // Send data
+        $.ajax({
+            type: 'POST',
+            url: '/comment/',
+            data: {
+                comment_area: commentArea,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                // Display success message
+                $('#comment-form').addClass('hidden');
+                $('#success-message').removeClass('hidden');
+            },
+            error: function(error) {
+                // Erro handeling
+                console.error('Erreur lors de l\'envoi du commentaire :', error);
+            }
+        });
+    });
 });
