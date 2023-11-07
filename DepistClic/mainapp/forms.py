@@ -25,7 +25,7 @@ class AnswerInteger(forms.Form):
         validators=[MinValueValidator(
             1,
             message='La valeur doit être supérieure à zéro')],
-        widget=forms.NumberInput(attrs={'autofocus': True})
+        widget=forms.NumberInput(attrs={'autofocus': True, 'class': 'rounded-lg px-4 py-3'})
     )
     question_order = forms.IntegerField(widget=forms.HiddenInput())
 
