@@ -1,2 +1,2 @@
 [phases.setup]
-	aptPkgs = ["...", "python3-pip", "python3-cffi", "python3-brotli", "libpango-1.0-0", "libharfbuzz0b", "libpangoft2-1.0-0"]
+   aptPkgs = ['...', 'libpango-1.0-0', 'libpangoft2-1.0-0', 'libjpeg-dev', 'libopenjp2-7-dev', 'libffi-dev', 'libglib2.0-dev']
