@@ -5,6 +5,8 @@ RUN apt-get -y install python3-pip python3-cffi python3-brotli libpango-1.0-0 li
 
 WORKDIR /app
 
+RUN pip install pipenv
+
 # Copiez le Pipfile et le Pipfile.lock dans le répertoire de travail
 COPY Pipfile Pipfile.lock ./
 
