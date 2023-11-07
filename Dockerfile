@@ -15,4 +15,6 @@ RUN pipenv install --deploy --ignore-pipfile
 
 COPY . ./
 
-CMD pipenv run python DepistClic/manage.py migrate && pipenv run python DepistClic/manage.py collectstatic --no-input && pipenv run gunicorn DepistClic.wsgi:application
+RUN cd DepistClic
+
+CMD pipenv run python manage.py migrate && pipenv run python manage.py collectstatic --no-input && pipenv run gunicorn DepistClic.wsgi
