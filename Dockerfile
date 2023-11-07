@@ -13,6 +13,9 @@ COPY Pipfile Pipfile.lock ./
 # Installez les dépendances Python à l'aide de Pipenv
 RUN pipenv install --deploy --ignore-pipfile
 
+# Activer l'environnement virtuel
+RUN pipenv shell
+
 COPY . ./
 
 CMD python DepistClic/manage.py migrate && python DepistClic/manage.py collectstatic --no-input && gunicorn locallibrary.wsgi
