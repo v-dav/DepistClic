@@ -14,7 +14,7 @@ COPY Pipfile Pipfile.lock ./
 RUN pipenv install --deploy --ignore-pipfile
 
 # Activer l'environnement virtuel
-RUN pipenv shell
+RUN pipenv shell --no-pty
 
 COPY . ./
 
