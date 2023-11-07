@@ -68,26 +68,6 @@ $(() => {
 		}
 	});
 
-	// Stores the state of the menu
-	let isMenuOpen = false;
-
-	// Toggle the visibility of the menu on menu button click
-	$("#menu-toggle").click(() => {
-			if (isMenuOpen) {
-					$("#menu").addClass("hidden");
-			} else {
-					$("#menu").removeClass("hidden");
-			}
-			isMenuOpen = !isMenuOpen;
-	});
-
-	// Handle clicks on menu items
-	$("#menu").click(() => {
-			// Close the menu when a menu item is clicked
-			$("#menu").addClass("hidden");
-			isMenuOpen = false;
-	});
-
 	// Hide form when submit
     $('#comment-form').on('submit', function(event) {
         event.preventDefault(); // Prevent form from submitting normally
