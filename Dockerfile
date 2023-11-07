@@ -15,4 +15,6 @@ RUN pipenv install --deploy --ignore-pipfile
 
 COPY . ./
 
-CMD cd DepistClic && pipenv run python manage.py migrate && pipenv run python manage.py collectstatic --no-input && pipenv run gunicorn DepistClic.wsgi
+ENTRYPOINT ["sh", "/entrypoint.sh"]
+
+# CMD cd DepistClic && pipenv run python manage.py migrate && pipenv run python manage.py collectstatic --no-input && pipenv run gunicorn DepistClic.wsgi
