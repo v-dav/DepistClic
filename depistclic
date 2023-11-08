@@ -17,6 +17,6 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /media/ {
-    	alias /app/DepistClic/media/;
+    	alias /root/DepistClic/DepistClic/media;
 	}
 }
