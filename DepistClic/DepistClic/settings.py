@@ -35,6 +35,15 @@ CSRF_TRUSTED_ORIGINS = ['https://depistclic-production.up.railway.app', 'https:/
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
