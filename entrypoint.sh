@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd DepistClic
-ls -la
+ls -la uploads
 mkdir static
 pipenv run python manage.py migrate --no-input
 pipenv run python manage.py collectstatic --no-input
