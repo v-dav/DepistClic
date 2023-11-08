@@ -1,6 +1,9 @@
 #!/bin/sh
 
 ls -la
+cd uploads
+ls -la
+cd ..
 cd DepistClic
 ls -la
 mkdir static
