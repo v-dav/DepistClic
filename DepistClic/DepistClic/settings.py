@@ -31,31 +31,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Production settings
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://depistclic-production.up.railway.app', 'https://depistclic.fr/', 'https://www.depistclic.fr/']
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://depistclic.fr/', 'https://www.depistclic.fr/']
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-# The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# The URL to use when referring to static files (where they will be served from)
-STATIC_URL = 'static/'
-
-# Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Application definition
 
@@ -167,4 +145,24 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = 'static/'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
