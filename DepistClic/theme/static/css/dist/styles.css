@@ -825,6 +825,11 @@ select {
   margin-bottom: 1rem;
 }
 
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -872,6 +877,14 @@ select {
 
 .mr-4 {
   margin-right: 1rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-1 {
@@ -954,6 +967,10 @@ select {
   min-height: 100vh;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .w-1\/3 {
   width: 33.333333%;
 }
@@ -968,10 +985,6 @@ select {
 
 .w-5\/6 {
   width: 83.333333%;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .w-full {
@@ -1062,16 +1075,16 @@ select {
   justify-content: space-evenly;
 }
 
-.gap-12 {
-  gap: 3rem;
-}
-
 .gap-4 {
   gap: 1rem;
 }
 
 .gap-8 {
   gap: 2rem;
+}
+
+.place-self-center {
+  place-self: center;
 }
 
 .overflow-y-auto {
@@ -1104,12 +1117,20 @@ select {
   border-width: 1px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-b-4 {
   border-bottom-width: 4px;
 }
 
 .border-b-8 {
   border-bottom-width: 8px;
+}
+
+.border-l-2 {
+  border-left-width: 2px;
 }
 
 .border-l-4 {
@@ -1124,6 +1145,10 @@ select {
   border-right-width: 2px;
 }
 
+.border-r-4 {
+  border-right-width: 4px;
+}
+
 .border-t-2 {
   border-top-width: 2px;
 }
@@ -1131,6 +1156,11 @@ select {
 .border-blue-200 {
   --tw-border-opacity: 1;
   border-color: rgb(191 219 254 / var(--tw-border-opacity));
+}
+
+.border-dark-blue {
+  --tw-border-opacity: 1;
+  border-color: rgb(164 199 222 / var(--tw-border-opacity));
 }
 
 .border-gray-300 {
@@ -1225,9 +1255,19 @@ select {
   padding-right: 1.75rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .py-2 {
@@ -1366,6 +1406,10 @@ select {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.leading-none {
+  line-height: 1;
 }
 
 .leading-normal {
@@ -1559,6 +1603,14 @@ select {
     margin-bottom: 0px;
   }
 
+  .md\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
+
+  .md\:mb-16 {
+    margin-bottom: 4rem;
+  }
+
   .md\:mr-6 {
     margin-right: 1.5rem;
   }
@@ -1587,11 +1639,6 @@ select {
     justify-content: space-between;
   }
 
-  .md\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
   .md\:px-24 {
     padding-left: 6rem;
     padding-right: 6rem;
@@ -1604,6 +1651,10 @@ select {
 
   .md\:pl-0 {
     padding-left: 0px;
+  }
+
+  .md\:text-right {
+    text-align: right;
   }
 
   .md\:text-3xl {
@@ -1631,6 +1682,11 @@ select {
     line-height: 1.75rem;
   }
 
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:opacity-100 {
     opacity: 1;
   }
@@ -1639,6 +1695,14 @@ select {
 @media (min-width: 1024px) {
   .lg\:order-first {
     order: -9999;
+  }
+
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7;
   }
 
   .lg\:mx-10 {
@@ -1651,20 +1715,12 @@ select {
     margin-right: 1.5rem;
   }
 
-  .lg\:mb-0 {
-    margin-bottom: 0px;
-  }
-
-  .lg\:ml-auto {
-    margin-left: auto;
+  .lg\:mb-8 {
+    margin-bottom: 2rem;
   }
 
   .lg\:mr-4 {
     margin-right: 1rem;
-  }
-
-  .lg\:mr-8 {
-    margin-right: 2rem;
   }
 
   .lg\:mt-0 {
@@ -1711,12 +1767,16 @@ select {
     width: 50%;
   }
 
+  .lg\:w-2\/5 {
+    width: 40%;
+  }
+
   .lg\:w-3\/4 {
     width: 75%;
   }
 
-  .lg\:w-full {
-    width: 100%;
+  .lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-2 {
@@ -1727,12 +1787,8 @@ select {
     flex-direction: row;
   }
 
-  .lg\:items-start {
-    align-items: flex-start;
-  }
-
-  .lg\:items-center {
-    align-items: center;
+  .lg\:gap-8 {
+    gap: 2rem;
   }
 
   .lg\:px-6 {
@@ -1750,9 +1806,8 @@ select {
     padding-bottom: 4rem;
   }
 
-  .lg\:py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  .lg\:pt-16 {
+    padding-top: 4rem;
   }
 
   .lg\:text-left {
@@ -1769,6 +1824,11 @@ select {
 
   .lg\:text-justify {
     text-align: justify;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-3xl {
@@ -1799,6 +1859,10 @@ select {
 @media (min-width: 1280px) {
   .xl\:flex-row {
     flex-direction: row;
+  }
+
+  .xl\:gap-0 {
+    gap: 0px;
   }
 
   .xl\:text-6xl {
