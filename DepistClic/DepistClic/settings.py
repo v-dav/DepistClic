@@ -134,12 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Static files (CSS, JavaScript, Images)
 
-# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# The URL to use when referring to static files (where they will be served from)
-STATIC_URL = 'static/'
-
 # Media files
-MEDIA_URL = "media/"
+MEDIA_URL = "uploads/"
 MEDIA_ROOT = os.environ["RAILWAY_VOLUME_MOUNT_PATH"]
