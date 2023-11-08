@@ -1,5 +1,5 @@
 upstream depistclic {
-    server 0.0.0.0:$PORT;
+    server 0.0.0.0:80;
 }
 
 server {
