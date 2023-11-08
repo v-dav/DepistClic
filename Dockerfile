@@ -7,10 +7,8 @@ WORKDIR /app
 
 RUN pip install pipenv
 
-# Copiez le Pipfile et le Pipfile.lock dans le répertoire de travail
 COPY Pipfile Pipfile.lock ./
 
-# Installez les dépendances Python à l'aide de Pipenv
 RUN pipenv install --deploy --ignore-pipfile
 
 COPY . ./
