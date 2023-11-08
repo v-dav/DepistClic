@@ -14,6 +14,6 @@ COPY Pipfile Pipfile.lock ./
 RUN pipenv install --deploy --ignore-pipfile
 
 COPY . ./
-COPY depistclic.conf /etc/nginx/sites-available/depistclic.conf 
+COPY depistclic /etc/nginx/sites-available/depistclic
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
