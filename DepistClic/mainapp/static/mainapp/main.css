@@ -11,7 +11,7 @@
 /* Share Button CSS */
 .buttonShare {
 	height: 4em;
-	width: 15em;
+	width: 10em;
 	border: none;
 	border-radius: 40px;
 	background-color: #fff;
@@ -22,7 +22,7 @@
 	display: inline-block;
 	background-color: black;
 	height: 3em;
-	width: 11.5em;
+	width: 8em;
 	border-radius: 50px;
 	color: #fff;
 	line-height: 55px;
@@ -50,22 +50,3 @@
 	width: 100%;
   }
 
-/* 
-TEXTURE TEST
-
-body {
-	position: relative;
-  }
-  
-  .paperOverlay {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-repeat: repeat;
-	background-image: url('Texture-Overlay0.jpg');
-	mix-blend-mode: multiply;
-	opacity: 0.10;
-	pointer-events: none;
-  } */
