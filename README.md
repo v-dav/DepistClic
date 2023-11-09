@@ -1,6 +1,6 @@
 # DepistClic
 Decision aid tool to help healthcare professionals screen for complications in patients affected by Diabetes Mellitus Type 2
-
+# Landing Page
 ![Graphic Design (1)](https://github.com/v-dav/DepistClic/assets/115344057/6e3caaca-c4d7-453e-93da-7d5df00e6496)
 ![Landing Page](https://github.com/v-dav/DepistClic/assets/115344057/15b9b6c2-1526-42b7-afe6-38ddb6529246)
 ![2](https://github.com/v-dav/DepistClic/assets/115344057/4092a5d7-f605-4322-85dc-984f538b6496)
@@ -10,8 +10,51 @@ Decision aid tool to help healthcare professionals screen for complications in p
 ![Why 1](https://github.com/v-dav/DepistClic/assets/115344057/83c66e0e-4673-4cc9-bc99-e9f3fc987955)
 ![Why 2](https://github.com/v-dav/DepistClic/assets/115344057/b658bfb7-b831-48d0-8f23-7addbfd3a86e)
 
+# objective of our web application : 
+Help French healthcare professionals make the right decisions, by providing them with an interactive, up-to-date, ergonomic and fast tool to help them decide and plan screening tests for diabetic patients, in order to improve their health.
+
+# Technologies
+### Front-end :
+<details>
+    <summary>
+        <b>See more</b>
+    </summary>
+▪ HTML<br>
+▪ CSS<br>
+▪ TAILWIND (CSS framework)<br>
+▪ JAVASCRIPT
+</details>
+
+### Back-end :
+<details>
+    <summary>
+        <b>See more</b>
+    </summary>
+▪ DJANGO (PYTHON framework)<br>
+▪ MYSQL (Database)<br>
+▪ JAVASCRIPT
+
+
 
 # Authors
-- [Vladimir Davidov](https://github.com/v-dav)
-- [Benjamin Alazet](https://github.com/Yliaze)
-- [Hugo Castéras](https://github.com/hug0-cstrs)
+
+<h3>
+  <a href="https://github.com/v-dav">
+    <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Vladimir Davidov-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
+  </a>
+</h3>
+
+<h3>
+  <a href="https://github.com/Yliaze">
+    <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Benjamin Alazet-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
+  </a>
+</h3>
+
+<h3>
+  <a href="[https://github.com/v-dav](https://github.com/hug0-cstrs)">
+    <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Hugo Castéras-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
+  </a>
+</h3>
+
+<p align="right">Holberton School - TOULOUSE C19 Cohort JUNE. 2023
+</p>
