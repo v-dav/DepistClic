@@ -107,14 +107,16 @@
                 <p class="mb-6 max-w-2xl font-light text-white text-justify md:text-xl lg:text-2xl">
                     <span class="font-semibold">Sauvegardez ou imprimez</span> le rapport de conduite à tenir, pour le suivi dans le dossier médical et pour le remettre au patient.
                 </p> 
-                <!-- Print Button -->
-                <span class="bg-red-500 text-white text-xl font-bold py-3 px-5 mr-5 rounded-full shadow-md my-2">
-			Imprimer
-		</span>
-		<!-- PDF Button -->
-		<span class="bg-red-500 text-white text-xl font-bold py-3 px-5 mr-5 rounded-full shadow-md my-2">
-			Télécharger PDF
-		</span>
+                <div class="flex flex-col md:flex-row sm:items-start">
+                    <!-- Print Button -->
+                    <span class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 md:mr-5 rounded-full shadow-md my-2">
+                        Imprimer
+                    </span>
+                    <!-- PDF Button -->
+                    <span class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 rounded-full shadow-md my-2">
+                        Télécharger PDF
+                    </span>
+                </div>
                 <!-- Texte Smartphone -->
                 <p class="max-w-2xl font-light pt-4 lg:pt-16 text-white lg:mb-8 md:text-xl lg:text-2xl">
                     Adapté à l’utilisation sur <span class="font-semibold">smartphone</span> et <span class="font-semibold">tablette</span>.
@@ -132,27 +134,27 @@
         <div class="flex justify-evenly py-12 flex-col lg:flex-row mx-2">
                 <!-- Projet Button -->
                 <div class="flex flex-col">
-                <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
                     <a href="/project/">
-                        Projet <ion-icon name="pulse-outline"></ion-icon>
+                        <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
+                            Projet <ion-icon name="pulse-outline"></ion-icon>
+                        </button>
                     </a>
-                </button>
                 </div>
                 <!-- Start Button -->
                 <div class="flex flex-col">
-                <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
                     <a href="/questions/">
-                        Démarrer
+                        <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
+                            Démarrer
+                        </button>
                     </a>
-                </button>
                 </div>
                 <!-- Équipe Button -->
                 <div class="flex flex-col">
-                <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
-                    <a href="/equipe/">
+                <a href="/equipe/">
+                    <button class="bg-red-500 hover:bg-red-600 text-white text-2xl font-bold py-3 px-5 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
                         Équipe <ion-icon name="people-circle-outline"></ion-icon>
-                    </a>
-                </button>
+                    </button>
+                </a>
                 </div>
             </div>              
         </div>
