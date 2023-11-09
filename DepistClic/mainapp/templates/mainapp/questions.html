@@ -67,7 +67,7 @@
             <div class="flex flex-col lg:flex-row justify-between mx-2">
                 <!-- Précédent -->
                 <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
-                    <ion-icon name="arrow-undo" class="mr-2"></ion-icon>  Précédent
+                    	Précédent
                 </button>
                 <!-- Synthèse -->
                 <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-gray-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
@@ -77,7 +77,7 @@
                 </button>
                 <!-- Passer -->
                 <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="pass-btn" data-question-order="{{ question.order }}">
-                    Passer<ion-icon name="arrow-redo" class="ml-2"></ion-icon>
+                    Passer
                 </button>                
             </div>
     </article>
