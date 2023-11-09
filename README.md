@@ -1,3 +1,14 @@
+# Files
+| **File name** | **Folder name** | **Description** |
+|:--------|:-----------:|:-----------:|
+||Images|Folder containing the site's images|
+||templates|Folder containing all html files|
+|admin.py||File to configure application administration interface|
+|apps.py||General configuration file for the Depistclic application|
+|forms.py||File to define forms|
+
+
+
 <h2>
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=6000&weight=700&size=38&pause=2000&color=0096c7&center=true&vCenter=true&width=1320&height=45&lines=DEPISTCLIC+-+Helping+to+detect+complications+of+diabetes+2" alt="Typing SVG" />
 </h2><br>
@@ -16,6 +27,7 @@ Decision aid tool to help healthcare professionals screen for complications in p
 
 # objective of our web application : 
 Help French healthcare professionals make the right decisions, by providing them with an interactive, up-to-date, ergonomic and fast tool to help them decide and plan screening tests for diabetic patients, in order to improve their health.
+
 
 # Clone Repository
 ```
