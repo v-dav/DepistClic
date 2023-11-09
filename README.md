@@ -9,3 +9,9 @@ Decision aid tool to help healthcare professionals screen for complications in p
 ![5](https://github.com/v-dav/DepistClic/assets/115344057/867308a2-88bb-4a13-8398-849646fd8375)
 ![Why 1](https://github.com/v-dav/DepistClic/assets/115344057/83c66e0e-4673-4cc9-bc99-e9f3fc987955)
 ![Why 2](https://github.com/v-dav/DepistClic/assets/115344057/b658bfb7-b831-48d0-8f23-7addbfd3a86e)
+
+
+# Authors
+- [Vladimir Davidov](https://github.com/v-dav)
+- [Benjamin Alazet](https://github.com/Yliaze)
+- [Hugo Castéras](https://github.com/hug0-cstrs)
