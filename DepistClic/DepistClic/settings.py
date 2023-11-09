@@ -1,26 +1,60 @@
 
 from pathlib import Path
 import os
-import dj_database_url
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-# Production settings
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://depistclic.fr/', 'https://www.depistclic.fr/']
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# Prod settings
+if os.environ.get('DJANGO_ENV') == 'prod':
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+    DEBUG = os.environ.get('DJANGO_DEBUG')
+    ALLOWED_HOSTS = ["*"]
+    CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://depistclic.fr/', 'https://www.depistclic.fr/']
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('MYSQL_DATABASE'),
+        'USER': os.getenv('MYSQLUSER'),
+        'PASSWORD': os.getenv('MYSQLPASSWORD'),
+        'HOST': os.getenv('MYSQLHOST'),
+        'PORT': os.getenv('MYSQLPORT'),
+        }
+    }
+    # Media files
+    MEDIA_URL = "uploads/"
+    MEDIA_ROOT = os.environ["RAILWAY_VOLUME_MOUNT_PATH"]
+    
+    # Static files
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+# Dev settings
+else:
+    SECRET_KEY = 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87'
+    DEBUG = True
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    CSRF_TRUSTED_ORIGINS = []
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'vlad',
+        'PASSWORD': 'vlad',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        }
+    }
+    # Media files
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Application definition
 
@@ -76,26 +110,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DepistClic.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQLUSER'),
-        'PASSWORD': os.getenv('MYSQLPASSWORD'),
-        'HOST': os.getenv('MYSQLHOST'),
-        'PORT': os.getenv('MYSQLPORT'),
-    }
-}
-
-if 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=500,
-        conn_health_checks=True,
-    )
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -144,10 +158,6 @@ STORAGES = {
 }
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Media files
-MEDIA_URL = "uploads/"
-MEDIA_ROOT = os.environ["RAILWAY_VOLUME_MOUNT_PATH"]
 
