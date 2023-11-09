@@ -1,3 +1,4 @@
+/* PDF */
 @media print {
 	button, footer, nav {
 		display: none;
@@ -7,68 +8,64 @@
 	}
 }
 
-/* .h-custom-height {
-    height: 400px; 
-} */
+/* Share Button CSS */
+.buttonShare {
+	height: 4em;
+	width: 15em;
+	border: none;
+	border-radius: 40px;
+	background-color: #fff;
+  }
+  
+.buttonShare span {
+	z-index: 1;
+	display: inline-block;
+	background-color: black;
+	height: 3em;
+	width: 11.5em;
+	border-radius: 50px;
+	color: #fff;
+	line-height: 55px;
+	font-size: 18px;
+	letter-spacing: 3px;
+	transition: all 0.5s;
+  }
+  
+.buttonShare .container {
+	z-index: -1;
+	width: 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	transform: translateY(-50px);
+	transition: all 0.4s;
+  }
+  
+.buttonShare:hover span {
+	width: 0;
+  }
+  
+.buttonShare:hover .container {
+	z-index: 2;
+	width: 100%;
+  }
 
-/* body {
-    background-image: url('/static/images/TextureBlue.jpg');
-
-    background-repeat: repeat;
-} */
-
-/*
+/* 
+TEXTURE TEST
 
 body {
-	background-color: rgb(239, 204, 246);
-}
-
-.card-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: flex-start;
-}
-
-.card {
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	padding: 10px;
-	flex: 1;
-	/* Pour que chaque carte ait la même largeur
-	margin: 0 10px;
-	/* Espacement entre les cartes
-	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
-	background-color: white;
-}
-
-.card h1 {
-	font-size: 1.5rem;
-	text-align: center;
-}
-
-.card p {
-	font-size: 1rem;
-}
-
-.hide {
-	display: none;
-}
-
-
-article p {
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-article p :hover {
-	color: red;
-	cursor: pointer;
-}
-
-.test-info {
-	font-style: italic;
-	text-align: justify;
-}
-
-
-*/
+	position: relative;
+  }
+  
+  .paperOverlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-repeat: repeat;
+	background-image: url('Texture-Overlay0.jpg');
+	mix-blend-mode: multiply;
+	opacity: 0.10;
+	pointer-events: none;
+  } */
