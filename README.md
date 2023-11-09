@@ -42,15 +42,15 @@ $ git clone https://github.com/v-dav/DepistClic.git
 ▪ DJANGO (PYTHON framework)<br>
 ▪ MYSQL (Database)<br>
 ▪ JAVASCRIPT
+</details>
+
 
 # Authors
 <h3>
   <a href="https://github.com/v-dav">
     <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Vladimir Davidov-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
   </a>
-</h3>
-
-<h3>
+</h3> <h3>
   <a href="https://github.com/Yliaze">
     <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Benjamin Alazet-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
   </a>
