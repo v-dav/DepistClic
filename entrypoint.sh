@@ -14,8 +14,8 @@ envsubst < /etc/nginx/sites-available/depistclic > /etc/nginx/sites-available/de
 cat /etc/nginx/sites-available/depistclic
 
 ln -s /etc/nginx/sites-available/depistclic /etc/nginx/sites-enabled	
-nginx -t	
+nginx -t
+service nginx start	
+service nginx status	
 
 pipenv run gunicorn DepistClic.wsgi:application --bind 0.0.0.0:$PORT --access-logfile -
-service nginx start	
-service nginx status
