@@ -1,5 +1,5 @@
 upstream depistclic {
-    server web:8000;
+    server web:$PORT;
 }
 
 server {
@@ -17,6 +17,6 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /uploads/ {
-        alias /path/to/your/media/root/uploads/;
+        alias /app/DepistClic/uploads;
     }
 }
