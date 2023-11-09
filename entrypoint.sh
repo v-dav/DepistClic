@@ -11,6 +11,7 @@ pipenv run python manage.py migrate --no-input
 pipenv run python manage.py collectstatic --no-input
 
 envsubst < /etc/nginx/sites-available/depistclic > /etc/nginx/sites-available/depistclic
+cat /etc/nginx/sites-available/depistclic
 
 ln -s /etc/nginx/sites-available/depistclic /etc/nginx/sites-enabled	
 nginx -t	
