@@ -94,4 +94,25 @@ $(() => {
             }
         });
     });
+
+	// Facebook Icon click
+	$('#facebookIcon').on('click', function() {
+		// Share on Facebook
+		var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://Depistclic.fr');
+		window.open(url, '_blank');
+	});
+
+    // Twitter Icon click
+    $('#twitterIcon').on('click', function() {
+        // Share on Twitter
+        var tweetUrl = 'https://twitter.com/intent/tweet?text=Votre%20message%20à%20partager&url=https:Depistclic.fr';
+        window.open(tweetUrl, '_blank');
+    });
+
+    // LinkedIn Icon click
+    $('#linkedinIcon').on('click', function() {
+        // Share on LinkedIn
+        var linkedinUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=https://Depistclic.fr';
+        window.open(linkedinUrl, '_blank');
+    });
 });

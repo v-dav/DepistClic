@@ -27,7 +27,7 @@
     <article class="flex flex-col justify-between bg-white border border-gray-300 rounded text-center shadow-md p-4 lg:w-3/4 mx-5 lg:mx-10 sm:mt-4 lg:mt-28 lg:h-[450px]">
         <div class="mb-6 lg:h-[100px]">
                 <!-- Question title -->
-                <h1 class="font-bold text-3xl lg:text-3xl pt-4 pb-2" id="question_title">
+                <h1 class="font-bold text-2xl sm:text-3xl pt-4 pb-2" id="question_title">
                     {{ question.title }}
                 </h1>
                 <!-- blue line -->
@@ -42,9 +42,9 @@
                     {% for choice in form_bool.response.field.choices %}
                         <input type="radio" id="{{ choice.0 }}" name="response" value="{{ choice.0 }}" class="hidden">
                         {% if choice.0 %}
-                            <label for="{{ choice.0 }}" class="btn btn-primary bg-red-500 text-white hover:text-black p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-red-500 text-white hover:text-black p-2 rounded-full text-xl font-bold sm:py-3 sm:px-5 sm:mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
                         {% else %}
-                            <label for="{{ choice.0 }}" class="btn btn-primary bg-green-500 text-white hover:text-black  p-2 rounded-full text-xl font-bold py-3 px-5 mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
+                            <label for="{{ choice.0 }}" class="btn btn-primary bg-green-500 text-white hover:text-black  p-2 rounded-full text-xl font-bold sm:py-3 sm:px-5 sm:mx-5 cursor-pointer shadow-md">{{ choice.1 }}</label>
                         {% endif %}
                     {% endfor %}
                     <input type="hidden" name="question_order" value="{{ form_bool.question_order.value }}">
@@ -66,18 +66,18 @@
             <!-- button section -->
             <div class="flex flex-col lg:flex-row justify-between mx-2">
                 <!-- Précédent -->
-                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
-                    <ion-icon name="arrow-undo"></ion-icon>  Précédent
+                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
+                    <ion-icon name="arrow-undo" class="mr-2"></ion-icon>  Précédent
                 </button>
                 <!-- Synthèse -->
-                <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-gray-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+                <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-gray-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
                     <a href="/synthese/">
                         Synthèse
                     </a>
                 </button>
                 <!-- Passer -->
-                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1" id="pass-btn" data-question-order="{{ question.order }}">
-                    Passer  <ion-icon name="arrow-redo"></ion-icon>
+                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="pass-btn" data-question-order="{{ question.order }}">
+                    Passer<ion-icon name="arrow-redo" class="ml-2"></ion-icon>
                 </button>                
             </div>
     </article>

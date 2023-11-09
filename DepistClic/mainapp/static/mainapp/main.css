@@ -1,3 +1,4 @@
+/* PDF */
 @media print {
 	button, footer, nav {
 		display: none;
@@ -7,7 +8,52 @@
 	}
 }
 
-/* body {
+/* Share Button CSS */
+.buttonShare {
+	height: 4em;
+	width: 15em;
+	border: none;
+	border-radius: 40px;
+	background-color: #fff;
+  }
+  
+.buttonShare span {
+	z-index: 1;
+	display: inline-block;
+	background-color: black;
+	height: 3em;
+	width: 11.5em;
+	border-radius: 50px;
+	color: #fff;
+	line-height: 55px;
+	font-size: 18px;
+	letter-spacing: 3px;
+	transition: all 0.5s;
+  }
+  
+.buttonShare .container {
+	z-index: -1;
+	width: 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	transform: translateY(-50px);
+	transition: all 0.4s;
+  }
+  
+.buttonShare:hover span {
+	width: 0;
+  }
+  
+.buttonShare:hover .container {
+	z-index: 2;
+	width: 100%;
+  }
+
+/* 
+TEXTURE TEST
+
+body {
 	position: relative;
   }
   
