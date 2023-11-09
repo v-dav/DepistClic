@@ -1,5 +1,9 @@
-# DepistClic
+<h2>
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=6000&weight=700&size=38&pause=2000&color=0096c7&center=true&vCenter=true&width=1320&height=45&lines=DEPISTCLIC+-+Helping+to+detect+complications+of+diabetes+2" alt="Typing SVG" />
+</h2><br>
 Decision aid tool to help healthcare professionals screen for complications in patients affected by Diabetes Mellitus Type 2
+
+
 # Landing Page
 ![Graphic Design (1)](https://github.com/v-dav/DepistClic/assets/115344057/6e3caaca-c4d7-453e-93da-7d5df00e6496)
 ![Landing Page](https://github.com/v-dav/DepistClic/assets/115344057/15b9b6c2-1526-42b7-afe6-38ddb6529246)
@@ -12,6 +16,11 @@ Decision aid tool to help healthcare professionals screen for complications in p
 
 # objective of our web application : 
 Help French healthcare professionals make the right decisions, by providing them with an interactive, up-to-date, ergonomic and fast tool to help them decide and plan screening tests for diabetic patients, in order to improve their health.
+
+# Clone Repository
+```
+$ git clone https://github.com/v-dav/DepistClic.git
+```
 
 # Technologies
 ### Front-end :
@@ -34,10 +43,7 @@ Help French healthcare professionals make the right decisions, by providing them
 ▪ MYSQL (Database)<br>
 ▪ JAVASCRIPT
 
-
-
 # Authors
-
 <h3>
   <a href="https://github.com/v-dav">
     <img alt="Anurag Hazra | CodeSandbox" height="40px" src="https://img.shields.io/badge/Vladimir Davidov-4A6552?style=for-the-badge&logo=github&color=0096c7&logoColor=white"/>
