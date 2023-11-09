@@ -1,10 +1,7 @@
 FROM python:3.10.12
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-
 WORKDIR /app
+
 COPY Pipfile Pipfile.lock ./
 
 
@@ -13,9 +10,8 @@ RUN apt-get -y install python3-pip python3-cffi python3-brotli libpango-1.0-0 li
 RUN python -m pip install --upgrade pip
 
 RUN python -m pip install pipenv
-RUN pipenv install --deploy --system
-RUN python -m pip install gunicorn
-RUN python -m pip install whitenoise
+RUN pipenv install --deploy --ignore-pipfile
+
 
 COPY . ./
 
