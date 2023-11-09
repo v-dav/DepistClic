@@ -96,6 +96,14 @@
 								<form action="{% static 'Images/Podologue.pdf' %}" method="get" class="inline" target="_blank">
 									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
 								</form>
+							{% elif screening_test.id == 12 %}
+								<form action="{% static 'Images/B12.pdf' %}" method="get" class="inline" target="_blank">
+									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
+								</form>
+							{% elif screening_test.id == 6 or screening_test.id == 4 or screening_test.id == 11 %}
+								<form action="{% static 'Images/Bilan_annuel.pdf' %}" method="get" class="inline" target="_blank">
+									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
+								</form>
 							{% endif %}
 						{% endif %}
 					</div>
