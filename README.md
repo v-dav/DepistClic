@@ -104,5 +104,5 @@ Made with :heart: and :muscle: by :
   </a>
 </h3>
 
-<p align="right">Holberton School - TOULOUSE C19 Cohort JUNE. 2023
+<p align="right">Holberton School - TOULOUSE C20 Cohort JUNE. 2023
 </p>
