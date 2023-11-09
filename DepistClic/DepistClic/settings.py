@@ -134,6 +134,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Static files (CSS, JavaScript, Images)
 
+STORAGES = {	
+    "default": {	
+        "BACKEND": "django.core.files.storage.FileSystemStorage",	
+    },	
+    "staticfiles": {	
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",	
+    },	
+}
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
