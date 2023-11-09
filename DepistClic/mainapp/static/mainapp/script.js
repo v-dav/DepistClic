@@ -68,23 +68,51 @@ $(() => {
 		}
 	});
 
-	// Stores the state of the menu
-	let isMenuOpen = false;
+	// Hide form when submit
+    $('#comment-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
 
-	// Toggle the visibility of the menu on menu button click
-	$("#menu-toggle").click(() => {
-			if (isMenuOpen) {
-					$("#menu").addClass("hidden");
-			} else {
-					$("#menu").removeClass("hidden");
-			}
-			isMenuOpen = !isMenuOpen;
+        // Get comment
+        const commentArea = $('#id_comment_area').val();
+
+        // Send data
+        $.ajax({
+            type: 'POST',
+            url: '/comment/',
+            data: {
+                comment_area: commentArea,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                // Display success message
+                $('#comment-form').addClass('hidden');
+                $('#success-message').removeClass('hidden');
+            },
+            error: function(error) {
+                // Erro handeling
+                console.error('Erreur lors de l\'envoi du commentaire :', error);
+            }
+        });
+    });
+
+	// Facebook Icon click
+	$('#facebookIcon').on('click', function() {
+		// Share on Facebook
+		var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://Depistclic.fr');
+		window.open(url, '_blank');
 	});
 
-	// Handle clicks on menu items
-	$("#menu").click(() => {
-			// Close the menu when a menu item is clicked
-			$("#menu").addClass("hidden");
-			isMenuOpen = false;
-	});
+    // Twitter Icon click
+    $('#twitterIcon').on('click', function() {
+        // Share on Twitter
+        var tweetUrl = 'https://twitter.com/intent/tweet?text=Votre%20message%20à%20partager&url=https:Depistclic.fr';
+        window.open(tweetUrl, '_blank');
+    });
+
+    // LinkedIn Icon click
+    $('#linkedinIcon').on('click', function() {
+        // Share on LinkedIn
+        var linkedinUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=https://Depistclic.fr';
+        window.open(linkedinUrl, '_blank');
+    });
 });

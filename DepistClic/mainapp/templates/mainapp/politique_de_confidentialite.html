@@ -1,65 +1,90 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-	<div class="text-justify">
-		<h1 class="mt-20 text-6xl font-bold text-white">Politique de confidentialité</h1>
-		<br>
-		<h2 class="text-2xl font-bold text-white">ARTICLE 1 : PRÉAMBULE</h2>
-		<br>
-		<p>La présente politique de confidentialité a pour but d’informer les utilisateurs du site: </p>
-		<br>
-		<ul class="list-disc list-inside">
-			<li>Sur la manière dont sont collectées leurs données personnelles. Sont considérées comme des données personnelles, toute information permettant d’identifier un utilisateur. À ce titre, il peut s’agir : de ses noms et prénoms, de son âge, de son adresse postale ou email, de sa localisation ou encore de son adresse IP (liste non-exhaustive) ;</li>
-			<li>Sur les droits dont ils disposent concernant ces données ;</li>
-			<li>Sur la personne responsable du traitement des données à caractère personnel collectées et traitées ;</li>
-			<li>Sur les destinataires de ces données personnelles ;</li>
-			<li>Sur la politique du site en matière de cookies.</li>
-		</ul>
-		<br>
-		<p>Cette politique complète les <u><a href="/mentions/">mentions légales</a></u> et la <u><a href="/cookies/">politique des cookies</a></u> consultables sur le site.</p>
-		<br>
-		<h2 class="text-2xl font-bold text-white">ARTICLE 2 : PRINCIPES RELATIFS À LA COLLECTE ET AU TRAITEMENT DES DONNÉES PERSONNELLES</h2>
-		<br>
-		<p>Conformément à l’article 5 du Règlement européen 2016/679, les données à caractère personnel sont :</p>
-		<br>
-		<ul class="list-disc list-inside">
-			<li>Traitées de manière licite, loyale et transparente au regard de la personne concernée</li>
-			<li>Collectées pour des finalités déterminées (cf. Article 3.1 des présentes), explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités</li>
-			<li>Adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées</li>
-			<li>Exactes et, si nécessaire, tenues à jour. Toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder</li>
-			<li>Conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées</li>
-			<li>Traitées de façon à garantir une sécurité appropriée des données collectées, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées</li>
-		    </ul>
-		<br>
-		<p>Le traitement n'est licite que si, et dans la mesure où, au moins une des conditions suivantes est remplie :</p>
-		<br>
-		<ul class="list-disc list-inside">
-			<li>La personne concernée a consenti au traitement de ses données à caractère personnel pour une ou plusieurs finalités spécifiques</li>
-			<li>Le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie ou à l'exécution de mesures précontractuelles prises à la demande de celle-ci</li>
-			<li>Le traitement est nécessaire au respect d'une obligation légale à laquelle le responsable du traitement est soumis</li>
-			<li>Le traitement est nécessaire à la sauvegarde des intérêts vitaux de la personne concernée ou d'une autre personne physique</li>
-			<li>Le traitement est nécessaire à l'exécution d'une mission d'intérêt public ou relevant de l'exercice de l'autorité publique dont est investi le responsable du traitement</li>
-			<li>Le traitement est nécessaire aux fins des intérêts légitimes poursuivis par le responsable du traitement ou par un tiers, à moins que ne prévalent les intérêts ou les libertés et droits fondamentaux de la personne concernée qui exigent une protection des données à caractère personnel, notamment lorsque la personne concernée est un enfant</li>
-		    </ul>
-		<br>
-		<h2 class="text-2xl font-bold text-white">ARTICLE 3 : DONNÉES À CARACTÈRE PERSONNEL COLLECTÉES ET TRAITÉES DANS LE CADRE DE LA NAVIGATION SUR LE SITE </h2>
-		<br>
-		<p>DepistClic ne collecte aucune donnée personnelle de ses utilisateurs. Notre application ne demande pas, ne stocke pas et ne traite pas d'informations d'identification personnelles telles que les noms, les adresses, les numéros de téléphone ou les adresses électroniques. Il est conforme aux RGPD.</p>
-		<br>
-		<p>Nous utilisons des cookies strictement nécessaires pour assurer le bon fonctionnement de l'application. Ces cookies ne contiennent aucune information personnelle et sont utilisés uniquement à des fins techniques.</p>
-		<br>
-		<p>Nous ne partageons aucune donnée de nos utilisateurs avec des tiers. Aucune information personnelle n'est transmise ou vendue à des entités extérieures.</p>
-		<br>
-		<p>Nous mettons en place des mesures de sécurité techniques et organisationnelles appropriées pour protéger les données, bien que nous ne collections pas de données personnelles. La sécurité de nos utilisateurs est une priorité.</p>
-		<br>
-		<h2 class="text-2xl font-bold text-white">ARTICLE 4 : CONDITIONS DE MODIFICATION DE LA POLITIQUE DE CONFIDENTIALITÉ </h2>
-		<br>
-		<p>L’Editeur du Site se réserve le droit de pouvoir modifier la présente Politique à tout moment afin d’assurer aux Utilisateurs sa conformité avec le droit en vigueur.  
-			Les éventuelles modifications ne sauraient avoir d’incidence sur les usages antérieurs sur le Site, lesquels restent soumis à la Politique en vigueur au moment de l’usage et telle qu’acceptée par l’utilisateur lors de l'usage.  
-			L’utilisateur est invité à prendre connaissance de cette Politique à chaque fois qu’il utilise nos services, sans qu’il soit nécessaire de l’en prévenir formellement.  
-			La présente politique est éditée le 01 novembre 2023.</p>
-		<br>
-		<p>Si vous avez des questions concernant notre Politique de Confidentialité ou si vous avez besoin de plus d'informations, veuillez nous contacter sur la page de <u><a href="/comment/">contact</a></u>.</p>
-		<br>
-	</div>
+<!-- Card -->
+<section class="flex justify-center items-center">
+	<article class="bg-white border border-gray-300 rounded shadow-md py-10 px-4 md:px-24 mt-20 mb-4 w-5/6 h-auto">
+		<div class="text-left lg:text-justify">
+			<h1 class="text-3xl md:text-6xl font-bold text-black mb-4 text-center">
+				Politique de confidentialité <ion-icon name="shield-checkmark-outline"></ion-icon>
+			</h1>
+			<!-- Red line -->
+        	<div class="mt-1 mb-2 border-b-4 border-red-500 rounded"></div>
+			<br>
+			<h2 class="text-basic md:text-3xl font-bold text-black">
+				ARTICLE 1 : PRÉAMBULE
+			</h2>
+			<!-- Blue line -->
+        	<div class="mt-2 border-b-4 border-blue-200 rounded w-1/4"></div>
+			<br>
+			<p>La présente politique de confidentialité a pour but d’informer les utilisateurs du site: </p>
+			<br>
+			<ul class="list-disc list-inside">
+				<li class="text-red-500"><span class="text-black">Sur la manière dont sont collectées leurs données personnelles. Sont considérées comme des données personnelles, toute information permettant d’identifier un utilisateur. À ce titre, il peut s’agir : de ses noms et prénoms, de son âge, de son adresse postale ou email, de sa localisation ou encore de son adresse IP (liste non-exhaustive) ;<span></li>
+				<li class="text-red-500"><span class="text-black">Sur les droits dont ils disposent concernant ces données ;</span></li>
+				<li class="text-red-500"><span class="text-black">Sur la personne responsable du traitement des données à caractère personnel collectées et traitées ;</span></li>
+				<li class="text-red-500"><span class="text-black">Sur les destinataires de ces données personnelles ;</span></li>
+				<li class="text-red-500"><span class="text-black">Sur la politique du site en matière de cookies.</span></li>
+			</ul>
+			<br>
+			<p>Cette politique complète les <u><a href="/mentions/" class="hover:text-blue-300">mentions légales</a></u> et la <u><a href="/cookies/" class="hover:text-blue-300">politique des cookies</a></u> consultables sur le site.</p>
+			<br>
+			<h2 class="text-basic md:text-3xl font-bold text-black">
+				ARTICLE 2 : PRINCIPES RELATIFS À LA COLLECTE ET AU TRAITEMENT DES DONNÉES PERSONNELLES
+			</h2>
+			<!-- Blue line -->
+        	<div class="mt-2 border-b-4 border-blue-200 rounded w-1/4"></div>
+			<br>
+			<p>Conformément à l’article 5 du Règlement européen 2016/679, les données à caractère personnel sont :</p>
+			<br>
+			<ul class="list-disc list-inside">
+				<li class="text-red-500"><span class="text-black">Traitées de manière licite, loyale et transparente au regard de la personne concernée</span></li>
+				<li class="text-red-500"><span class="text-black">Collectées pour des finalités déterminées (cf. Article 3.1 des présentes), explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités</span></li>
+				<li class="text-red-500"><span class="text-black">Adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées</span></li>
+				<li class="text-red-500"><span class="text-black">Exactes et, si nécessaire, tenues à jour. Toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder</span></li>
+				<li class="text-red-500"><span class="text-black">Conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées</span></li>
+				<li class="text-red-500"><span class="text-black">Traitées de façon à garantir une sécurité appropriée des données collectées, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées</span></li>
+			</ul>
+			<br>
+			<p>Le traitement n'est licite que si, et dans la mesure où, au moins une des conditions suivantes est remplie :</p>
+			<br>
+			<ul class="list-disc list-inside">
+				<li class="text-red-500"><span class="text-black">La personne concernée a consenti au traitement de ses données à caractère personnel pour une ou plusieurs finalités spécifiques</span></li>
+				<li class="text-red-500"><span class="text-black">Le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie ou à l'exécution de mesures précontractuelles prises à la demande de celle-ci</span></li>
+				<li class="text-red-500"><span class="text-black">Le traitement est nécessaire au respect d'une obligation légale à laquelle le responsable du traitement est soumis</span></li>
+				<li class="text-red-500"><span class="text-black">Le traitement est nécessaire à la sauvegarde des intérêts vitaux de la personne concernée ou d'une autre personne physique</span></li>
+				<li class="text-red-500"><span class="text-black">Le traitement est nécessaire à l'exécution d'une mission d'intérêt public ou relevant de l'exercice de l'autorité publique dont est investi le responsable du traitement</span></li>
+				<li class="text-red-500"><span class="text-black">Le traitement est nécessaire aux fins des intérêts légitimes poursuivis par le responsable du traitement ou par un tiers, à moins que ne prévalent les intérêts ou les libertés et droits fondamentaux de la personne concernée qui exigent une protection des données à caractère personnel, notamment lorsque la personne concernée est un enfant</span></li>
+				</ul>
+			<br>
+			<h2 class="text-basic md:text-3xl font-bold text-black">
+				ARTICLE 3 : DONNÉES À CARACTÈRE PERSONNEL COLLECTÉES ET TRAITÉES DANS LE CADRE DE LA NAVIGATION SUR LE SITE </h2>
+			<!-- Blue line -->
+        	<div class="mt-2 border-b-4 border-blue-200 rounded w-1/4"></div>
+			<br>
+			<p>DepistClic ne collecte aucune donnée personnelle de ses utilisateurs. Notre application ne demande pas, ne stocke pas et ne traite pas d'informations d'identification personnelles telles que les noms, les adresses, les numéros de téléphone ou les adresses électroniques. Il est conforme aux RGPD.</p>
+			<br>
+			<p>Nous utilisons des cookies strictement nécessaires pour assurer le bon fonctionnement de l'application. Ces cookies ne contiennent aucune information personnelle et sont utilisés uniquement à des fins techniques.</p>
+			<br>
+			<p>Nous ne partageons aucune donnée de nos utilisateurs avec des tiers. Aucune information personnelle n'est transmise ou vendue à des entités extérieures.</p>
+			<br>
+			<p>Nous mettons en place des mesures de sécurité techniques et organisationnelles appropriées pour protéger les données, bien que nous ne collections pas de données personnelles. La sécurité de nos utilisateurs est une priorité.</p>
+			<br>
+			<h2 class="text-basic md:text-3xl font-bold text-black">
+				ARTICLE 4 : CONDITIONS DE MODIFICATION DE LA POLITIQUE DE CONFIDENTIALITÉ
+			</h2>
+			<!-- Blue line -->
+        	<div class="mt-2 border-b-4 border-blue-200 rounded w-1/4"></div>
+			<br>
+			<p>L’Editeur du Site se réserve le droit de pouvoir modifier la présente Politique à tout moment afin d’assurer aux Utilisateurs sa conformité avec le droit en vigueur.  
+				Les éventuelles modifications ne sauraient avoir d’incidence sur les usages antérieurs sur le Site, lesquels restent soumis à la Politique en vigueur au moment de l’usage et telle qu’acceptée par l’utilisateur lors de l'usage.  
+				L’utilisateur est invité à prendre connaissance de cette Politique à chaque fois qu’il utilise nos services, sans qu’il soit nécessaire de l’en prévenir formellement.  
+				La présente politique est éditée le 01 novembre 2023.</p>
+			<br>
+			<p>Si vous avez des questions concernant notre Politique de Confidentialité ou si vous avez besoin de plus d'informations, veuillez nous contacter sur la page de <u><a href="/comment/" class="hover:text-blue-300">contact</a></u>.</p>
+			<br>
+		</div>
+	</article>
+</section>
+
 {% endblock content %}
