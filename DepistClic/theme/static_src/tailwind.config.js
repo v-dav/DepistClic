@@ -46,6 +46,9 @@ module.exports = {
             colors: {
                 'light-blue': '#b0cee3',
                 'dark-blue': '#a4c7de'
+            },
+            backgroundImage: {
+                'Texture': "url('/static/Images/Texture-Overlay.jpg')"
             }
         },
     },

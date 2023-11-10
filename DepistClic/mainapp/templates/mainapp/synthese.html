@@ -2,282 +2,284 @@
 {% load static %}
 
 {% block content %}
-<section class="flex pt-20">
-		<h1 id="synthese-title" class="text-6xl font-bold text-white pl-2 pb-4">
-			Synthèse
-		</h1>
-</section>
+<section class="bg-light-blue bg-Texture bg-blend-multiply bg-cover bg-center px-4">
+	<section class="flex pt-24">
+			<h1 id="synthese-title" class="text-6xl font-bold text-white pl-2 pb-4">
+				Synthèse
+			</h1>
+	</section>
 
-<!-- cards section -->
-<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
-	<!-- card patient -->
-	<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-2 mt-4 h-auto">
-		<h1 class="text-2xl font-bold">
-			Mon patient
-		</h1>
-		<!-- Red line -->
-		<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-3/4"></div>
-		{% if previous_answers %}
-			{% for answer in previous_answers %}
-				<li class="list-inside text-red-500">
-					<span class="text-black">
-						{{ answer }}
-					</span>	
-				</li>
+	<!-- cards section -->
+	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
+		<!-- card patient -->
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/4 mx-2 mt-4 h-auto">
+			<h1 class="text-2xl font-bold">
+				Mon patient
+			</h1>
+			<!-- Red line -->
+			<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-3/4"></div>
+			{% if previous_answers %}
+				{% for answer in previous_answers %}
+					<li class="list-inside text-red-500">
+						<span class="text-black">
+							{{ answer }}
+						</span>	
+					</li>
+				{% endfor %}
+			{% else %}
+				<p class="text-black text-justify">
+					Vous n'avez répondu à aucune question du questionnaire.
+					La conduite à tenir affichée est proposée systématiquement à tout patient porteur du diabète de type 2.
+				</p>
+			{% endif %}
+		</article>
+
+		<!-- card annual -->
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-3/4 mx-2 mt-4 h-auto">
+			<h1 class="text-2xl font-bold">
+				Examens annuels
+			</h1>
+			<!-- Blue line -->
+			<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+			<!-- screening tests -->
+			{% for screening_test in annual_tests %}
+				<p class="font-normal py-2">
+					{{ screening_test.title }}
+					<!-- icon info i -->
+					{% if screening_test.info or screening_test.image %}
+						<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+							&#9432;
+						</span>
+					{% endif %}
+				</p>
+				<hr>
+				<!-- Modal -->
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-2xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+						<!-- card informations -->
+						<h2 class="text-xl font-semibold">
+							{{ screening_test.title }}
+						</h2>
+						<!-- Blue line -->
+						<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
+						{% if screening_test.image and screening_test.id == 19 %}
+							<img src="{% static 'Images/Grade_podologique.png' %}" alt="Grade podologique">
+						{% endif %}
+						<p class="font-normal mb-1 text-justify">
+							{{ screening_test.info }}
+						</p>
+						{% if screening_test.sources %}
+							<!-- Sources -->
+							<h4 class="text-base font-bold mb-2">
+								Sources
+							</h4>
+							<!-- Red line -->
+							<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+							<!-- Sources list -->
+							<ul>
+								{% for source_link in screening_test.sources %}
+								<li class="font-light hover:text-blue-500">
+									<a href="{{ source_link.link }}" target="_blank">
+										{{ source_link.text }}
+									</a>
+								</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+						<div class="">
+							<!-- Close Button -->
+							<button class="modal-close mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
+								Fermer
+							</button>
+							<!-- Ordonnance Button -->
+							{% if screening_test.ordo %}
+								{% if screening_test.id == 19 %}
+									<form action="{% static 'Images/Podologue.pdf' %}" method="get" class="inline" target="_blank">
+										<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
+									</form>
+								{% elif screening_test.id == 30 %}
+									<form action="{% static 'Images/B12.pdf' %}" method="get" class="inline" target="_blank">
+										<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
+									</form>
+								{% elif screening_test.id == 6 or screening_test.id == 4 or screening_test.id == 11 %}
+									<form action="{% static 'Images/Bilan_annuel.pdf' %}" method="get" class="inline" target="_blank">
+										<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
+									</form>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
 			{% endfor %}
-		{% else %}
-			<p class="text-black text-justify">
-				Vous n'avez répondu à aucune question du questionnaire.
-				La conduite à tenir affichée est proposée systématiquement à tout patient porteur du diabète de type 2.
-			</p>
-		{% endif %}
-	</article>
+		</article>
+	</section>
 
-	<!-- card annual -->
-	<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-3/4 mx-2 mt-4 h-auto">
-		<h1 class="text-2xl font-bold">
-			Examens annuels
-		</h1>
-		<!-- Blue line -->
-		<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
-		<!-- screening tests -->
-		{% for screening_test in annual_tests %}
-			<p class="font-normal py-2">
-				{{ screening_test.title }}
-				<!-- icon info i -->
-				{% if screening_test.info or screening_test.image %}
-					<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
-						&#9432;
-					</span>
-				{% endif %}
+	<!-- cards section 2 -->
+	<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
+		<!-- card oriented -->
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
+			<h1 class="text-2xl font-bold">
+				Bilan orienté
+			</h1>
+			<!-- Blue line -->
+			<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+			<!-- screening tests -->
+			{% if conditional_specialist_tests %}
+				{% for screening_test in conditional_specialist_tests %}
+				<p class="font-normal py-2">
+					{{ screening_test.title }}
+					<!-- icon info i -->
+					{% if screening_test.info or screening_test.image %}
+						<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+							&#9432;
+						</span>
+					{% endif %}
+				</p>
+				<hr>
+				<!-- Modal -->
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-3xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+						<!-- Card informations -->
+						<h2 class="text-xl font-semibold">
+							{{ screening_test.title }}
+						</h2>
+						<!-- Blue line -->
+						<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
+						{% if screening_test.image %}
+							<img src="{{ screening_test.image.url }}">
+						{% endif %}
+						<p class="font-normal mb-1 text-justify">
+							{{ screening_test.info }}
+						</p>
+						{% if screening_test.sources %}
+							<!-- Sources -->
+							<h4 class="text-base font-bold mb-2">
+								Sources
+							</h4>
+							<!-- Red line -->
+							<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+							<!-- Sources list -->
+							<ul>
+								{% for source_link in screening_test.sources %}
+								<li class="font-light hover:text-blue-500">
+									<a href="{{ source_link.link }}" target="_blank">
+										{{ source_link.text }}
+									</a>
+								</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+						<!-- Close Button -->
+						<button class="modal-close mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
+							Fermer
+						</button>
+					</div>
+				</div>
+				{% endfor %}
+			{% else %}
+			<p class="text-black text-justify">
+				Au vu des informations fournies aucun bilan orienté ne peut être suggéré.
 			</p>
-			<hr>
-			<!-- Modal -->
-			<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
-				<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-2xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
-					<!-- card informations -->
-					<h2 class="text-xl font-semibold">
-						{{ screening_test.title }}
-					</h2>
-					<!-- Blue line -->
-					<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
-					{% if screening_test.image and screening_test.id == 19 %}
-						<img src="{% static 'Images/Grade_podologique.png' %}" alt="Grade podologique">
+			{% endif %}
+		</article>
+
+		<!-- card important -->
+		<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
+			<h1 class="text-2xl font-bold">
+				Rappels importants
+			</h1>
+			<!-- Blue line -->
+			<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
+			<!-- screening tests -->
+			{% for screening_test in reminders %}
+				<p class="font-normal py-2">
+					{{ screening_test.title }}
+					<!-- icon info i -->
+					{% if screening_test.info or screening_test.image %}
+						<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
+							&#9432;
+						</span>
 					{% endif %}
-					<p class="font-normal mb-1 text-justify">
-						{{ screening_test.info }}
-					</p>
-					{% if screening_test.sources %}
-						<!-- Sources -->
-						<h4 class="text-base font-bold mb-2">
-							Sources
-						</h4>
-						<!-- Red line -->
-						<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
-						<!-- Sources list -->
-						<ul>
-							{% for source_link in screening_test.sources %}
-							<li class="font-light hover:text-blue-500">
-								<a href="{{ source_link.link }}" target="_blank">
-									{{ source_link.text }}
-								</a>
-							</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					<div class="">
+				</p>
+				<hr>
+				<!-- Modal -->
+				<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
+					<div class="modal-content bg-white p-8 m-8 rounded-t rounded-r shadow-lg max-w-4xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
+						<!-- Card informations -->
+						<h2 class="text-xl font-semibold">
+							{{ screening_test.title }}
+						</h2>
+						<!-- Blue line -->
+						<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
+						{% if screening_test.image %}
+							{% if screening_test.id == 28 %}
+								<img src="{% static 'Images/Cibles_hemoglobine_glyquee.png' %}" alt="HbA1c">
+							{% elif screening_test.id == 27 %}
+								<img src="{% static 'Images/Suivi_specialise.png' %}" alt="Suivi">
+							{% endif %}
+						{% endif %}
+						<p class="font-normal mb-1 text-justify">
+							{{ screening_test.info }}
+						</p>
+						{% if screening_test.sources %}
+							<!-- Sources -->
+							<h4 class="text-base font-bold mb-2">
+								Sources
+							</h4>
+							<!-- Red line -->
+							<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
+							<!-- Sources list -->
+							<ul>
+								{% for source_link in screening_test.sources %}
+									<li class="font-light hover:text-blue-500">
+										<a href="{{ source_link.link }}" target="_blank">
+											{{ source_link.text }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
 						<!-- Close Button -->
 						<button class="modal-close mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
 							Fermer
 						</button>
 						<!-- Ordonnance Button -->
 						{% if screening_test.ordo %}
-							{% if screening_test.id == 19 %}
-								<form action="{% static 'Images/Podologue.pdf' %}" method="get" class="inline" target="_blank">
-									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
-								</form>
-							{% elif screening_test.id == 30 %}
-								<form action="{% static 'Images/B12.pdf' %}" method="get" class="inline" target="_blank">
-									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
-								</form>
-							{% elif screening_test.id == 6 or screening_test.id == 4 or screening_test.id == 11 %}
-								<form action="{% static 'Images/Bilan_annuel.pdf' %}" method="get" class="inline" target="_blank">
+							{% if screening_test.id == 10 %}
+								<form action="{% static 'Images/HbA1c.pdf' %}" method="get" class="inline" target="_blank">
 									<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
 								</form>
 							{% endif %}
 						{% endif %}
 					</div>
 				</div>
-			</div>
-		{% endfor %}
-	</article>
-</section>
-
-<!-- cards section 2 -->
-<section class="sm:flex sm:flex-col md:flex-col lg:flex-row xl:flex-row justify-center">
-	<!-- card oriented -->
-	<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
-		<h1 class="text-2xl font-bold">
-			Bilan orienté
-		</h1>
-		<!-- Blue line -->
-		<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
-		<!-- screening tests -->
-		{% if conditional_specialist_tests %}
-			{% for screening_test in conditional_specialist_tests %}
-			<p class="font-normal py-2">
-				{{ screening_test.title }}
-				<!-- icon info i -->
-				{% if screening_test.info or screening_test.image %}
-					<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
-						&#9432;
-					</span>
-				{% endif %}
-			</p>
-			<hr>
-			<!-- Modal -->
-			<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
-				<div class="modal-content bg-white p-8 mx-8 rounded-t rounded-r shadow-lg max-w-3xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
-					<!-- Card informations -->
-					<h2 class="text-xl font-semibold">
-						{{ screening_test.title }}
-					</h2>
-					<!-- Blue line -->
-					<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
-					{% if screening_test.image %}
-						<img src="{{ screening_test.image.url }}">
-					{% endif %}
-					<p class="font-normal mb-1 text-justify">
-						{{ screening_test.info }}
-					</p>
-					{% if screening_test.sources %}
-						<!-- Sources -->
-						<h4 class="text-base font-bold mb-2">
-							Sources
-						</h4>
-						<!-- Red line -->
-						<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
-						<!-- Sources list -->
-						<ul>
-							{% for source_link in screening_test.sources %}
-							<li class="font-light hover:text-blue-500">
-								<a href="{{ source_link.link }}" target="_blank">
-									{{ source_link.text }}
-								</a>
-							</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					<!-- Close Button -->
-					<button class="modal-close mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
-						Fermer
-					</button>
-				</div>
-			</div>
 			{% endfor %}
-		{% else %}
-		<p class="text-black text-justify">
-			Au vu des informations fournies aucun bilan orienté ne peut être suggéré.
-		</p>
-		{% endif %}
-	</article>
+		</article>
+	</section>
 
-	<!-- card important -->
-	<article class="bg-white border border-gray-300 rounded shadow-md p-4 lg:w-1/2 mx-2 mt-4 h-auto">
-		<h1 class="text-2xl font-bold">
-			Rappels importants
-		</h1>
-		<!-- Blue line -->
-		<div class="mt-1 mb-2 border-b-4 border-blue-200 rounded w-3/4"></div>
-		<!-- screening tests -->
-		{% for screening_test in reminders %}
-			<p class="font-normal py-2">
-				{{ screening_test.title }}
-				<!-- icon info i -->
-				{% if screening_test.info or screening_test.image %}
-					<span class="info-icon cursor-pointer font-bold text-red-500" data-modal-toggle="modal-{{ screening_test.id }}" title="Cliquez pour plus d'informations">
-						&#9432;
-					</span>
-				{% endif %}
-			</p>
-			<hr>
-			<!-- Modal -->
-			<div id="modal-{{ screening_test.id }}" class="modal fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden z-50">
-				<div class="modal-content bg-white p-8 m-8 rounded-t rounded-r shadow-lg max-w-4xl max-h-screen overflow-y-auto border-red-200 border-b-8 border-l-8 border-t-2 border-r-2">
-					<!-- Card informations -->
-					<h2 class="text-xl font-semibold">
-						{{ screening_test.title }}
-					</h2>
-					<!-- Blue line -->
-					<div class="mt-2 mb-2 border-b-4 border-blue-200 rounded w-1/3"></div>
-					{% if screening_test.image %}
-						{% if screening_test.id == 28 %}
-							<img src="{% static 'Images/Cibles_hemoglobine_glyquee.png' %}" alt="HbA1c">
-						{% elif screening_test.id == 27 %}
-							<img src="{% static 'Images/Suivi_specialise.png' %}" alt="Suivi">
-						{% endif %}
-					{% endif %}
-					<p class="font-normal mb-1 text-justify">
-						{{ screening_test.info }}
-					</p>
-					{% if screening_test.sources %}
-						<!-- Sources -->
-						<h4 class="text-base font-bold mb-2">
-							Sources
-						</h4>
-						<!-- Red line -->
-						<div class="mt-1 mb-2 border-b-4 border-red-500 rounded w-1/4"></div>
-						<!-- Sources list -->
-						<ul>
-							{% for source_link in screening_test.sources %}
-								<li class="font-light hover:text-blue-500">
-									<a href="{{ source_link.link }}" target="_blank">
-										{{ source_link.text }}
-									</a>
-								</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					<!-- Close Button -->
-					<button class="modal-close mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">
-						Fermer
-					</button>
-					<!-- Ordonnance Button -->
-					{% if screening_test.ordo %}
-						{% if screening_test.id == 10 %}
-							<form action="{% static 'Images/HbA1c.pdf' %}" method="get" class="inline" target="_blank">
-								<button class="mt-4 bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg">Ordonnance</button>
-							</form>
-						{% endif %}
-					{% endif %}
-				</div>
-			</div>
-		{% endfor %}
-	</article>
+	<!-- Button Section -->
+	<div class="flex flex-col lg:flex-row justify-end py-4 mx-2">
+		<!-- Home Button -->
+		<button id="home-btn" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			Accueil
+		</button>
+		<!-- PDF Button -->
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			<a href="/pdf/">
+				Télécharger PDF
+			</a>
+		</button>
+		<!-- Print Button -->
+		<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
+			Imprimer
+		</button>
+		<!-- Avis Button -->
+		<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
+			<a href="/comment/">
+				Donnez-nous votre avis
+			</a>
+		</button>
+	</div>
 </section>
-
-<!-- Button Section -->
-<div class="flex flex-col lg:flex-row justify-end my-4 mx-2">
-	<!-- Home Button -->
-	<button id="home-btn" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
-		Accueil
-	</button>
-	<!-- PDF Button -->
-	<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
-		<a href="/pdf/">
-			Télécharger PDF
-		</a>
-	</button>
-	<!-- Print Button -->
-	<button onclick="javascript:window.print()" class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 lg:mr-4 transform transition-transform hover:-translate-y-1">
-		Imprimer
-	</button>
-	<!-- Avis Button -->
-	<button class="bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
-		<a href="/comment/">
-			Donnez-nous votre avis
-		</a>
-	</button>
-</div>
 
 {% endblock content %}
