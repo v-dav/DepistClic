@@ -5,7 +5,7 @@ from .models import Comment
 
 class AnswerBinary(forms.Form):
     RESPONSE_CHOICES = [
-        (True, 'Oui'),
+        (True, 'Oui '),
         (False, 'Non'),
     ]
 
