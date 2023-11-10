@@ -18,10 +18,10 @@ The following tools were used in this project:
     <summary>
         <b>Click to see more</b>
     </summary>
-▪ HTML<br>
-▪ CSS<br>
-▪ TAILWIND (CSS framework)<br>
-▪ JAVASCRIPT
+<img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge"/> <br>
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" alt="HTML badge"/> <br>
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TAILWIND badge"/> <br>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JAVASCRIPT badge"/>
 </details>
 
 ### Back-end :
@@ -29,10 +29,10 @@ The following tools were used in this project:
     <summary>
         <b>Click to see more</b>
     </summary>
-▪ DJANGO (PYTHON framework)<br>
-▪ GUNICORN (WEB server)<br>
-▪ MYSQL (Database)<br>
-▪ JAVASCRIPT 
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="DJANGO badge"/> <br>
+<img src="https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white" alt="GUNICORN badge"/> <br>
+<img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MYSQL badge"/> <br>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JAVASCRIPT badge"/>
 </details>
 
 ## :white_check_mark: Requirements ##
