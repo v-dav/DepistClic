@@ -25,29 +25,29 @@
 </head>
 
 <!-- body -->
-<body class="flex flex-col min-h-screen bg-light-blue">
+<body class="flex flex-col min-h-screen bg-dark-blue">
     <!-- header --> 
     <header class="bg-dark-blue fixed w-full top-0 z-50">
 		<!-- nav bar -->
-		<nav class="px-6 py-4 bg-dark-blue md:flex md:items-center md:justify-between">
+		<nav class="px-6 py-4 bg-white md:flex md:items-center md:justify-between">
 			<div class="flex justify-between items-center ">
 				<!-- Depistclic -->
-				<div class="text-3xl font-bold text-white">
+				<div class="text-3xl font-bold text-red-500">
 						<a href="/">
 							DepistClic
 						</a>
 				</div>
 				<!-- Burger Icon -->
-			<span class="text-3xl cursor-pointer mx-2 md:hidden block text-white">
+			<span class="text-3xl cursor-pointer mx-2 md:hidden block text-red-500">
 				<ion-icon name="menu" onclick="Menu(this)"></ion-icon>
 			</span>
 			</div>
 			<!-- Burger list -->
-    		<ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-dark-blue w-full left-0 md:w-auto md:py-0 py-2 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
-				<li class="my-6 md:my-0"><a href="/" class="text-white hover:text-black text-lg py-3 pl-3 pr-4 rounded hover:bg-white hover:shadow">Accueil</a></li>
-				<li class="my-6 md:my-0"><a href="/project/" class="text-white hover:text-black text-lg py-3 pl-3 pr-4 rounded hover:bg-white hover:shadow">Projet</a></li>
-				<li class="my-6 md:my-0"><a href="/equipe/" class="text-white hover:text-black text-lg py-3 pl-3 pr-4 rounded hover:bg-white hover:shadow">Equipe</a></li>
-				<li class="my-6 md:my-0"><a href="/comment/" class="text-white hover:text-black text-lg py-3 pl-3 pr-4 rounded hover:bg-white hover:shadow">Contact</a></li>
+    		<ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-2 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+				<li class="my-6 md:my-0"><a href="/" class="text-black hover:text-white text-lg py-3 pl-3 pr-4 rounded hover:bg-red-500 hover:shadow">Accueil</a></li>
+				<li class="my-6 md:my-0"><a href="/project/" class="text-black hover:text-white text-lg py-3 pl-3 pr-4 rounded hover:bg-red-500 hover:shadow">Projet</a></li>
+				<li class="my-6 md:my-0"><a href="/equipe/" class="text-black hover:text-white text-lg py-3 pl-3 pr-4 rounded hover:bg-red-500 hover:shadow">Equipe</a></li>
+				<li class="my-6 md:my-0"><a href="/comment/" class="text-black hover:text-white text-lg py-3 pl-3 pr-4 rounded hover:bg-red-500 hover:shadow">Contact</a></li>
 			</ul>
 		</nav>
 		<!-- Script for Burger menu -->
@@ -60,10 +60,11 @@
     </header>
 
     <!-- Block content --> 
-    <main class="container mx-auto px-4">
+    <main>
         {% block content %} {% endblock %}
     </main>
 
+	{% block footer %}
     <!-- Footer --> 
 	<footer class="bg-white shadow-md mt-auto py-6">
 		<div class="flex flex-col lg:flex-row items-center justify-evenly px-6">
@@ -116,6 +117,7 @@
 			</div>
         </div>
     </footer>
+	{% endblock %}
 </body>
 
 </html>

@@ -1,100 +1,102 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<!-- Card -->
-<section class="flex justify-center items-center">
-	<article class="bg-white border border-gray-300 rounded shadow-md py-10 px-4 md:px-24 mt-20 mb-4 w-5/6 h-auto">
-		<div class="text-left lg:text-justify">
-			<h1 class="text-3xl md:text-6xl font-bold text-black mb-4 text-center">
-				Politique des cookies <ion-icon name="fast-food-outline"></ion-icon>
-			</h1>
-			<!-- Red line -->
-        	<div class="mt-1 mb-2 border-b-4 border-red-500 rounded"></div>
-			<br>
-			<p>En consultant l’application web www.depistclic.fr (ci-après “l’Application”), des petits fichiers de données, appelés cookies, sont placés sur votre ordinateur, tablette ou téléphone mobile.</p>
-			<br>
-			<h2 class="text-basic md:text-3xl font-bold text-black">
-				Qu’est-ce qu’un cookie ?
-			</h2>
-			<!-- Blue line -->
-        	<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
-			<br>
-			<p>Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, tablette ou mobile) lorsque vous visitez un site web ou consultez une publicité. Les cookies recueillent des informations sur votre navigation en ligne, ce qui permet, par exemple, de vous reconnaître lors de vos visites ultérieures, de mémoriser vos préférences linguistiques et de vous proposer des publicités adaptées à vos intérêts.</p>
-			<br>
-			<h2 class="text-basic md:text-3xl font-bold text-black">
-				Quels cookies sont utilisées par DepistClic ?
-			</h2>
-			<!-- Blue line -->
-        	<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
-			<br>
-			<p>Notre Application est conçue pour répondre au mieux à vos besoins et attentes, c'est pourquoi nous utilisons des cookies fonctionnels pour personnaliser votre expérience sur le site, améliorer sa convivialité et ses fonctionnalités et rendre votre expérience plus agréable.</p>
-			<br>
-			<p>Il existe deux types de cookies : les cookies permanents, qui restent sur votre appareil d'une session de navigation à l'autre, et les cookies de session, qui sont supprimés lorsque vous fermez votre navigateur.</p>
-			<br>
-			<p>Nous utilisons uniquement les cookies de session pour améliorer votre expérience de navigation et garantir le bon fonctionnement de nos services. Deux cookies spécifiques, "csrftoken" et "sessionid," sont utilisés pour des raisons de sécurité et pour gérer votre session sur le site. Ces cookies contiennent un identifiant de session unique, qui est stocké localement sur votre appareil. Ils nous aident à faire correspondre vos données de session avec votre visite.  Ils ne collectent pas d'informations personnelles sensibles et sont essentiels pour l'authentification et la gestion de votre session. Ces cookies sont supprimés dès que vous fermez votre navigateur.</p>
-			<br>
-			<p>Nous vous informons de l'utilisation de ces cookies dans le cadre de notre engagement à garantir la sécurité de votre navigation et à améliorer la fonctionnalité de notre site.</p>
-			<br>
-			<p>Si vous continuez à utiliser notre site, nous considérerons que vous acceptez l'utilisation de ces cookies conformément à notre politique d'utilisation des cookies. Vous pouvez modifier les paramètres de votre navigateur pour désactiver les cookies, mais cela peut affecter le fonctionnement du site.</p>
-			<br>
-			<h2 class="text-basic md:text-3xl font-bold text-black">
-				Modifier les paramètres des cookies dans les navigateurs
-			</h2>
-			<!-- Blue line -->
-        	<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
-			<br>
-			<p>Sur les navigateurs web, vous avez le contrôle total sur la gestion des cookies. Vous pouvez choisir d'accepter, de refuser ou de supprimer les cookies en fonction de vos préférences. Voici comment effectuer ces modifications dans les principaux navigateurs :</p>
-			<br>
-			<ul>
-				<li>
-				<strong>Google Chrome (Navigateur de Bureau et Mobile) :</strong>
-				<ul class="list-disc list-inside">
-					<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois points verticaux).</span></li>
-					<li class="text-red-500"><span class="text-black">Sélectionnez "Paramètres" et faites défiler jusqu'à "Confidentialité et sécurité".</span></li>
-					<li class="text-red-500"><span class="text-black">Cliquez sur "Cookies et autres données du site".</span></li>
-					<li class="text-red-500"><span class="text-black">Vous pouvez maintenant activer ou désactiver les cookies, ou gérer les exceptions de site.</span></li>
-				</ul>
-				</li>
-				<li>
-			<br>
-				<strong>Mozilla Firefox (Navigateur de Bureau) :</strong>
-				<ul class="list-disc list-inside">
-					<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois lignes horizontales).</span></li>
-					<li class="text-red-500"><span class="text-black">Sélectionnez "Options" et accédez à "Vie privée et sécurité".</span></li>
-					<li class="text-red-500"><span class="text-black">Vous trouverez la section "Cookies et données de site". Vous pouvez y personnaliser vos préférences.</span></li>
-				</ul>
-				</li>
-				<li>
-			<br>
-				<strong>Microsoft Edge (Navigateur de Bureau et Mobile) :</strong>
-				<ul class="list-disc list-inside">
-					<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois points horizontaux).</span></li>
-					<li class="text-red-500"><span class="text-black">Sélectionnez "Paramètres" et recherchez "Cookies".</span></li>
-					<li class="text-red-500"><span class="text-black">Vous pourrez ainsi gérer les paramètres de cookies.</span></li>
-				</ul>
-				</li>
-				<li>
-			<br>
-				<strong>Safari (Navigateur Mobile) :</strong>
-				<ul class="list-disc list-inside">
-					<li class="text-red-500"><span class="text-black">Sur un appareil iOS, accédez à "Réglages" puis "Safari".</span></li>
-					<li class="text-red-500"><span class="text-black">Sous "Confidentialité et sécurité", vous pouvez activer ou désactiver les cookies.</span></li>
-				</ul>
-				</li>
-				<li>
-			<br>
-				<strong>Safari (Navigateur de Bureau) :</strong>
-				<ul class="list-disc list-inside">
-					<li class="text-red-500"><span class="text-black">Cliquez sur "Préférences" dans le menu Safari.</span></li>
-					<li class="text-red-500"><span class="text-black">Allez dans l'onglet "Confidentialité" pour gérer les cookies.</span></li>
-				</ul>
-				</li>
-				</ul>
-			<br>
-				<p>En modifiant ces paramètres, vous pouvez contrôler comment votre navigateur gère les cookies lors de la navigation sur notre site ou d'autres sites web. N'oubliez pas que la désactivation des cookies peut affecter certaines fonctionnalités de notre site.</p>
-			<br>	
-		</div>
-	</article>
+<section class="bg-light-blue bg-Texture bg-blend-multiply bg-cover bg-center">
+	<!-- Card -->
+	<section class="flex justify-center items-center">
+		<article class="bg-white border border-gray-300 rounded shadow-md py-10 px-4 md:px-24 mt-20 mb-4 mx-4 lg:mx-32 h-auto">
+			<div class="text-left lg:text-justify">
+				<h1 class="text-3xl md:text-6xl font-bold text-black mb-4 text-center">
+					Politique des cookies <ion-icon name="fast-food-outline"></ion-icon>
+				</h1>
+				<!-- Red line -->
+				<div class="mt-1 mb-2 border-b-4 border-red-500 rounded"></div>
+				<br>
+				<p>En consultant l’application web www.depistclic.fr (ci-après “l’Application”), des petits fichiers de données, appelés cookies, sont placés sur votre ordinateur, tablette ou téléphone mobile.</p>
+				<br>
+				<h2 class="text-basic md:text-3xl font-bold text-black">
+					Qu’est-ce qu’un cookie ?
+				</h2>
+				<!-- Blue line -->
+				<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
+				<br>
+				<p>Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, tablette ou mobile) lorsque vous visitez un site web ou consultez une publicité. Les cookies recueillent des informations sur votre navigation en ligne, ce qui permet, par exemple, de vous reconnaître lors de vos visites ultérieures, de mémoriser vos préférences linguistiques et de vous proposer des publicités adaptées à vos intérêts.</p>
+				<br>
+				<h2 class="text-basic md:text-3xl font-bold text-black">
+					Quels cookies sont utilisées par DepistClic ?
+				</h2>
+				<!-- Blue line -->
+				<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
+				<br>
+				<p>Notre Application est conçue pour répondre au mieux à vos besoins et attentes, c'est pourquoi nous utilisons des cookies fonctionnels pour personnaliser votre expérience sur le site, améliorer sa convivialité et ses fonctionnalités et rendre votre expérience plus agréable.</p>
+				<br>
+				<p>Il existe deux types de cookies : les cookies permanents, qui restent sur votre appareil d'une session de navigation à l'autre, et les cookies de session, qui sont supprimés lorsque vous fermez votre navigateur.</p>
+				<br>
+				<p>Nous utilisons uniquement les cookies de session pour améliorer votre expérience de navigation et garantir le bon fonctionnement de nos services. Deux cookies spécifiques, "csrftoken" et "sessionid," sont utilisés pour des raisons de sécurité et pour gérer votre session sur le site. Ces cookies contiennent un identifiant de session unique, qui est stocké localement sur votre appareil. Ils nous aident à faire correspondre vos données de session avec votre visite.  Ils ne collectent pas d'informations personnelles sensibles et sont essentiels pour l'authentification et la gestion de votre session. Ces cookies sont supprimés dès que vous fermez votre navigateur.</p>
+				<br>
+				<p>Nous vous informons de l'utilisation de ces cookies dans le cadre de notre engagement à garantir la sécurité de votre navigation et à améliorer la fonctionnalité de notre site.</p>
+				<br>
+				<p>Si vous continuez à utiliser notre site, nous considérerons que vous acceptez l'utilisation de ces cookies conformément à notre politique d'utilisation des cookies. Vous pouvez modifier les paramètres de votre navigateur pour désactiver les cookies, mais cela peut affecter le fonctionnement du site.</p>
+				<br>
+				<h2 class="text-basic md:text-3xl font-bold text-black">
+					Modifier les paramètres des cookies dans les navigateurs
+				</h2>
+				<!-- Blue line -->
+				<div class="mt-4 border-b-4 border-blue-200 rounded w-1/4"></div>
+				<br>
+				<p>Sur les navigateurs web, vous avez le contrôle total sur la gestion des cookies. Vous pouvez choisir d'accepter, de refuser ou de supprimer les cookies en fonction de vos préférences. Voici comment effectuer ces modifications dans les principaux navigateurs :</p>
+				<br>
+				<ul>
+					<li>
+					<strong>Google Chrome (Navigateur de Bureau et Mobile) :</strong>
+					<ul class="list-disc list-inside">
+						<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois points verticaux).</span></li>
+						<li class="text-red-500"><span class="text-black">Sélectionnez "Paramètres" et faites défiler jusqu'à "Confidentialité et sécurité".</span></li>
+						<li class="text-red-500"><span class="text-black">Cliquez sur "Cookies et autres données du site".</span></li>
+						<li class="text-red-500"><span class="text-black">Vous pouvez maintenant activer ou désactiver les cookies, ou gérer les exceptions de site.</span></li>
+					</ul>
+					</li>
+					<li>
+				<br>
+					<strong>Mozilla Firefox (Navigateur de Bureau) :</strong>
+					<ul class="list-disc list-inside">
+						<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois lignes horizontales).</span></li>
+						<li class="text-red-500"><span class="text-black">Sélectionnez "Options" et accédez à "Vie privée et sécurité".</span></li>
+						<li class="text-red-500"><span class="text-black">Vous trouverez la section "Cookies et données de site". Vous pouvez y personnaliser vos préférences.</span></li>
+					</ul>
+					</li>
+					<li>
+				<br>
+					<strong>Microsoft Edge (Navigateur de Bureau et Mobile) :</strong>
+					<ul class="list-disc list-inside">
+						<li class="text-red-500"><span class="text-black">Cliquez sur le menu en haut à droite (trois points horizontaux).</span></li>
+						<li class="text-red-500"><span class="text-black">Sélectionnez "Paramètres" et recherchez "Cookies".</span></li>
+						<li class="text-red-500"><span class="text-black">Vous pourrez ainsi gérer les paramètres de cookies.</span></li>
+					</ul>
+					</li>
+					<li>
+				<br>
+					<strong>Safari (Navigateur Mobile) :</strong>
+					<ul class="list-disc list-inside">
+						<li class="text-red-500"><span class="text-black">Sur un appareil iOS, accédez à "Réglages" puis "Safari".</span></li>
+						<li class="text-red-500"><span class="text-black">Sous "Confidentialité et sécurité", vous pouvez activer ou désactiver les cookies.</span></li>
+					</ul>
+					</li>
+					<li>
+				<br>
+					<strong>Safari (Navigateur de Bureau) :</strong>
+					<ul class="list-disc list-inside">
+						<li class="text-red-500"><span class="text-black">Cliquez sur "Préférences" dans le menu Safari.</span></li>
+						<li class="text-red-500"><span class="text-black">Allez dans l'onglet "Confidentialité" pour gérer les cookies.</span></li>
+					</ul>
+					</li>
+					</ul>
+				<br>
+					<p>En modifiant ces paramètres, vous pouvez contrôler comment votre navigateur gère les cookies lors de la navigation sur notre site ou d'autres sites web. N'oubliez pas que la désactivation des cookies peut affecter certaines fonctionnalités de notre site.</p>
+				<br>	
+			</div>
+		</article>
+	</section>
 <section>
 
 {% endblock %}
