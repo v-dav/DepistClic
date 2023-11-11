@@ -21,6 +21,8 @@ ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://depistclic.fr', 'https://www.depistclic.fr', 'http://depistclic.fr', 'http://www.depistclic.fr']
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+# Configurez PREPEND_WWW en fonction de DEBUG
+PREPEND_WWW = not DEBUG
 
 # Application definition
 
