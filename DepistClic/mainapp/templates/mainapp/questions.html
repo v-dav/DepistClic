@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- cards section -->
-<section class="flex flex-col pt-20 lg:flex-row pb-32 px-4 bg-Texture bg-blend-multiply bg-cover bg-center">
+<section class="flex flex-col pt-20 lg:flex-row pb-32 px-4 bg-Texture bg-blend-multiply bg-cover bg-center h-screen">
     <!-- card Patient -->
     <article class="bg-white border border-gray-300 rounded-lg shadow-md p-4 lg:w-1/4 mx-5 mt-4 sm:h-fit order-last lg:order-first">
         <!-- Patient title -->
@@ -56,7 +56,7 @@
                     {{ form_int.as_p }}
                     <!-- Valider -->
                     <div class="mt-4">
-                        <button class="btn btn-primary bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" value="Valider">
+                        <button class="btn btn-primary bg-red-500 hover:bg-green-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" value="Valider">
                             Valider
                         </button>
                     </div>
@@ -66,17 +66,17 @@
             <!-- button section -->
             <div class="flex flex-col lg:flex-row justify-between mx-2">
                 <!-- Précédent -->
-                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
+                <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1 lg:w-40" id="back-btn" {% if question.order <= 1 %}hidden{% endif %}>
                     	Précédent
                 </button>
                 <!-- Synthèse -->
                 <a href="/synthese/">
-                    <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-gray-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1">
+                    <button class="btn btn-primary btn-sm bg-red-500 hover:bg-green-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1 w-40">
                         Synthèse
                     </button>
                 </a>
                 <!-- Passer -->
-                <button class="btn btn-primary btn-sm bg-red-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1" id="pass-btn" data-question-order="{{ question.order }}">
+                <button class="btn btn-primary btn-sm bg-gray-500 hover:bg-red-600 text-white text-xl font-bold py-3 px-5 lg:px-7 rounded-full shadow-md my-2 transform transition-transform hover:-translate-y-1 lg:w-40" id="pass-btn" data-question-order="{{ question.order }}">
                     Passer
                 </button>                
             </div>
