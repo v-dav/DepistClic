@@ -18,10 +18,10 @@ The following tools were used in this project:
     <summary>
         <b>Click to see more</b>
     </summary>
-<img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge"/> <br>
-<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" alt="HTML badge"/> <br>
-<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TAILWIND badge"/> <br>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JAVASCRIPT badge"/>
+<img src="https://img.shields.io/badge/HTML-0096c7?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge"/> <br>
+<img src="https://img.shields.io/badge/CSS-0096c7?&style=for-the-badge&logo=css3&logoColor=white" alt="HTML badge"/> <br>
+<img src="https://img.shields.io/badge/Tailwind_CSS-0096c7?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TAILWIND badge"/> <br>
+<img src="https://img.shields.io/badge/JavaScript-0096c7?style=for-the-badge&logo=javascript&logoColor=black" alt="JAVASCRIPT badge"/>
 </details>
 
 ### Back-end :
@@ -75,11 +75,10 @@ $ python manage.py runserver
 
 
 # Landing Page
-![Graphic Design (1)](DepistClic/assets/landing_page_1.png)
-![Landing Page](DepistClic/assets/landing_page_2.png)
-![2](https://github.com/v-dav/DepistClic/assets/115344057/4092a5d7-f605-4322-85dc-984f538b6496)
-![3](DepistClic/assets/landing_page_3.png)
-![4](DepistClic/assets/landing_page_4.png)
+![landing_page_1](DepistClic/assets/landing_page_1.png)
+![landing_page_2](DepistClic/assets/landing_page_2.png)
+![landing_page_3](DepistClic/assets/landing_page_3.png)
+![landing_page_4](DepistClic/assets/landing_page_4.png)
 
 
 # :writing_hand: Authors
