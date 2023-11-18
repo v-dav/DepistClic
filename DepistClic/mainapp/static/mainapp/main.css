@@ -49,3 +49,13 @@
 	z-index: 2;
 	width: 100%;
   }
+
+/* .parallax-container {
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	height: 100vh;
+}
+
+.parallax-child {
+	scroll-snap-align: start;
+} */
