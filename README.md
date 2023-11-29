@@ -7,7 +7,7 @@ DepistClic is the first decision-help tool entirely dedicated to screening for c
 
 🇫🇷 The app is in French and can be accessed at www.depistclic.fr
 
-☕️ The full detailed story of the development can be found at the ralted blog post at [Medium](https://medium.com/dev-genius/from-code-to-clinic-how-i-designed-and-launched-my-first-medical-web-app-f115d86a44ac)
+☕️ The full detailed story of the development can be found at the related blog post at [Medium](https://medium.com/dev-genius/from-code-to-clinic-how-i-designed-and-launched-my-first-medical-web-app-f115d86a44ac)
 
 ## 🧐 Features
 - A rapid logged-out UX
@@ -16,7 +16,7 @@ DepistClic is the first decision-help tool entirely dedicated to screening for c
 - No medical patient or user data storage
 - Responsive on all devices with an ergonomic and interactive UI/UX
 - Latest scientific and valid information with links to sources
-- Our own custom algorithm that drives the application and provides a proper report page personalized to the patient
+- Our own custom algorithm drives the application and provides a proper report page personalized to the patient
 
 ## 🛠️ Tech Stack
 
@@ -68,13 +68,13 @@ pipenv install
 ```
 
 ## 🧑🏻‍💻 General Usage
-- Search on Google in French "depistclic". One of the first results happens to be DepistClic App.
-- Clicks the result or directly accesse depistclic.fr
-- Click "Start" button on the landing page
+- Search on Google in French "depistclic". One of the first results happens to be the DepistClic App.
+- Clicks the result or directly access depistclic.fr
+- Click the "Start" button on the landing page
 - Respond to questions or skip if you don't have the information. You can correct the previous response by browsing back.
-- Access to the report page after the last question or at any time by clicking at the "Report" button
-- Browse screening tests recommandations, get more information, explore scientific sources and print prescriptions if needed.
-- You can restart the question session at anytime. All previous responses will be reinitialized.
+- Access the report page after the last question or at any time by clicking on the "Report" button
+- Browse screening test recommendations, get more information, explore scientific sources, and print prescriptions if needed.
+- You can restart the question session at any time. All previous responses will be reinitialized.
 
 ## 💻  Localhost Usage
 ```bash
@@ -99,7 +99,7 @@ Don't forget to use your own environment variables for the database.
 
 
 ## ❤️ Support  
-A simple star to this project repo is enough to keep me motivated on this project for days. If you find yourself very much excited with this project or have any question let me know with a tweet, a comment or a private message.
+A simple star to this project repo is enough to keep me motivated on this project for days. If you are excited about this project or have any questions, let me know with a tweet, a comment, or a private message.
 
 Feel free to reach out to us on:
 - [Twitter](https://twitter.com/v_dav_dev)
@@ -124,4 +124,4 @@ Feel free to reach out to us on:
 ![Graphic Design (1)](https://github.com/v-dav/DepistClic/assets/115344057/6e3caaca-c4d7-453e-93da-7d5df00e6496)
 
 ## ➤ Disclaimer
-DepistClic is an independent decision support tool intended for healthcare professionals. It uses the latest recommendations from medical societies to propose personalized procedures for screening for complications in type 2 diabetic patients. The information from this site does not replace the decision-making and prescribing responsibility of a doctor. This tool has not benefited from any academic validation and its presentation is not suitable for the general public. Application developed in open-source without conflicts of interest.
+DepistClic is an independent decision support tool intended for healthcare professionals. It uses the latest recommendations from medical societies to propose personalized procedures for screening for complications in type 2 diabetic patients. The information from this site does not replace a doctor's decision-making and prescribing responsibility. This tool has not benefited from any academic validation and its presentation is unsuitable for the general public. Application developed in open-source without conflicts of interest.
