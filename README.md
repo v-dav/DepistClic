@@ -85,7 +85,8 @@ service mysql start
 cd Depistclic/
 python3 manage.py runserver
 ```
-Don't forget to use your own environment variables for the database.
+⚠️ Don't forget to use your own environment variables for your database.
+The database with questions and screening tests is not provided with the source code.
 
 ## 📸 Screenshots
 <img width="1416" alt="Skärmavbild 2023-11-29 kl  16 12 47" src="https://github.com/v-dav/DepistClic/assets/115344057/cf01bc80-38b4-4624-a327-6881ec47f32d">
