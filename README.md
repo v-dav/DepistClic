@@ -102,9 +102,9 @@ Don't forget to use your own environment variables for the database.
 A simple star to this project repo is enough to keep me motivated on this project for days. If you find yourself very much excited with this project or have any question let me know with a tweet, a comment or a private message.
 
 Feel free to reach out to us on:
-- [Twitter](https://twitter.com/v-dav)
+- [Twitter](https://twitter.com/v_dav_dev)
 - [Linkedin](https://www.linkedin.com/in/v-dav/)
-- [Mail](6002@holbertonstudents.com)
+- Mail to 6002@holbertonstudents.com
 
 
 ## 🙇 Authors
