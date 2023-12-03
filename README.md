@@ -126,3 +126,6 @@ Feel free to reach out to us on:
 
 ## ➤ Disclaimer
 DepistClic is an independent decision support tool intended for healthcare professionals. It uses the latest recommendations from medical societies to propose personalized procedures for screening for complications in type 2 diabetic patients. The information from this site does not replace a doctor's decision-making and prescribing responsibility. This tool has not benefited from any academic validation and its presentation is unsuitable for the general public. Application developed in open-source without conflicts of interest.
+
+## ➤ License
+This project is not licensed and is open for personal and non-commercial use. Feel free to explore and use the code as inspiration for your own projects. If you have any questions or need further clarification, please reach out.
