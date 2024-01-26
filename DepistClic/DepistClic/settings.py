@@ -1,28 +1,26 @@
-
 from pathlib import Path
 import os
+import environ
 import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env()
+environ.Env.read_env()
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = False
 
 # Production settings
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://depistclic.fr', 'https://www.depistclic.fr', 'http://depistclic.fr', 'http://www.depistclic.fr']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*.pythonanywhere.com/', 'https://depistclic.fr', 'https://www.depistclic.fr', 'http://depistclic.fr', 'http://www.depistclic.fr']
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-# Configurez PREPEND_WWW en fonction de DEBUG
-PREPEND_WWW = not DEBUG
 
 # Application definition
 
@@ -40,10 +38,6 @@ INSTALLED_APPS = [
 ]
 
 TAILWIND_APP_NAME = 'theme'
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,11 +78,11 @@ WSGI_APPLICATION = 'DepistClic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQLUSER'),
-        'PASSWORD': os.getenv('MYSQLPASSWORD'),
-        'HOST': os.getenv('MYSQLHOST'),
-        'PORT': os.getenv('MYSQLPORT'),
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQLUSER'),
+        'PASSWORD': env('MYSQLPASSWORD'),
+        'HOST': env('MYSQLHOST'),
+        'PORT': env('MYSQLPORT'),
     }
 }
 
@@ -136,22 +130,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Static files (CSS, JavaScript, Images)
 
-STORAGES = {    
-    "default": {    
-        "BACKEND": "django.core.files.storage.FileSystemStorage",   
-    },  
-    "staticfiles": {    
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",   
-    },  
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Media files
-MEDIA_URL = "uploads/"
-MEDIA_ROOT = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH", os.path.join(BASE_DIR, 'media'))
-
-
-
+#MEDIA_URL = "uploads/"
+#MEDIA_ROOT = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH", os.path.join(BASE_DIR, 'media'))
