@@ -9,6 +9,8 @@ DepistClic is the first decision-help tool entirely dedicated to screening for c
 
 ☕️ The full detailed story of the development can be found at the related blog post at [Medium](https://medium.com/dev-genius/from-code-to-clinic-how-i-designed-and-launched-my-first-medical-web-app-f115d86a44ac)
 
+📹 The project presentation is on [Youtube](https://www.youtube.com/live/1Ejp6HAa0_c?si=E8YU7JFc5YHvZ64E)
+
 ## 🧐 Features
 - A rapid logged-out UX
 - A quick no more 2 min quiz
